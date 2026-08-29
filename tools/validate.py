@@ -117,8 +117,8 @@ def main():
     for o in chargen["options"]:
         check(o["menu"] in menu_ids, "option %s in unknown menu" % o["id"])
         check(bool(o["title"]), "option %s has no title" % o["id"])
-        check(o["culture"] is None or o["culture"] in culture_ids,
-              "option %s references unknown culture %r" % (o["id"], o["culture"]))
+        for c in o["cultures"]:
+            check(c in culture_ids, "option %s references unknown culture %r" % (o["id"], c))
         for g in o["grants"]["skills"]:
             check(g["skill"] in skill_ids, "option %s grants unknown skill %s" % (o["id"], g["skill"]))
         for g in o["grants"]["attributes"]:
@@ -137,10 +137,28 @@ def main():
             check(g["focus"] > 0 and g["level"] > 0,
                   "option %s has a zero-valued skill grant" % o["id"])
 
-    # every culture must be playable end-to-end
-    parent = [o for o in chargen["options"] if o["menu"] == "narrative_parent_menu"]
+    # Every culture must reach every stage with a real choice. This is what
+    # caught Khuzait being left with two Youth options: multi-culture
+    # conditions (`sturgia || battania`) were only recording their first match.
+    urban = set(chargen.get("urbanOccupations", []))
     for cid in culture_ids:
-        check(any(o["culture"] == cid for o in parent), "culture %s has no family options" % cid)
+        for m in chargen["menus"]:
+            for occupation in (None, "farmer", "merchant_urban"):
+                available = [
+                    o for o in chargen["options"]
+                    if o["menu"] == m["id"]
+                    and (not o["cultures"] or cid in o["cultures"])
+                    and (o["requiresUrban"] is None or occupation is None
+                         or (occupation in urban) == o["requiresUrban"])
+                ]
+                check(len(available) >= 3,
+                      "culture %s, stage %s, %s upbringing: only %d option(s)"
+                      % (cid, m["id"], occupation or "any", len(available)))
+
+    check(urban, "urban occupation set is empty")
+    check("shipmaster_urban" not in urban,
+          "shipmaster_urban is absent from the game's IsUrbanOccupation switch, "
+          "so it must stay classified as rural")
 
     print("skills %d | perks %d | cultures %d | menus %d | options %d"
           % (len(skills), len(perks), len(chargen["cultures"]),

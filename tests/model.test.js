@@ -142,7 +142,7 @@ test("perks past the learning limit are flagged but still selectable", () => {
 function fullPath(culture) {
   const choices = {};
   for (const menu of catalog.menus) {
-    const option = catalog.optionsFor(menu.id, culture)[0];
+    const option = chargen.availableOptions(catalog, menu.id, culture, choices)[0];
     if (option) choices[menu.id] = option.id;
   }
   return choices;
@@ -171,8 +171,51 @@ test("culture gates which family options appear", () => {
   const empire = catalog.optionsFor("narrative_parent_menu", "empire");
   const nord = catalog.optionsFor("narrative_parent_menu", "nord");
   assert(empire.length > 0 && nord.length > 0, "both cultures have options");
-  assert(!empire.some((o) => o.culture === "nord"), "no nord options for empire");
-  assert(!nord.some((o) => o.culture === "empire"), "no empire options for nord");
+  assert(!empire.some((o) => o.cultures.length && !o.cultures.includes("empire")),
+    "no foreign options for empire");
+  assert(!nord.some((o) => o.cultures.length && !o.cultures.includes("nord")),
+    "no foreign options for nord");
+});
+
+test("every culture gets real choices at every stage", () => {
+  // Regression: options whose condition is `sturgia || battania` decompile to
+  // two returns. Recording only the first left Khuzait with two Youth options.
+  for (const culture of catalog.cultures) {
+    for (const menu of catalog.menus) {
+      const options = catalog.optionsFor(menu.id, culture.id);
+      assert(options.length >= 3,
+        `${culture.id} / ${menu.id} offered only ${options.length}`);
+    }
+  }
+});
+
+test("options serving several cultures are offered to each of them", () => {
+  const shared = catalog.chargen.options.filter((o) => o.cultures.length > 1);
+  assert(shared.length > 0, "the data contains multi-culture options");
+  for (const option of shared) {
+    for (const culture of option.cultures) {
+      assert(catalog.optionsFor(option.menu, culture).some((o) => o.id === option.id),
+        `${option.id} missing for ${culture}`);
+    }
+  }
+});
+
+test("adolescence is gated on an urban or rural upbringing", () => {
+  const stage = "narrative_education_menu";
+  const rural = catalog.optionsFor(stage, "empire", "farmer");
+  const urban = catalog.optionsFor(stage, "empire", "merchant_urban");
+  assert(rural.length >= 3 && urban.length >= 3, "both upbringings have options");
+  const ruralIds = new Set(rural.map((o) => o.id));
+  assert(urban.some((o) => !ruralIds.has(o.id)), "the two sets actually differ");
+  assert(rural.every((o) => o.requiresUrban !== true), "no urban-only options for a farmer");
+  assert(urban.every((o) => o.requiresUrban !== false), "no rural-only options for a merchant");
+});
+
+test("shipmaster_urban counts as rural, as the game's switch has it", () => {
+  assert(!catalog.isUrban("shipmaster_urban"),
+    "Warsails' shipmaster_urban is absent from IsUrbanOccupation");
+  assert(catalog.isUrban("merchant_urban"), "merchant_urban is urban");
+  assert(!catalog.isUrban("farmer"), "farmer is rural");
 });
 
 test("seeding a build from character creation replaces its state", () => {

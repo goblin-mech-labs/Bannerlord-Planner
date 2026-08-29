@@ -67,7 +67,7 @@ export class ChargenView {
     if (step.id === CULTURE_STAGE) {
       return catalog.cultures.find((c) => c.id === this.culture)?.name ?? null;
     }
-    const option = catalog.optionsFor(step.id, this.culture)
+    const option = chargen.availableOptions(catalog, step.id, this.culture, this.choices)
       .find((o) => o.id === this.choices[step.id]);
     return option?.title ?? null;
   }
@@ -104,7 +104,7 @@ export class ChargenView {
 
   renderStage(catalog, menu) {
     if (!menu) return;
-    const options = catalog.optionsFor(menu.id, this.culture);
+    const options = chargen.availableOptions(catalog, menu.id, this.culture, this.choices);
     append(this.body,
       el("h3", { class: "panel-title" }, menu.title),
       menu.description ? el("p", { class: "prompt" }, menu.description) : null,

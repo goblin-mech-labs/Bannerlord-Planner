@@ -45,6 +45,7 @@ export class Catalog {
 
     this.cultures = chargen.cultures;
     this.menus = chargen.menus;
+    this.urbanOccupations = new Set(chargen.urbanOccupations ?? []);
     this.optionsByMenu = new Map(chargen.menus.map((m) => [m.id, []]));
     for (const option of chargen.options) {
       this.optionsByMenu.get(option.menu)?.push(option);
@@ -55,10 +56,24 @@ export class Catalog {
   perk(id) { return this.perkById.get(id); }
   tiers(skillId) { return this.tiersBySkill.get(skillId) ?? []; }
 
-  /** Options for a menu that are available to the chosen culture. */
-  optionsFor(menuId, cultureId) {
-    return (this.optionsByMenu.get(menuId) ?? [])
-      .filter((o) => o.culture === null || o.culture === cultureId);
+  isUrban(occupation) { return this.urbanOccupations.has(occupation); }
+
+  /**
+   * Options a menu offers, given the culture and the family already chosen.
+   *
+   * Two gates, both taken from the game's OnCondition methods: a culture list
+   * (an option can serve several - `sturgia || battania`), and for the
+   * Adolescence stage an urban/rural test against the parent occupation.
+   */
+  optionsFor(menuId, cultureId, parentOccupation = null) {
+    return (this.optionsByMenu.get(menuId) ?? []).filter((o) => {
+      if (o.cultures.length && !o.cultures.includes(cultureId)) return false;
+      if (o.requiresUrban !== null && o.requiresUrban !== undefined) {
+        if (parentOccupation === null) return true;   // not chosen yet: show all
+        if (this.isUrban(parentOccupation) !== o.requiresUrban) return false;
+      }
+      return true;
+    });
   }
 
   static async load(base = "") {

@@ -86,11 +86,46 @@ def parse_grants(body, consts):
     }
 
 
-def parse_culture(body):
+def parse_cultures(body):
+    """All cultures a condition accepts.
+
+    ilspycmd renders `a || b` as an if/return pair, so a single option can name
+    several cultures. Taking only the first was what hid options from Khuzait.
+    An empty list means the option is not culture-gated.
+    """
+    if body is None:
+        return []
+    return list(dict.fromkeys(re.findall(r'StringId == "(\w+)"', body)))
+
+
+def parse_urban_requirement(body):
+    """True/False when an option is gated on an urban/rural upbringing."""
+    if body is None or "IsUrbanOccupation" not in body:
+        return None
+    return not re.search(r"!\s*CharacterOccupationTypes\.IsUrbanOccupation", body)
+
+
+def parse_parent_occupation(body):
+    """The occupation a family option sets, used by the urban/rural gate."""
     if body is None:
         return None
-    m = re.search(r'StringId == "(\w+)"', body)
+    m = re.search(r'SetParentOccupation\("(\w+)"\)', body)
     return m.group(1) if m else None
+
+
+def urban_occupations(text):
+    """The exact set the game's IsUrbanOccupation switch returns true for.
+
+    Deliberately not a "_urban" suffix rule: Warsails' `shipmaster_urban` is
+    absent from the switch, so the game itself treats it as rural.
+    """
+    start = text.find("IsUrbanOccupation(string occupation)")
+    if start < 0:
+        return set()
+    block = text[start:start + 900]
+    found = set(re.findall(r'case "(\w+)":', block))
+    found.update(re.findall(r'return occupation == "(\w+)";', block))
+    return found
 
 
 def text_object(token):
@@ -212,14 +247,26 @@ def main():
                     "titleId": title_id,
                     "description": desc,
                     "descriptionId": desc_id,
-                    "culture": parse_culture(bodies.get(delegate(args[4]) or "")),
+                    "cultures": parse_cultures(bodies.get(delegate(args[4]) or "")),
+                    "requiresUrban": parse_urban_requirement(
+                        bodies.get(delegate(args[4]) or "")),
+                    "parentOccupation": parse_parent_occupation(
+                        bodies.get(delegate(args[5]) or "")),
                     "grants": parse_grants(bodies.get(delegate(args[3]) or ""), consts),
                     "expansion": filename.startswith("Naval"),
                     "order": order,
                 })
 
+    urban = set()
+    for filename in ("CharacterOccupationTypes.cs", FILES[0]):
+        try:
+            urban |= urban_occupations(read(filename))
+        except OSError:
+            pass
+
     payload = {
         "cultures": extract_cultures(),
+        "urbanOccupations": sorted(urban),
         "menus": sorted(menus.values(), key=lambda m: m["order"]),
         "options": options,
     }

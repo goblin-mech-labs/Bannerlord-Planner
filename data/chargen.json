@@ -36,6 +36,16 @@
    "expansion": true
   }
  ],
+ "urbanOccupations": [
+  "artisan_urban",
+  "bard_urban",
+  "healer_urban",
+  "mercenary_urban",
+  "merchant_urban",
+  "physician_urban",
+  "retainer_urban",
+  "vagabond_urban"
+ ],
  "menus": [
   {
    "id": "narrative_parent_menu",
@@ -94,7 +104,11 @@
    "titleId": "InN5ZZt3",
    "description": "Your father was a trusted lieutenant of the local landowning aristocrat. He rode with the lord's cavalry, fighting as an armored lancer.",
    "descriptionId": "ivKl4mV2",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "retainer",
    "grants": {
     "skills": [
      {
@@ -125,7 +139,11 @@
    "titleId": "651FhzdR",
    "description": "Your family were merchants in one of the main cities of the Empire. They sometimes organized caravans to nearby towns, and discussed issues in the town council.",
    "descriptionId": "FQntPChs",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "merchant_urban",
    "grants": {
     "skills": [
      {
@@ -156,7 +174,11 @@
    "titleId": "sb4gg8Ak",
    "description": "Your family were small farmers with just enough land to feed themselves and make a small profit. People like them were the pillars of the imperial rural economy, as well as the backbone of the levy.",
    "descriptionId": "09z8Q08f",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "farmer",
    "grants": {
     "skills": [
      {
@@ -187,7 +209,11 @@
    "titleId": "v48N6h1t",
    "description": "Your family owned their own workshop in a city, making goods from raw materials brought in from the countryside. Your father played an active if minor role in the town council, and also served in the militia.",
    "descriptionId": "ueCm5y1C",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "artisan_urban",
    "grants": {
     "skills": [
      {
@@ -218,7 +244,11 @@
    "titleId": "7eWmU2mF",
    "description": "Your family lived in a village, but did not own their own land. Instead, your father supplemented paid jobs with long trips in the woods, hunting and trapping, always keeping a wary eye for the lord's game wardens.",
    "descriptionId": "yRFSzSDZ",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "hunter",
    "grants": {
     "skills": [
      {
@@ -249,7 +279,11 @@
    "titleId": "aEke8dSb",
    "description": "Your family numbered among the many poor migrants living in the slums that grow up outside the walls of imperial cities, making whatever money they could from a variety of odd jobs. Sometimes they did service for one of the Empire's many criminal gangs, and you had an early look at the dark side of life.",
    "descriptionId": "Jvf6K7TZ",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "vagabond_urban",
    "grants": {
     "skills": [
      {
@@ -280,7 +314,11 @@
    "titleId": "2TptWc4m",
    "description": "Your father was a bailiff for a local feudal magnate. He looked after his liege's estates, resolved disputes in the village, and helped train the village levy. He rode with the lord's cavalry, fighting as an armored knight.",
    "descriptionId": "0Suu1Q9q",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "retainer",
    "grants": {
     "skills": [
      {
@@ -311,7 +349,11 @@
    "titleId": "651FhzdR",
    "description": "Your family were merchants in one of the main cities of the kingdom. They organized caravans to nearby towns and were active in the local merchant's guild.",
    "descriptionId": "qNZFkxJb",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "merchant_urban",
    "grants": {
     "skills": [
      {
@@ -342,7 +384,11 @@
    "titleId": "RDfXuVxT",
    "description": "Your family were small farmers with just enough land to feed themselves and make a small profit. People like them were the pillars of the kingdom's economy, as well as the backbone of the levy.",
    "descriptionId": "BLZ4mdhb",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "farmer",
    "grants": {
     "skills": [
      {
@@ -373,7 +419,11 @@
    "titleId": "p2KIhGbE",
    "description": "Your family owned a smithy in a city. Your father played an active if minor role in the town council, and also served in the militia.",
    "descriptionId": "btsMpRcA",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "artisan_urban",
    "grants": {
     "skills": [
      {
@@ -404,7 +454,11 @@
    "titleId": "YcnK0Thk",
    "description": "Your family lived in a village, but did not own their own land. Instead, your father supplemented paid jobs with long trips in the woods, hunting and trapping, always keeping a wary eye for the lord's game wardens.",
    "descriptionId": "yRFSzSDZ",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "hunter",
    "grants": {
     "skills": [
      {
@@ -435,7 +489,11 @@
    "titleId": "ipQP6aVi",
    "description": "Your father joined one of Vlandia's many mercenary companies, composed of men who got such a taste for war in their lord's service that they never took well to peace. Their crossbowmen were much valued across Calradia. Your mother was a camp follower, taking you along in the wake of bloody campaigns.",
    "descriptionId": "yYhX6JQC",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "merchant_urban",
    "grants": {
     "skills": [
      {
@@ -466,7 +524,11 @@
    "titleId": "mc78FEbA",
    "description": "Your father was a member of a boyar's druzhina, the 'companions' that make up his retinue. He sat at his lord's table in the great hall, oversaw the boyar's estates, and stood by his side in the center of the shield wall in battle.",
    "descriptionId": "hob3WVkU",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "retainer",
    "grants": {
     "skills": [
      {
@@ -497,7 +559,11 @@
    "titleId": "HqzVBfpl",
    "description": "Your family were merchants who lived in one of Sturgia's great river ports, organizing the shipment of the north's bounty of furs, honey and other goods to faraway lands.",
    "descriptionId": "bjVMtW3W",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "merchant_urban",
    "grants": {
     "skills": [
      {
@@ -528,7 +594,11 @@
    "titleId": "zrpqSWSh",
    "description": "Your family had just enough land to feed themselves and make a small profit. People like them were the pillars of the kingdom's economy, as well as the backbone of the levy.",
    "descriptionId": "Mcd3ZyKq",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "farmer",
    "grants": {
     "skills": [
      {
@@ -559,7 +629,11 @@
    "titleId": "v48N6h1t",
    "description": "Your family owned their own workshop in a city, making goods from raw materials brought in from the countryside. Your father played an active if minor role in the town council, and also served in the militia.",
    "descriptionId": "ueCm5y1C",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "artisan_urban",
    "grants": {
     "skills": [
      {
@@ -590,7 +664,11 @@
    "titleId": "YcnK0Thk",
    "description": "Your family had no taste for the authority of the boyars. They made their living deep in the woods, slashing and burning fields which they tended for a year or two before moving on. They hunted and trapped fox, hare, ermine, and other fur-bearing animals.",
    "descriptionId": "WyZ2UtFF",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "hunter",
    "grants": {
     "skills": [
      {
@@ -621,7 +699,11 @@
    "titleId": "TPoK3GSj",
    "description": "Your family numbered among the poor migrants living in the slums that grow up outside the walls of the river cities, making whatever money they could from a variety of odd jobs. Sometimes they did services for one of the region's many criminal gangs.",
    "descriptionId": "2SDWhGmQ",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "vagabond_urban",
    "grants": {
     "skills": [
      {
@@ -652,7 +734,11 @@
    "titleId": "Sw8OxnNr",
    "description": "Your family was from a smaller offshoot of an emir's tribe. Your father's land gave him enough income to afford a horse but he was not quite wealthy enough to buy the armor needed to join the heavier cavalry. He fought as one of the light horsemen for which the desert is famous.",
    "descriptionId": "MFrIHJZM",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "retainer",
    "grants": {
     "skills": [
      {
@@ -683,7 +769,11 @@
    "titleId": "ngFVgwDD",
    "description": "Your father was part of one of the slave-bodyguards maintained by the Aserai emirs. He fought by his master's side with tribe's armored cavalry, and was freed - perhaps for an act of valor, or perhaps he paid for his freedom with his share of the spoils of battle. He then married your mother.",
    "descriptionId": "GsPC2MgU",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "mercenary_urban",
    "grants": {
     "skills": [
      {
@@ -714,7 +804,11 @@
    "titleId": "bgy8LVvY",
    "description": "Your family were respected physicians in an oasis town. They set bones and cured the sick, and their skills were in much demand. They were respected in the higher echelons of society too.",
    "descriptionId": "BhQlmQoj",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "physician_urban",
    "grants": {
     "skills": [
      {
@@ -745,7 +839,11 @@
    "titleId": "g31pXuqi",
    "description": "Your family tilled the soil in one of the oases of the Nahasa and tended the palm orchards that produced the desert's famous dates. Your father was a member of the main foot levy of his tribe, fighting with his kinsmen under the emir's banner.",
    "descriptionId": "5P0KqBAw",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "farmer",
    "grants": {
     "skills": [
      {
@@ -776,7 +874,11 @@
    "titleId": "EEedqolz",
    "description": "Your family were part of a nomadic clan, crisscrossing the wastes between wadi beds and wells to feed their herds of goats and camels on the scraggly scrubs of the Nahasa.",
    "descriptionId": "PKhcPbBX",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "herder",
    "grants": {
     "skills": [
      {
@@ -807,7 +909,11 @@
    "titleId": "tRIrbTvv",
    "description": "Your father worked for a fitiwi, one of the strongmen who keep order in the poorer quarters of the oasis towns. He resolved disputes over land, dice and insults, imposing his authority with the fitiwi's traditional staff.",
    "descriptionId": "6bUSbsKC",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "artisan_urban",
    "grants": {
     "skills": [
      {
@@ -838,7 +944,11 @@
    "titleId": "GeNKQlHR",
    "description": "Your family were the trusted kinfolk of a Battanian chieftain, and sat at his table in his great hall. Your father assisted his chief in running the affairs of the clan and trained with the traditional weapons of the Battanian elite, the two-handed sword or falx and the bow.",
    "descriptionId": "LpH8SYFL",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "retainer_urban",
    "grants": {
     "skills": [
      {
@@ -869,7 +979,11 @@
    "titleId": "AeBzTj6w",
    "description": "Your parents were healers who gathered herbs and treated the sick. As a living reservoir of Battanian tradition, they were also asked to adjudicate many disputes between the clans.",
    "descriptionId": "j6py5Rv5",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "healer",
    "grants": {
     "skills": [
      {
@@ -900,7 +1014,11 @@
    "titleId": "tGEStbxb",
    "description": "Your family were middle-ranking members of a Battanian clan, who tilled their own land. Your father fought with the kern, the main body of his people's warriors, joining in the screaming charges for which the Battanians were famous.",
    "descriptionId": "WchH8bS2",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "farmer",
    "grants": {
     "skills": [
      {
@@ -931,7 +1049,11 @@
    "titleId": "BCU6RezA",
    "description": "Your family were smiths, a revered profession among the Battanians. They crafted everything from fine filigree jewelry in geometric designs to the well-balanced longswords favored by the Battanian aristocracy.",
    "descriptionId": "kg9YtrOg",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "artisan_urban",
    "grants": {
     "skills": [
      {
@@ -962,7 +1084,11 @@
    "titleId": "7eWmU2mF",
    "description": "Your family had little land of their own, so they earned their living from the woods, hunting and trapping. They taught you from an early age that skills like finding game trails and killing an animal with one shot could make the difference between eating and starvation.",
    "descriptionId": "7jBroUUQ",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "hunter",
    "grants": {
     "skills": [
      {
@@ -993,7 +1119,11 @@
    "titleId": "SpJqhEEh",
    "description": "Your father was a bard, drifting from chieftain's hall to chieftain's hall making his living singing the praises of one Battanian aristocrat and mocking his enemies, then going to his enemy's hall and doing the reverse. You learned from him that a clever tongue could spare you  from a life toiling in the fields, if you kept your wits about you.",
    "descriptionId": "aVzcyhhy",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "bard_urban",
    "grants": {
     "skills": [
      {
@@ -1024,7 +1154,11 @@
    "titleId": "FVaRDe2a",
    "description": "Your family were the trusted kinsfolk of a Khuzait noyan, and shared his meals in the chieftain's yurt. Your father assisted his chief in running the affairs of the clan and fought in the core of armored lancers in the center of the Khuzait battle line.",
    "descriptionId": "jAs3kDXh",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "retainer_urban",
    "grants": {
     "skills": [
      {
@@ -1055,7 +1189,11 @@
    "titleId": "TkgLEDRM",
    "description": "Your family came from one of the merchant clans that dominated the cities in eastern Calradia before the Khuzait conquest. They adjusted quickly to their new masters, keeping the caravan routes running and ensuring that the tariff revenues that once went into imperial coffers now flowed to the khanate.",
    "descriptionId": "qPg3IDiq",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "merchant_urban",
    "grants": {
     "skills": [
      {
@@ -1086,7 +1224,11 @@
    "titleId": "tGEStbxb",
    "description": "Your family were middle-ranking members of one of the Khuzait clans. He had some herds of his own, but was not rich. When the Khuzait horde was summoned to battle, he fought with the horse archers, shooting and wheeling and wearing down the enemy before the lancers delivered the final punch.",
    "descriptionId": "URgZ4ai4",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "herder",
    "grants": {
     "skills": [
      {
@@ -1117,7 +1259,11 @@
    "titleId": "gQ2tAvCz",
    "description": "Your family tilled one of the small patches of arable land in the steppes for generations. When the Khuzaits came, they ceased paying taxes to the emperor and providing conscripts for his army, and served the khan instead.",
    "descriptionId": "5QSGoRFj",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "farmer",
    "grants": {
     "skills": [
      {
@@ -1148,7 +1294,11 @@
    "titleId": "vfhVveLW",
    "description": "Your family were guardians of the sacred traditions of the Khuzaits, channelling the spirits of the wilderness and of the ancestors. They tended the sick and dispensed wisdom, resolving disputes and providing practical advice.",
    "descriptionId": "WOKNhaG2",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "healer_urban",
    "grants": {
     "skills": [
      {
@@ -1179,7 +1329,11 @@
    "titleId": "Xqba1Obq",
    "description": "Your family's clan never pledged its loyalty to the khan and never settled down, preferring to live out in the deep steppe away from his authority. They remain some of the finest trackers and scouts in the grasslands, as the ability to spot an enemy coming and move quickly is often all that protects their herds from their neighbors' predations.",
    "descriptionId": "9aoQYpZs",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "herder",
    "grants": {
     "skills": [
      {
@@ -1210,7 +1364,9 @@
    "titleId": "kmM68Qx4",
    "description": "If the wolf pup gang of your early childhood had an alpha, it was definitely you. All the other kids followed your lead as you decided what to play and where to play, and led them in games and mischief.",
    "descriptionId": "FfNwXtii",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1241,7 +1397,9 @@
    "titleId": "5HXS8HEY",
    "description": "You were big, and other children looked to have you around in any scrap with children from a neighboring village. You pushed a plough and threw an axe like an adult.",
    "descriptionId": "YKzuGc54",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1272,7 +1430,9 @@
    "titleId": "QrYjPUEf",
    "description": "You were quick on your feet and attentive to what was going on around you. Usually you could run away from trouble, though you could give a good account of yourself in a fight with other children if cornered.",
    "descriptionId": "JUSHAPnu",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1303,7 +1463,9 @@
    "titleId": "Y3UcaX74",
    "description": "Most children around you had only the most rudimentary education, but you lingered after class to study letters and mathematics. You were fascinated by the marketplace - weights and measures, tallies and accounts, the chatter about profits and losses.",
    "descriptionId": "DFidSjIf",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1334,7 +1496,9 @@
    "titleId": "GEYzLuwb",
    "description": "You were always attentive to other people, good at guessing their motivations. You studied how individuals were swayed, and tried out what you learned from adults on your friends.",
    "descriptionId": "w2TEQq26",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1365,7 +1529,9 @@
    "titleId": "MEgLE2kj",
    "description": "You were always drawn to animals, and spent as much time as possible hanging out in the village stables. You could calm horses, and were sometimes called upon to break in new colts. You learned the basics of veterinary arts, much of which is applicable to humans as well.",
    "descriptionId": "ngazFofr",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1396,7 +1562,9 @@
    "titleId": "RKVNvimC",
    "description": "You went with other fleet-footed youths to take the villages' sheep, goats or cattle to graze in pastures near the village. You were in charge of chasing down stray beasts, and always kept a big stone on hand to be hurled at lurking predators if necessary.",
    "descriptionId": "KfaqPpbK",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1427,7 +1595,9 @@
    "titleId": "bTKiN0hr",
    "description": "You were apprenticed to the local smith. You learned how to heat and forge metal, hammering for hours at a time until your muscles ached.",
    "descriptionId": "y6j1bJTH",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1458,7 +1628,9 @@
    "titleId": "tI8ZLtoA",
    "description": "You helped dig wells, rethatch houses, and fix broken plows. You learned about the basics of construction, as well as what it takes to keep a farming community prosperous.",
    "descriptionId": "6LFj919J",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1489,7 +1661,9 @@
    "titleId": "TRwgSLD2",
    "description": "You were sent by the village healer up into the hills to look for useful medicinal plants. You learned which herbs healed wounds or brought down a fever, and how to find them.",
    "descriptionId": "9ks4u5cH",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1520,7 +1694,9 @@
    "titleId": "T7m7ReTq",
    "description": "You accompanied a local hunter as he went into the wilderness, helping him set up traps and catch small animals.",
    "descriptionId": "RuvSk3QT",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1551,7 +1727,9 @@
    "titleId": "qAbMagWq",
    "description": "You took your family's goods to the nearest town to sell your produce and buy supplies. It was hard work, but you enjoyed the hubbub of the marketplace.",
    "descriptionId": "DIgsfYfz",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1582,7 +1760,9 @@
    "titleId": "go7Yu7KS",
    "description": "You watched the town's watch practice shooting and perfect their plans to defend the walls in case of a siege.",
    "descriptionId": "qnqdEJOv",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1613,7 +1793,9 @@
    "titleId": "gAjvAGTa",
    "description": "The gang leaders who kept watch over the slums of Calradian cities were always in need of poor youth to run messages and back them up in turf wars, while thrill-seeking merchants' sons and daughters sometimes slummed it in their company as well.",
    "descriptionId": "1SUTcF0J",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1644,7 +1826,9 @@
    "titleId": "QVVCgajg",
    "description": "All towns had their share of projects that were constantly in need of both skilled and unskilled labor. You learned how hoists and scaffolds were constructed, how planks and stones were hewn and fitted, and other skills.",
    "descriptionId": "bhdkegZ4",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1675,7 +1859,9 @@
    "titleId": "JTsv6PFe",
    "description": "You helped your family handle their business affairs, going down to the marketplace to make purchases and oversee the arrival of caravans.",
    "descriptionId": "rmMcwSn8",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1706,7 +1892,9 @@
    "titleId": "EMVojYzW",
    "description": "Your family arranged for a private tutor and you took full advantage, reading voraciously on history, mathematics, and philosophy and discussing what you read with your tutor and classmates.",
    "descriptionId": "hXl25avg",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1737,7 +1925,9 @@
    "titleId": "hin3iA2D",
    "description": "Your family owned a few horses at the town stables and you took charge of their care. Many evenings you would take them out beyond the walls and gallup through the fields, racing other youth.",
    "descriptionId": "Ghz90npw",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1768,7 +1958,11 @@
    "titleId": "CITG915d",
    "description": "You were chosen by your superior officer to serve an imperial strategos as a courier. You were not given major responsibilities - mostly carrying messages and tending to his horse - but it did give you a chance to see how campaigns were planned and men were deployed in battle.",
    "descriptionId": "wNHqFlDL",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1799,7 +1993,11 @@
    "titleId": "CITG915d",
    "description": "You were picked as the courier of the commander of the local forces. You were not given major responsibilities - mostly carrying messages and tending to his horse - but it did give you a chance to see how campaigns were planned and men were deployed in battle.",
    "descriptionId": "ANbNblaH",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1830,7 +2028,11 @@
    "titleId": "bhE2i6OU",
    "description": "You were chosen by a knight to accompany a minor baron of the Vlandian kingdom. You were not given major responsibilities - mostly carrying messages and tending to his horse - but it did give you a chance to see how campaigns were planned and men were deployed in battle.",
    "descriptionId": "i3k7YtA8",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1861,7 +2063,11 @@
    "titleId": "F2bgujPo",
    "description": "Your were choosen among others to accompany a chieftain of your people. You were not given major responsibilities - mostly carrying messages and tending to his horse - but it did give you a chance to see how campaigns were planned and men were deployed in battle.",
    "descriptionId": "AXWO4C69",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1892,7 +2098,11 @@
    "titleId": "F2bgujPo",
    "description": "Local wise man picked you to become the messenger of a chieftain of your people. You were not given major responsibilities - mostly carrying messages and tending to his horse - but it did give you a chance to see how campaigns were planned and men were deployed in battle.",
    "descriptionId": "neMCgMZM",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1923,7 +2133,11 @@
    "titleId": "h2KnarLL",
    "description": "You could never have bought the equipment on your own, but you were a good enough rider so that the local lord lent you a horse and equipment. You joined the armored cavalry, training with the lance.",
    "descriptionId": "7cHsIMLP",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1954,7 +2168,12 @@
    "titleId": "zsC2t5Hb",
    "description": "You were a big and imposing enough youth that the chief's guard allowed you to train alongside them, in preparation to join them some day.",
    "descriptionId": "RmbWW6Bm",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia",
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -1985,7 +2204,11 @@
    "titleId": "aTncHUfL",
    "description": "Urban troops spend much of their time guarding the town walls. Most of their training was in missile weapons, especially useful during sieges.",
    "descriptionId": "63TAYbkx",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2016,7 +2239,11 @@
    "titleId": "aTncHUfL",
    "description": "Urban troops spend much of their time guarding the town walls. Most of their training was in missile weapons.",
    "descriptionId": "oR58iNDz",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2047,7 +2274,13 @@
    "titleId": "aTncHUfL",
    "description": "The garrisons spent most of their time guarding the town walls, and their training focused largely on missile weapons.",
    "descriptionId": "e6lINjFg",
-   "culture": "battania",
+   "cultures": [
+    "battania",
+    "khuzait",
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2078,7 +2311,11 @@
    "titleId": "aTncHUfL",
    "description": "Urban troops spend much of their time guarding the town walls. Most of their training was in missile weapons.",
    "descriptionId": "oR58iNDz",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2109,7 +2346,12 @@
    "titleId": "VlXOgIX6",
    "description": "All of Calradia's kingdoms recognize the value of good light cavalry and horse archers, and are sure to recruit nomads and borderers with the skills to fulfill those duties. You were a good enough rider that your neighbors pitched in to buy you a small pony and a good bow so that you could fulfill their levy obligations.",
    "descriptionId": "888lmJqs",
-   "culture": "empire",
+   "cultures": [
+    "empire",
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2140,7 +2382,12 @@
    "titleId": "VlXOgIX6",
    "description": "All of Calradia's kingdoms recognize the value of good light cavalry, and are sure to recruit nomads and borderers with the skills to fulfill those duties. You were a good enough rider that your neighbors pitched in to buy you a small pony and a sheaf of javelins so that you could fulfill their levy obligations.",
    "descriptionId": "sYuN6hPD",
-   "culture": "aserai",
+   "cultures": [
+    "aserai",
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2171,7 +2418,16 @@
    "titleId": "a8arFSra",
    "description": "Levy armed with spear and shield, drawn from smallholding farmers, have always been the backbone of most armies of Calradia.",
    "descriptionId": "afH90aNs",
-   "culture": "empire",
+   "cultures": [
+    "empire",
+    "vlandia",
+    "khuzait",
+    "aserai",
+    "battania",
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2202,7 +2458,15 @@
    "titleId": "oMbOIPc9",
    "description": "Younger recruits, or those of a slighter build, or those too poor to buy shield and armor tend to join the skirmishers. Fighting with bow and javelin, they try to stay out of reach of the main enemy forces.",
    "descriptionId": "bXAg5w19",
-   "culture": "empire",
+   "cultures": [
+    "empire",
+    "vlandia",
+    "khuzait",
+    "aserai",
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2233,7 +2497,11 @@
    "titleId": "cDWbwBwI",
    "description": "Many Battanians fight as kern, versatile troops who could both harass the enemy line with their javelins or join in the final screaming charge once it weakened.",
    "descriptionId": "tTb28jyU",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2264,7 +2532,12 @@
    "titleId": "GFUggps8",
    "description": "You avoided service with one of the main forces of your realm's armies, but followed instead in the train - the troops' wives, lovers and servants, and those who make their living by caring for, entertaining, or cheating the soldiery.",
    "descriptionId": "64rWqBLN",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia",
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2295,7 +2568,12 @@
    "titleId": "YmPlLGXb",
    "description": "Your family arranged for you to accompany an envoy. You were not given major responsibilities - mostly carrying arms and trying to look imposing. - but it did give you a chance to travel a lot and socialise and see the world.",
    "descriptionId": "qPamcCkA",
-   "culture": "empire",
+   "cultures": [
+    "empire",
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2326,7 +2604,12 @@
    "titleId": "YmPlLGXb",
    "description": "Your family arranged for you to accompany an envoy. You were not given major responsibilities but it did give you a chance to travel and socialise and see a bit of the world.",
    "descriptionId": "VYU1nEHP",
-   "culture": "battania",
+   "cultures": [
+    "battania",
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2357,7 +2640,9 @@
    "titleId": "8bwpVpgy",
    "description": "Not everyone who musters for the levy marches to war, and not everyone who goes on campaign sees action. You did both, and you also took down an enemy warrior in direct one-to-one combat, in the full view of your comrades.",
    "descriptionId": "1IEroJKs",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2388,7 +2673,15 @@
    "titleId": "mP3uFbcq",
    "description": "When your community needed to organize a posse to pursue horse thieves, you were the obvious choice. You hunted down the raiders, surrounded them and forced their surrender, and took back your stolen property.",
    "descriptionId": "4f5xwzX0",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia",
+    "empire",
+    "aserai",
+    "battania",
+    "khuzait"
+   ],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2419,7 +2712,16 @@
    "titleId": "wfbtS71d",
    "description": "Your family needed someone trustworthy to take a caravan to a neighboring town. You organized supplies, ensured a constant watch to keep away bandits, and brought it safely to its destination.",
    "descriptionId": "joRHKCkm",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia",
+    "sturgia",
+    "empire",
+    "aserai",
+    "khuzait",
+    "nord"
+   ],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2450,7 +2752,12 @@
    "titleId": "x1HTX5hq",
    "description": "When a sudden storm caused the local stream to rise suddenly, your neighbors needed quick-thinking leadership. You provided it, directing them to build levees to save their homes.",
    "descriptionId": "bWlmGDf3",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia",
+    "nord"
+   ],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2481,7 +2788,11 @@
    "titleId": "s8PNllPN",
    "description": "When a sudden blaze broke out in a back alley, your neighbors needed quick-thinking leadership and you provided it. You organized a bucket line to the nearest well, putting the fire out before any homes were lost.",
    "descriptionId": "ZAGR6PYc",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2512,7 +2823,9 @@
    "titleId": "xORjDTal",
    "description": "Your parents didn't give you much money, but they did leave just enough for you to secure a loan against a larger amount to build a small workshop. You paid back what you borrowed, and sold your enterprise for a profit.",
    "descriptionId": "PyVqDLBu",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2543,7 +2856,9 @@
    "titleId": "xKXcqRJI",
    "description": "Your parents didn't give you much money, but they did leave just enough for you to purchase a plot of unused land at the edge of the village. You cleared away rocks and dug an irrigation ditch, raised a few seasons of crops, than sold it for a considerable profit.",
    "descriptionId": "cbF9jdQo",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2574,7 +2889,9 @@
    "titleId": "TbNRtUjb",
    "description": "Wolves, bears are a constant menace to the flocks of northern Calradia, while hyenas and leopards trouble the south. You went with a group of your fellow villagers and fired the missile that brought down the beast.",
    "descriptionId": "I3PcdaaL",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2605,7 +2922,9 @@
    "titleId": "WbHfGCbd",
    "description": "Your hometown was briefly placed under siege, and you were called to defend the walls. Everyone did their part to repulse the enemy assault, and everyone is justly proud of what they endured.",
    "descriptionId": "FhZPjhli",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2636,7 +2955,9 @@
    "titleId": "kNXet6Um",
    "description": "Maybe it was a love affair, or maybe you cheated at dice, or maybe you just chose your words poorly when drinking with a dangerous crowd. Anyway, on one of your trips into town you got into the kind of trouble from which only a quick tongue or quick feet get you out alive.",
    "descriptionId": "DjeAJtix",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": false,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2667,7 +2988,9 @@
    "titleId": "qlOuiKXj",
    "description": "Maybe it was a love affair, or maybe you cheated at dice, or maybe you just chose your words poorly when drinking with a dangerous crowd. Anyway, you got into the kind of trouble from which only a quick tongue or quick feet get you out alive.",
    "descriptionId": "lD5Ob3R4",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2698,7 +3021,9 @@
    "titleId": "Yqm0Dics",
    "description": "Yours wasn't the kind of reputation that local legends are made of, but it was the kind that wins you respect among those around you. You were consistently fair and honest in your business dealings and helpful to those in trouble. In doing so, you got a sense of what made people tick.",
    "descriptionId": "dDmcqTzb",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -2729,7 +3054,9 @@
    "titleId": "!",
    "description": "While lacking experience a bit, you are full with youthful energy, you are fully eager, for the long years of adventuring ahead.",
    "descriptionId": "2k7adlh7",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [],
     "attributes": []
@@ -2744,7 +3071,9 @@
    "titleId": "!",
    "description": "You are at your prime, You still have some youthful energy but also have a substantial amount of experience under your belt. ",
    "descriptionId": "NUlVFRtK",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [],
     "attributes": []
@@ -2759,7 +3088,9 @@
    "titleId": "!",
    "description": "This is the right age for starting off, you have years of experience, and you are old enough for people to respect you and gather under your banner.",
    "descriptionId": "5MxTYApM",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [],
     "attributes": []
@@ -2774,7 +3105,9 @@
    "titleId": "!",
    "description": "While you are past your prime, there is still enough time to go on that last big adventure for you. And you have all the experience you need to overcome anything!",
    "descriptionId": "ePD5Afvy",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [],
     "attributes": []
@@ -2789,7 +3122,11 @@
    "titleId": "MPaZbhRc",
    "description": "Your family has been fishing these waters for generations, struggling to make a living off the unpredictable sea. You grew up mending nets, hauling in catches, and dreaming of a life beyond the constant struggle for survival.",
    "descriptionId": "VBy8WxVw",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "seafarer",
    "grants": {
     "skills": [
      {
@@ -2820,7 +3157,11 @@
    "titleId": "rsUCF3H8",
    "description": "Your family toiled on the docks, their hands calloused from hauling the endless flow of goods from the sea. A vital but often thankless task that kept Vlandia's ports alive. You learned the rhythm of the tides and the languages of foreign sailors before you learned to read.",
    "descriptionId": "OyIKF2r6",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "shipmaster_urban",
    "grants": {
     "skills": [
      {
@@ -2851,7 +3192,11 @@
    "titleId": "iuAi8rZ4",
    "description": "Your family lived by the water, skilled in casting nets, setting lines, and mending the wear and tear of daily fishing. You understood the currents, the seasons of the fish, and the importance of a good catch for your community. Life was dictated by the river's flow and its bounty.",
    "descriptionId": "gpNBMzW8",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "seafarer",
    "grants": {
     "skills": [
      {
@@ -2882,7 +3227,11 @@
    "titleId": "V0GSUvaU",
    "description": "Your family builded longships for the Sturgian river lords. You grew up amidst the sounds of hammering and the smell of tar, learning the craft of shipbuilding from your father and uncles.",
    "descriptionId": "9XmQrI23",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "shipmaster_urban",
    "grants": {
     "skills": [
      {
@@ -2913,7 +3262,11 @@
    "titleId": "PaXaNLrb",
    "description": "Your family are from a small rural community along a river bank where they operated a small ferry to transport goods and people across the river, connecting rural communities. You learned about boats and ebbs and flows of the river navigation.",
    "descriptionId": "LtOCnEC8",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "seafarer",
    "grants": {
     "skills": [
      {
@@ -2944,7 +3297,11 @@
    "titleId": "V0IGaFFn",
    "description": "Raised on Aserai dhows, your father thought you about the trade winds and routes. The ship you were raised in made long and tedious voyages, smuggling silks and spices or ambushing Vlandian ships when profits dwindled.",
    "descriptionId": "Gl5CFpEM",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "shipmaster_urban",
    "grants": {
     "skills": [
      {
@@ -2975,7 +3332,11 @@
    "titleId": "4zNU0J1S",
    "description": "Your kin braved the lakes and rivers in hide-covered currachs, fishing icy waters and facing the dangers of strong currents and occasional banditry. You grew up learning to navigate the treacherous waters and to defend yourself from those who would prey on the river traffic.",
    "descriptionId": "bnrmJHc6",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "seafarer",
    "grants": {
     "skills": [
      {
@@ -3006,7 +3367,11 @@
    "titleId": "o7BFw2WW",
    "description": "Your kin were part of a group of warriors tasked with maintaining small boats for defense or patrol of vital waterways, protecting it from raiders or invaders. While they weren't around much while you were growing up, you still earned some riverine navigation and combat skills.",
    "descriptionId": "ydyaMa6E",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "shipmaster_urban",
    "grants": {
     "skills": [
      {
@@ -3037,7 +3402,11 @@
    "titleId": "fEIzJtSF",
    "description": "Along the winding veins of a major river that cuts through the steppe, your family carved a life from the water's edge. Using small, makeshift rafts and boats, they developed a keen eye for the river's bounty, gathering specific plants from its banks and fishing in its shallows. From your humble parents, you inherited a deep well of knowledge.",
    "descriptionId": "2rNqqZnm",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "seafarer",
    "grants": {
     "skills": [
      {
@@ -3068,7 +3437,11 @@
    "titleId": "DQQogYtq",
    "description": "Your family transports goods and people along the river, facing the dangers of strong currents and occasional banditry. You grew up learning to navigate the treacherous waters and to defend yourself from those who would prey on the river traffic.",
    "descriptionId": "enS8isiB",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "shipmaster_urban",
    "grants": {
     "skills": [
      {
@@ -3099,7 +3472,11 @@
    "titleId": "e1aebAAL",
    "description": "Your family inhabited a small, relatively isolated coastal village within the Empire. They foraged along the shoreline for fish using small boats. You grew up with the smell of salt and the rhythm of the tides, learning to navigate close to shore and brave the smaller waves in your sturdy little vessel.",
    "descriptionId": "nBr0jL3X",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "seafarer",
    "grants": {
     "skills": [
      {
@@ -3130,7 +3507,11 @@
    "titleId": "LdCQfaUi",
    "description": "Your father served in one the Imperial Navy's liburna as a quartermaster. He bought supplies for the crew and basically kept the ship running. He wanted the same path for you so you were schooled in trading and ship maintenance.",
    "descriptionId": "N6o7Gnpz",
-   "culture": "empire",
+   "cultures": [
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "shipmaster_urban",
    "grants": {
     "skills": [
      {
@@ -3161,7 +3542,11 @@
    "titleId": "DRC5bTE5",
    "description": "Your family's loyalty ran deep, not in sprawling lands or grand titles, but in service. For generations, they'd served as hersirs, the trusted retainers, for a minor Jarl who kept watch over a windswept corner of the Nord territory.",
    "descriptionId": "w3AI4lwM",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "retainer",
    "grants": {
     "skills": [
      {
@@ -3192,7 +3577,11 @@
    "titleId": "uqpHfuZV",
    "description": "You grew up amidst the bustling chaos of a Norse market town, a hub of trade where goods from across the known world exchanged hands. Your family were established traders, perhaps dealing in furs, amber, crafted goods, or even imported luxuries. You learned the art of negotiation, the value of different commodities, and the diverse languages and customs of the merchants who passed through. The market was your school, and shrewd dealing your lesson.",
    "descriptionId": "DvgmjoCE",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "merchant_urban",
    "grants": {
     "skills": [
      {
@@ -3223,7 +3612,11 @@
    "titleId": "1lX8eks5",
    "description": "Your family's voices carried the tales of the North. Not grand courtly Skalds, but traveling storytellers with weathered cloaks and worn lutes. They wandered from village to village, weaving tales of heroes and hearth into songs and sagas. You grew up surrounded by the rhythmic strum of their instruments and the flickering firelight reflecting off their eyes as they spun fantastical yarns. These weren't just stories - they were the beating heart of Nord culture, passed down from generation to generation by your family's calloused hands and booming voices.",
    "descriptionId": "KtucaHqd",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "bard",
    "grants": {
     "skills": [
      {
@@ -3254,7 +3647,11 @@
    "titleId": "v48N6h1t",
    "description": "The clang of hammer on hot iron was the defining sound of your upbringing. Your family were more than mere smiths; they were artisans who coaxed wonders from limited resources, shaping valuable iron into formidable weapons and treasured tools. From the forge, you learned to work with what little you had, understanding the unique properties of each piece and the almost magical skill required to transform it.",
    "descriptionId": "AAHhp1ly",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "artisan_urban",
    "grants": {
     "skills": [
      {
@@ -3285,7 +3682,11 @@
    "titleId": "izTHRXo5",
    "description": "You were born into a family of foresters living off the land. You learned to track prey, hunt for sustenance and gathering herbs and mushrooms from a young age. The forest provided, but it also demanded respect. You learned the medicinal properties of plants and mushrooms for the inevitable scrapes and ailments that came with life in the wild. The harsh environment became your teacher, and survival your greatest lesson.",
    "descriptionId": "rdRamFhv",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "hunter",
    "grants": {
     "skills": [
      {
@@ -3316,7 +3717,11 @@
    "titleId": "TPoK3GSj",
    "description": "You were part of a tight-knit family scraping by on the fringes of a bustling Nord port. Hard work wasn't always an option, and your kin did what they had to - unloading ships one day, \\\"borrowing\\\" a stray coin the next. Life was rough, lessons learned on cobblestone streets, but the fierce loyalty that bound your family together was stronger than any harbor wall.",
    "descriptionId": "nrtrMbLx",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "vagabond_urban",
    "grants": {
     "skills": [
      {
@@ -3347,7 +3752,11 @@
    "titleId": "6aKaV4ua",
    "description": "Your family was a tight-knit crew on a sturdy fishing vessel. They weren't charting uncharted seas, but venturing just beyond the familiar fjords, bartering with coastal settlements for smoked fish and bragging rights about the biggest catch. Tales of faraway lands might have been spun under flickering lanterns, but the reality was weathered sails, calloused hands, and a knack for reading the temperamental sea.",
    "descriptionId": "BbOM3F8H",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "seafarer",
    "grants": {
     "skills": [
      {
@@ -3378,7 +3787,11 @@
    "titleId": "WYS68dRq",
    "description": "Your kin weren't grand shipwrights building mighty drakkars, but a family of skilled boatbuilders crafting sturdy vessels. Their longships weren't feared in battle, but prized for braving the treacherous coasts. Each plank and sail held the legacy of generations, passed down through calloused hands and the rhythmic tap of the hammer.",
    "descriptionId": "qUwVnncn",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": "shipmaster_urban",
    "grants": {
     "skills": [
      {
@@ -3409,7 +3822,9 @@
    "titleId": "cYIB0838",
    "description": "You were fascinated with clouds and patterns and always observed weather, often warning your family of impending storms with uncanny accuracy.",
    "descriptionId": "w77I1ijB",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3440,7 +3855,9 @@
    "titleId": "MHXeREoc",
    "description": "You spent your adolescence helping your uncle with his fishing business, learning the ropes (literally!) of seamanship, from mending nets to hauling in the catch.",
    "descriptionId": "3H4sk6zN",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3471,7 +3888,9 @@
    "titleId": "eTXb0QYP",
    "description": "You spent your adolescence helping out at the bustling docks, assisting with the loading and unloading of ships, and learning the ins and outs of maritime trade. You witnessed the arrival and departure of exotic goods and people from far-off lands, fueling your dreams of adventure on the high seas.",
    "descriptionId": "EDwrct2r",
-   "culture": null,
+   "cultures": [],
+   "requiresUrban": true,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3502,7 +3921,11 @@
    "titleId": "I23UbK4E",
    "description": "War was a constant presence in your village. You served as a shieldbearer to a renowned Huscarl, a veteran Nord warrior. Witnessing countless battles and learning the art of defense from a master, you yearn to prove yourself worthy of wielding a weapon in the front lines.",
    "descriptionId": "Rffyscuk",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3533,7 +3956,11 @@
    "titleId": "8c7mwLQQ",
    "description": "Growing up on the harsh Nordic coast, you were trained from a young age to spot enemy sails and signal incoming raids. Agile and quick-witted, you honed your skills with a throwing axe and learned to fight in skirmishes. You dream of joining a raiding party and tasting the glory of conquest.",
    "descriptionId": "6X2hZY6z",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3564,7 +3991,11 @@
    "titleId": "T7B4KmHz",
    "description": "Thrown into servitude to a Jarl, war ripped through your village. Drafted alongside other thralls, you were thrown into battle with minimal training and a simple spear. Though fear grips you, a deep loyalty to your Jarl and a desperate will to survive drive you forward.",
    "descriptionId": "lilGmaCg",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3595,7 +4026,11 @@
    "titleId": "qJweXkmJ",
    "description": "With enemy forces constantly threatening your village, you spent your youth helping fortify the local hold. You became skilled in basic construction, learned to use a pickaxe and shovel, and assisted in defending the walls during sieges. Now, you yearn to be part of the offensive and take the fight to the enemy.",
    "descriptionId": "XpiyI865",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3626,7 +4061,11 @@
    "titleId": "ZfaBIuFL",
    "description": "Born into a Calradia perpetually at war, you didn't know playgrounds, you knew battlefields. Survival as a youngster meant picking through the battlefields. You learned to be self-sufficient, sometimes tending to wounds amidst the carnage. The law of the battlefield was simple: take what you can, and don't get caught.",
    "descriptionId": "unIV7bqB",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3657,7 +4096,11 @@
    "titleId": "On8SIR0J",
    "description": "War ravaged your village, leaving you orphaned and hardened by hardship. You scavenged for scraps, learning to fight for survival in the harsh wilderness. Now, driven by a thirst for vengeance and a desire to carve your own path, you seek to join a warband and prove your worth.",
    "descriptionId": "La4V8zQn",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3688,7 +4131,12 @@
    "titleId": "Hhkt6gtQ",
    "description": "You spent your youth participating in coastal raids, learning the skills of a rower, a lookout, and a boarding party. You witnessed the thrill of naval combat firsthand, experiencing the fear and the glory of maritime warfare.",
    "descriptionId": "KWI2QOAO",
-   "culture": "vlandia",
+   "cultures": [
+    "vlandia",
+    "empire"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3719,7 +4167,11 @@
    "titleId": "BRcMIDYK",
    "description": "You spent your youth helping your family transport goods along the river, learning to navigate the treacherous currents and to defend yourselves from raiders. You witnessed the bustling trade centers and encountered a diverse array of cultures.",
    "descriptionId": "urpdbYXl",
-   "culture": "sturgia",
+   "cultures": [
+    "sturgia"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3750,7 +4202,11 @@
    "titleId": "h0h4abww",
    "description": "Growing up in a coastal town, you were drawn to the allure of the sea and the thrill of adventure. You joined a corsair crew as a deckhand, learning the ropes seamanship and witnessing the brutality of pirate raids firsthand.",
    "descriptionId": "LVxRFT5b",
-   "culture": "aserai",
+   "cultures": [
+    "aserai"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3781,7 +4237,11 @@
    "titleId": "C04DgO2S",
    "description": "You grew up along the great rivers, learning to navigate the treacherous currents and to fight from swift riverboats. You learned to raid rival clans and extort tribute from wealthy merchants, honing your skills as a river pirate.",
    "descriptionId": "lHd0H3jg",
-   "culture": "khuzait",
+   "cultures": [
+    "khuzait"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3812,7 +4272,11 @@
    "titleId": "OMnJGBCR",
    "description": "You grew up amidst tales of legendary sea battles and legendary heroes, destined to carry on the proud traditions of your seafaring ancestors and defend your coastal towns just like them. You learned the skills of a mariner, a rower, and a warrior.",
    "descriptionId": "gvp4AsMQ",
-   "culture": "battania",
+   "cultures": [
+    "battania"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {
@@ -3843,7 +4307,11 @@
    "titleId": "8GnOKv5r",
    "description": "You grew up in a coastal village, surrounded by tales of legendary Viking warriors and their daring voyages. As a youth, you learned the skills of a sailor, a warrior, and a raider, preparing for the day when you would join your kin on a voyage of exploration and conquest.",
    "descriptionId": "Xclr9fU3",
-   "culture": "nord",
+   "cultures": [
+    "nord"
+   ],
+   "requiresUrban": null,
+   "parentOccupation": null,
    "grants": {
     "skills": [
      {

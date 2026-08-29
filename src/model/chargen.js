@@ -13,6 +13,24 @@ export function stages(catalog) {
   return catalog.menus;
 }
 
+/**
+ * The occupation set by the chosen family option. The Adolescence stage gates
+ * its options on whether this was an urban or a rural upbringing.
+ */
+export function parentOccupation(catalog, culture, choices) {
+  const menu = catalog.menus[0];
+  if (!menu) return null;
+  const chosen = choices[menu.id];
+  if (!chosen) return null;
+  const option = (catalog.optionsByMenu.get(menu.id) ?? []).find((o) => o.id === chosen);
+  return option?.parentOccupation ?? null;
+}
+
+/** optionsFor, with the parent occupation resolved from the answers so far. */
+export function availableOptions(catalog, menuId, culture, choices) {
+  return catalog.optionsFor(menuId, culture, parentOccupation(catalog, culture, choices));
+}
+
 /** The stage the wizard should show next, or null when it is complete. */
 export function nextStage(catalog, culture, choices) {
   if (!culture) return null;
@@ -42,7 +60,8 @@ export function apply(catalog, culture, choices) {
   for (const menu of catalog.menus) {
     const optionId = choices[menu.id];
     if (!optionId) continue;
-    const option = catalog.optionsFor(menu.id, culture).find((o) => o.id === optionId);
+    const option = availableOptions(catalog, menu.id, culture, choices)
+      .find((o) => o.id === optionId);
     if (!option) continue;
     chosen.push(option);
 
