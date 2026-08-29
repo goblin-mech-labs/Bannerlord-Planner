@@ -124,6 +124,19 @@ def main():
         for g in o["grants"]["attributes"]:
             check(g["attribute"] in ATTRIBUTES,
                   "option %s grants unknown attribute %s" % (o["id"], g["attribute"]))
+    # Every narrative option grants something. The age-selection stage is the
+    # one exception - it only sets the starting age.
+    for o in chargen["options"]:
+        if o["menu"] == "narrative_age_selection_menu":
+            continue
+        check(bool(o["grants"]["skills"]),
+              "option %s grants no skills (constant resolution failed?)" % o["id"])
+        check(bool(o["grants"]["attributes"]),
+              "option %s grants no attribute (constant resolution failed?)" % o["id"])
+        for g in o["grants"]["skills"]:
+            check(g["focus"] > 0 and g["level"] > 0,
+                  "option %s has a zero-valued skill grant" % o["id"])
+
     # every culture must be playable end-to-end
     parent = [o for o in chargen["options"] if o["menu"] == "narrative_parent_menu"]
     for cid in culture_ids:

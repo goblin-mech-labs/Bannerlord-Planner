@@ -144,10 +144,15 @@ def extract_cultures():
 
 def main():
     menus, options, order = {}, [], 0
+    # NavalDLC reads FocusToAdd/SkillLevelToAdd/AttributeLevelToAdd off the shared
+    # CharacterCreationContent instead of declaring literals, so carry the base
+    # game's values forward. Every culture registers the same (1, 10) pair.
+    shared = {}
 
     for filename in FILES:
         text = read(filename)
-        consts = constants(text)
+        shared.update(constants(text))
+        consts = shared
         bodies = methods(text)
 
         # method -> the menu its options land in

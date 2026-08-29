@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bannerlord Planner — model tests</title>
+<style>
+  body { background: #14100c; color: #d9c9a3; font: 14px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace; padding: 24px; }
+  h1 { font-size: 15px; color: #e8c87a; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .pass { color: #8fbf6b; }
+  .fail { color: #e0705f; }
+</style>
+</head>
+<body>
+<h1>Bannerlord Planner — model tests</h1>
+<div id="out">running…</div>
+<script type="module">
+  import { run } from "./harness.js";
+  const out = document.getElementById("out");
+  try {
+    await import("./model.test.js");
+    out.textContent = "";
+    await run(out);
+  } catch (error) {
+    out.innerHTML = "";
+    const line = document.createElement("div");
+    line.className = "fail";
+    line.textContent = "✗ failed to load tests — " + error.message;
+    out.appendChild(line);
+    console.error("TESTS FAILED TO LOAD:", error);
+    globalThis.__testResults = { passed: 0, total: 0, failures: [String(error)] };
+  }
+</script>
+</body>
+</html>

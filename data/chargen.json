@@ -2794,19 +2794,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Scouting",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Endurance",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -2825,19 +2825,19 @@
     "skills": [
      {
       "skill": "Shipmaster",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Athletics",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Vigor",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -2856,19 +2856,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Throwing",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Control",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -2887,19 +2887,19 @@
     "skills": [
      {
       "skill": "Shipmaster",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Engineering",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Intelligence",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -2918,19 +2918,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Trade",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Cunning",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -2949,19 +2949,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Mariner",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Vigor",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -2980,19 +2980,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Bow",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Control",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3011,19 +3011,19 @@
     "skills": [
      {
       "skill": "Mariner",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Polearm",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Vigor",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3042,19 +3042,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Shipmaster",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Endurance",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3073,19 +3073,19 @@
     "skills": [
      {
       "skill": "Bow",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Mariner",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Cunning",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3104,19 +3104,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Throwing",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Control",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3135,19 +3135,19 @@
     "skills": [
      {
       "skill": "Trade",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Shipmaster",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Social",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3166,19 +3166,19 @@
     "skills": [
      {
       "skill": "Steward",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "OneHanded",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Vigor",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3197,19 +3197,19 @@
     "skills": [
      {
       "skill": "Trade",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Charm",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Social",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3228,19 +3228,19 @@
     "skills": [
      {
       "skill": "Scouting",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Charm",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Intelligence",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3259,19 +3259,19 @@
     "skills": [
      {
       "skill": "Crafting",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Engineering",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Intelligence",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3290,19 +3290,19 @@
     "skills": [
      {
       "skill": "Bow",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Medicine",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Control",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3321,19 +3321,19 @@
     "skills": [
      {
       "skill": "Throwing",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Roguery",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Cunning",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3352,19 +3352,19 @@
     "skills": [
      {
       "skill": "Trade",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Social",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3383,19 +3383,19 @@
     "skills": [
      {
       "skill": "Engineering",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Shipmaster",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Endurance",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3414,19 +3414,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Scouting",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Intelligence",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3445,19 +3445,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Athletics",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Endurance",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3476,19 +3476,19 @@
     "skills": [
      {
       "skill": "Shipmaster",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Trade",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Social",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3507,19 +3507,19 @@
     "skills": [
      {
       "skill": "Charm",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Scouting",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Social",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3538,19 +3538,19 @@
     "skills": [
      {
       "skill": "Throwing",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Tactics",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Cunning",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3569,19 +3569,19 @@
     "skills": [
      {
       "skill": "OneHanded",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Polearm",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Endurance",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3600,19 +3600,19 @@
     "skills": [
      {
       "skill": "Engineering",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Bow",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Intelligence",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3631,19 +3631,19 @@
     "skills": [
      {
       "skill": "Roguery",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Medicine",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Cunning",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3662,19 +3662,19 @@
     "skills": [
      {
       "skill": "Throwing",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "OneHanded",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Control",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3693,19 +3693,19 @@
     "skills": [
      {
       "skill": "Mariner",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "OneHanded",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Vigor",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3724,19 +3724,19 @@
     "skills": [
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "TwoHanded",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Endurance",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3755,19 +3755,19 @@
     "skills": [
      {
       "skill": "Mariner",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "OneHanded",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Cunning",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3786,19 +3786,19 @@
     "skills": [
      {
       "skill": "Mariner",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Charm",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Social",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3817,19 +3817,19 @@
     "skills": [
      {
       "skill": "Bow",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "Boatswain",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Vigor",
-      "value": 0
+      "value": 1
      }
     ]
    },
@@ -3848,19 +3848,19 @@
     "skills": [
      {
       "skill": "Mariner",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      },
      {
       "skill": "OneHanded",
-      "focus": 0,
-      "level": 0
+      "focus": 1,
+      "level": 10
      }
     ],
     "attributes": [
      {
       "attribute": "Vigor",
-      "value": 0
+      "value": 1
      }
     ]
    },
