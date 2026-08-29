@@ -109,7 +109,8 @@ index.html            app shell
 data/                 generated: skills, perks, rules, chargen
 src/model/            pure logic, no DOM - rules, build state, chargen, effects, share, storage
 src/ui/               tab shell and the three views
-src/style/            theme.css and the hand-drawn SVG skill glyphs
+src/style/            theme.css and the skill icon helpers
+assets/icons/         generated: the game's skill icons (gitignored)
 tests/                browser-run model tests
 tools/                decompile + extract + validate pipeline
 ```
