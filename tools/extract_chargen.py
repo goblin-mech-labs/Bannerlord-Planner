@@ -15,7 +15,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "tools", "_decompiled")
 OUT = os.path.join(ROOT, "data")
 
-FILES = ["CharacterCreationCampaignBehavior.cs", "NavalCharacterCreationCampaignBehavior.cs"]
+# The sandbox tree, the Warsails additions, and the campaign's own stage.
+# StoryMode deletes the Starting Age menu and adds "Story Background" instead,
+# which is why menus and options carry a mode.
+BASE_FILES = ["CharacterCreationCampaignBehavior.cs",
+              "NavalCharacterCreationCampaignBehavior.cs"]
+CAMPAIGN_FILES = ["StoryModeCharacterCreationCampaignBehavior.cs"]
+FILES = BASE_FILES + CAMPAIGN_FILES
+
+# StoryMode calls DeleteNarrativeMenuWithId on these before adding its own.
+SANDBOX_ONLY_MENUS = {"narrative_age_selection_menu"}
 METHOD = re.compile(r"^\t(?:public|private|internal|protected) (?:\w+ )*?[\w<>\[\], ]+ (\w+)\(", re.M)
 
 
@@ -80,9 +89,21 @@ def parse_grants(body, consts):
     for attr, value in re.findall(
             r"SetLevelToAttribute\(\s*DefaultCharacterAttributes\.(\w+)\s*,\s*([^)]*)\)", body):
         attributes.append({"attribute": attr, "value": number(value, consts)})
+    # The Starting Age stage grants loose points instead of skills: they land in
+    # UnspentFocusPoints / UnspentAttributePoints and are the player's to spend.
+    unspent_focus = unspent_attributes = 0
+    m = re.search(r"SetUnspentFocusToAdd\(([^)]*)\)", body)
+    if m:
+        unspent_focus = number(m.group(1), consts)
+    m = re.search(r"SetUnspentAttributeToAdd\(([^)]*)\)", body)
+    if m:
+        unspent_attributes = number(m.group(1), consts)
+
     return {
         "skills": [{"skill": s, "focus": focus, "level": level} for s in dict.fromkeys(skills)],
         "attributes": attributes,
+        "unspentFocus": unspent_focus,
+        "unspentAttributes": unspent_attributes,
     }
 
 
@@ -186,6 +207,7 @@ def main():
 
     for filename in FILES:
         text = read(filename)
+        campaign_only = filename in CAMPAIGN_FILES
         shared.update(constants(text))
         consts = shared
         bodies = methods(text)
@@ -202,6 +224,9 @@ def main():
                 menus[m.group(1)] = {
                     "id": m.group(1), "previous": m.group(2), "next": m.group(3),
                     "title": title[1], "description": desc[1], "order": len(menus),
+                    "modes": (["campaign"] if campaign_only
+                              else ["sandbox"] if m.group(1) in SANDBOX_ONLY_MENUS
+                              else ["sandbox", "campaign"]),
                 }
                 # options added by helper methods called from here
                 for callee in re.findall(r"\b(Add\w*(?:Options|MenuOptions))\(", body):

@@ -45,6 +45,10 @@ export class Catalog {
 
     this.cultures = chargen.cultures;
     this.menus = chargen.menus;
+    this.modes = [
+      { id: "campaign", name: "Campaign" },
+      { id: "sandbox", name: "Sandbox" },
+    ];
     this.urbanOccupations = new Set(chargen.urbanOccupations ?? []);
     this.optionsByMenu = new Map(chargen.menus.map((m) => [m.id, []]));
     for (const option of chargen.options) {
@@ -57,6 +61,14 @@ export class Catalog {
   tiers(skillId) { return this.tiersBySkill.get(skillId) ?? []; }
 
   isUrban(occupation) { return this.urbanOccupations.has(occupation); }
+
+  /**
+   * The stages a game mode actually asks. StoryMode (the campaign) deletes the
+   * Starting Age menu and adds its own Story Background stage in its place.
+   */
+  menusFor(mode = "campaign") {
+    return this.menus.filter((m) => m.modes.includes(mode));
+  }
 
   /**
    * Options a menu offers, given the culture and the family already chosen.

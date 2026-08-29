@@ -4,6 +4,7 @@
  */
 import * as chargen from "../model/chargen.js";
 import { ATTRIBUTES } from "../model/catalog.js";
+import { BASE_ATTRIBUTE } from "../model/build.js";
 import { append, clear, el, toast } from "./components.js";
 
 const CULTURE_STAGE = "__culture__";
@@ -13,6 +14,7 @@ export class ChargenView {
     this.store = store;
     this.onApply = onApply;
     this.stage = CULTURE_STAGE;
+    this.mode = "campaign";
     this.culture = null;
     this.choices = {};
     this.root = el("div", { class: "wizard" });
@@ -24,6 +26,7 @@ export class ChargenView {
   /** Adopt whatever the current build already recorded. */
   syncFromBuild() {
     const { build } = this.store;
+    this.mode = build.mode ?? "campaign";
     if (build.culture) {
       this.culture = build.culture;
       this.choices = { ...build.choices };
@@ -43,7 +46,8 @@ export class ChargenView {
     clear(this.nav);
     const steps = [
       { id: CULTURE_STAGE, title: "Culture", answered: this.culture },
-      ...catalog.menus.map((m) => ({ id: m.id, title: m.title, answered: this.choices[m.id] })),
+      ...catalog.menusFor(this.mode)
+        .map((m) => ({ id: m.id, title: m.title, answered: this.choices[m.id] })),
     ];
 
     steps.forEach((step, index) => {
@@ -77,12 +81,30 @@ export class ChargenView {
   renderBody(catalog) {
     clear(this.body);
     if (this.stage === CULTURE_STAGE) this.renderCultures(catalog);
-    else this.renderStage(catalog, catalog.menus.find((m) => m.id === this.stage));
+    else this.renderStage(catalog, catalog.menusFor(this.mode).find((m) => m.id === this.stage));
     this.body.append(this.foot(catalog));
   }
 
   renderCultures(catalog) {
     append(this.body,
+      el("h3", { class: "panel-title" }, "Game mode"),
+      el("p", { class: "prompt" },
+        "The campaign closes on a Story Background question; sandbox asks your "
+        + "starting age instead, which is where its spare attribute and focus points come from."),
+      el("div", { class: "culture-grid" },
+        catalog.modes.map((mode) => el("button", {
+          type: "button",
+          class: "culture-card",
+          "aria-pressed": String(this.mode === mode.id),
+          onclick: () => {
+            if (this.mode === mode.id) return;
+            this.mode = mode.id;
+            for (const menu of catalog.menus) {
+              if (!menu.modes.includes(mode.id)) delete this.choices[menu.id];
+            }
+            this.store.notify();
+          },
+        }, mode.name))),
       el("h3", { class: "panel-title" }, "Choose your culture"),
       el("p", { class: "prompt" },
         "Your culture decides which upbringings are open to you, and colours the whole path."),
@@ -94,7 +116,7 @@ export class ChargenView {
           onclick: () => {
             if (this.culture !== culture.id) this.choices = {};   // options are culture-gated
             this.culture = culture.id;
-            this.stage = catalog.menus[0].id;
+            this.stage = catalog.menusFor(this.mode)[0].id;
             this.store.notify();
           },
         },
@@ -115,7 +137,8 @@ export class ChargenView {
           "aria-pressed": String(this.choices[menu.id] === option.id),
           onclick: () => {
             this.choices = { ...this.choices, [menu.id]: option.id };
-            const next = catalog.menus[catalog.menus.indexOf(menu) + 1];
+            const stages = catalog.menusFor(this.mode);
+            const next = stages[stages.indexOf(menu) + 1];
             this.stage = next ? next.id : menu.id;
             this.store.notify();
           },
@@ -130,8 +153,9 @@ export class ChargenView {
   }
 
   foot(catalog) {
-    const complete = chargen.isComplete(catalog, this.culture, this.choices);
-    const start = this.culture ? chargen.apply(catalog, this.culture, this.choices) : null;
+    const complete = chargen.isComplete(catalog, this.culture, this.choices, this.mode);
+    const start = this.culture
+      ? chargen.apply(catalog, this.culture, this.choices, this.mode) : null;
 
     return el("div", {},
       start ? this.tally(catalog, start) : null,
@@ -147,7 +171,7 @@ export class ChargenView {
           el("button", {
             type: "button", class: "ghost-button", disabled: !this.culture,
             onclick: () => {
-              this.onApply(this.culture, this.choices);
+              this.onApply(this.culture, this.choices, this.mode);
               toast(complete
                 ? "Starting stats applied to the skill tree"
                 : "Applied so far — unanswered stages grant nothing");
@@ -157,8 +181,8 @@ export class ChargenView {
 
   tally(catalog, start) {
     const attributes = ATTRIBUTES
-      .map((a) => ({ id: a.id, value: start.attributes[a.id] ?? 1 }))
-      .filter((a) => a.value > 1);
+      .map((a) => ({ id: a.id, value: start.attributes[a.id] ?? BASE_ATTRIBUTE }))
+      .filter((a) => a.value > BASE_ATTRIBUTE);
     // Skill levels are derived from attributes and focus, so what carries over
     // from character creation is the attribute and focus placement.
     const focus = Object.entries(start.focus)
@@ -176,6 +200,15 @@ export class ChargenView {
             : "—")),
         el("div", { class: "tally-row" },
           el("span", {}, `Focus placed (${total})`),
-          el("span", {}, focus.length ? focus.join("  ·  ") : "—"))));
+          el("span", {}, focus.length ? focus.join("  ·  ") : "—")),
+        start.granted.unspentAttributes || start.granted.unspentFocus
+          ? el("div", { class: "tally-row" },
+              el("span", {}, "Spare points to spend"),
+              el("span", {}, [
+                start.granted.unspentAttributes
+                  ? `${start.granted.unspentAttributes} attribute` : null,
+                start.granted.unspentFocus ? `${start.granted.unspentFocus} focus` : null,
+              ].filter(Boolean).join("  ·  ")))
+          : null));
   }
 }

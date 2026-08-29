@@ -124,8 +124,27 @@ def main():
         for g in o["grants"]["attributes"]:
             check(g["attribute"] in ATTRIBUTES,
                   "option %s grants unknown attribute %s" % (o["id"], g["attribute"]))
-    # Every narrative option grants something. The age-selection stage is the
-    # one exception - it only sets the starting age.
+    # Both game modes must offer a complete, ordered chain of stages.
+    for mode in ("sandbox", "campaign"):
+        stages = [m for m in chargen["menus"] if mode in m["modes"]]
+        check(len(stages) >= 6, "%s mode has only %d stages" % (mode, len(stages)))
+        check(stages[0]["id"] == "narrative_parent_menu",
+              "%s mode does not start at the family stage" % mode)
+    sandbox = {m["id"] for m in chargen["menus"] if "sandbox" in m["modes"]}
+    campaign = {m["id"] for m in chargen["menus"] if "campaign" in m["modes"]}
+    check("narrative_age_selection_menu" in sandbox - campaign,
+          "the Starting Age stage must be sandbox-only (StoryMode deletes it)")
+    check("narrative_escape_menu" in campaign - sandbox,
+          "the campaign Story Background stage is missing")
+
+    # The Starting Age stage grants loose points instead of skills.
+    age = [o for o in chargen["options"] if o["menu"] == "narrative_age_selection_menu"]
+    check(len(age) == 4, "expected 4 starting ages, got %d" % len(age))
+    for o in age:
+        check(o["grants"]["unspentFocus"] > 0 and o["grants"]["unspentAttributes"] > 0,
+              "starting age %s grants no spare points" % o["title"])
+
+    # Every other narrative option grants skills and an attribute.
     for o in chargen["options"]:
         if o["menu"] == "narrative_age_selection_menu":
             continue

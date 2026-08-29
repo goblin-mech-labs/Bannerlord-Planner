@@ -45,8 +45,8 @@ export async function start(root) {
   const fromLink = share.fromLocation(catalog);
   const store = new Store(catalog, fromLink ?? new Build(catalog));
 
-  const chargenView = new ChargenView(store, (culture, choices) => {
-    store.update((build) => chargenModel.seedBuild(build, culture, choices));
+  const chargenView = new ChargenView(store, (culture, choices, mode) => {
+    store.update((build) => chargenModel.seedBuild(build, culture, choices, mode));
     app.tab = "tree";
     store.notify();
   });

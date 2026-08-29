@@ -62,13 +62,24 @@ test("xp tables match the game's own numbers", () => {
 
 // ---------------------------------------------------------------- build
 
+test("a new character starts with every attribute at 2", () => {
+  // SetMainHeroInitialStats: AddAttribute(attribute, 2, checkUnspentPoints: false)
+  const build = new Build(catalog);
+  for (const a of ["Vigor", "Control", "Endurance", "Cunning", "Social", "Intelligence"]) {
+    equal(build.attribute(a), 2, `${a} starts at 2`);
+  }
+  equal(build.attributePointsSpent, 12, "the twelve base points come out of the pool");
+  equal(build.attributePointsAvailable, 15, "15 at level 1");
+  equal(build.attributePointsLeft, 3, "leaving three to place");
+});
+
 test("build tracks attribute and focus budgets", () => {
   const build = new Build(catalog).setLevel(1);
   equal(build.attributePointsAvailable, 15, "available");
-  equal(build.attributePointsSpent, 6, "six attributes floored at one");
-  equal(build.attributePointsLeft, 9, "left");
+  equal(build.attributePointsSpent, 12, "six attributes at 2");
+  equal(build.attributePointsLeft, 3, "left");
   build.setAttribute("Vigor", 5);
-  equal(build.attributePointsSpent, 10, "after raising Vigor");
+  equal(build.attributePointsSpent, 15, "after raising Vigor");
   equal(build.focusPointsLeft, 5, "focus untouched");
   build.setFocus("Roguery", 3);
   equal(build.focusPointsLeft, 2, "focus spent");
@@ -84,13 +95,49 @@ test("attributes and focus are clamped to the game's maxima", () => {
   build.setFocus("Bow", 99);
   equal(build.focusIn("Bow"), 5, "max focus per skill");
   build.setAttribute("Vigor", -5);
-  equal(build.attribute("Vigor"), 1, "attributes floor at one");
+  equal(build.attribute("Vigor"), 2, "attributes floor at the base 2");
+});
+
+test("points invested by character creation cannot be reclaimed", () => {
+  const build = chargen.seedBuild(new Build(catalog), "nord", fullPath("nord"));
+
+  const raised = Object.keys(build.granted.attributes)[0];
+  assert(raised, "creation raised an attribute");
+  const floor = build.attributeFloor(raised);
+  equal(floor, 2 + build.granted.attributes[raised], "floor is base plus the grant");
+  build.setAttribute(raised, 2);
+  equal(build.attribute(raised), floor, "cannot be pushed below it");
+
+  const focused = Object.keys(build.granted.focus)[0];
+  assert(focused, "creation placed focus");
+  const focusFloor = build.focusFloor(focused);
+  build.setFocus(focused, 0);
+  equal(build.focusIn(focused), focusFloor, "placed focus stays");
+
+  build.setAttribute(raised, floor + 1);
+  build.setAttribute(raised, floor);
+  equal(build.attribute(raised), floor, "hand-placed points can still come back");
+});
+
+test("the starting age stage adds to the point pools", () => {
+  // GetAgeSelection*OptionArgs: SetUnspentFocusToAdd / SetUnspentAttributeToAdd
+  const ages = catalog.optionsFor("narrative_age_selection_menu", "empire");
+  equal(ages.length, 4, "four ages");
+  const elder = ages.find((o) => o.title === "50");
+  equal(elder.grants.unspentAttributes, 4, "age 50 grants 4 attribute points");
+  equal(elder.grants.unspentFocus, 8, "and 8 focus points");
+
+  const choices = fullPath("empire", "sandbox");
+  choices.narrative_age_selection_menu = elder.id;
+  const build = chargen.seedBuild(new Build(catalog), "empire", choices, "sandbox");
+  equal(build.attributePointsAvailable, 15 + 4, "pool includes the age grant");
+  equal(build.focusPointsAvailable, 5 + 8, "focus pool too");
 });
 
 test("skill level is the ceiling the build can actually reach", () => {
   // CalculateLearningLimit: max(0, (avgAttr - 1) * 10) + focus * 30
   const build = new Build(catalog);
-  equal(build.skillValue("Roguery"), 0, "one attribute, no focus");
+  equal(build.skillValue("Roguery"), 10, "base Cunning 2, no focus: (2 - 1) * 10");
   build.setAttribute("Cunning", 7);
   equal(build.skillValue("Roguery"), 60, "(7 - 1) * 10");
   build.setFocus("Roguery", 5);
@@ -152,9 +199,9 @@ test("spending focus away drops perks it no longer supports", () => {
 
 // ---------------------------------------------------------------- chargen
 
-function fullPath(culture) {
+function fullPath(culture, mode = "campaign") {
   const choices = {};
-  for (const menu of catalog.menus) {
+  for (const menu of catalog.menusFor(mode)) {
     const option = chargen.availableOptions(catalog, menu.id, culture, choices)[0];
     if (option) choices[menu.id] = option.id;
   }
@@ -164,13 +211,13 @@ function fullPath(culture) {
 test("character creation grants stack across stages", () => {
   const choices = fullPath("empire");
   const start = chargen.apply(catalog, "empire", choices);
-  equal(start.options.length, catalog.menus.length, "one option per stage");
+  equal(start.options.length, catalog.menusFor("campaign").length, "one option per stage");
 
   const attributeGrants = start.options
     .flatMap((o) => o.grants.attributes)
     .reduce((n, g) => n + g.value, 0);
   const spent = Object.values(start.attributes).reduce((a, b) => a + b, 0);
-  equal(spent, 6 + attributeGrants, "base one each, plus grants");
+  equal(spent, 12 + attributeGrants, "base two each, plus grants");
 
   for (const option of start.options) {
     for (const grant of option.grants.skills) {
@@ -258,11 +305,36 @@ test("character creation points are free and skip the level budget", () => {
 });
 
 test("granted points survive a share round trip", () => {
-  const build = chargen.seedBuild(new Build(catalog), "nord", fullPath("nord"));
+  const build = chargen.seedBuild(new Build(catalog), "nord",
+    fullPath("nord", "sandbox"), "sandbox");
   const restored = share.decode(catalog, share.encode(build));
   equal(restored.grantedFocusPoints, build.grantedFocusPoints, "granted focus");
   equal(restored.grantedAttributePoints, build.grantedAttributePoints, "granted attributes");
   equal(restored.focusPointsSpent, build.focusPointsSpent, "budget matches");
+  equal(restored.mode, "sandbox", "mode round trips");
+  equal(restored.focusPointsAvailable, build.focusPointsAvailable, "age grant round trips");
+});
+
+test("campaign and sandbox ask different final questions", () => {
+  // StoryMode deletes the Starting Age menu and adds Story Background.
+  const sandbox = catalog.menusFor("sandbox").map((m) => m.id);
+  const campaign = catalog.menusFor("campaign").map((m) => m.id);
+  assert(sandbox.includes("narrative_age_selection_menu"), "sandbox asks the age");
+  assert(!campaign.includes("narrative_age_selection_menu"), "the campaign does not");
+  assert(campaign.includes("narrative_escape_menu"), "the campaign asks the story background");
+  assert(!sandbox.includes("narrative_escape_menu"), "sandbox does not");
+  equal(sandbox.slice(0, 5).join(), campaign.slice(0, 5).join(), "the first five stages match");
+});
+
+test("the campaign path grants no spare points, the sandbox one does", () => {
+  const campaign = chargen.seedBuild(new Build(catalog), "empire",
+    fullPath("empire", "campaign"), "campaign");
+  equal(campaign.granted.unspentAttributes, 0, "no loose attribute points");
+  equal(campaign.attributePointsAvailable, 15, "so the pool is just the level budget");
+
+  const sandbox = chargen.seedBuild(new Build(catalog), "empire",
+    fullPath("empire", "sandbox"), "sandbox");
+  assert(sandbox.granted.unspentFocus > 0, "the age stage grants focus points");
 });
 
 test("the wizard reports the next unanswered stage", () => {
@@ -318,5 +390,5 @@ test("a build survives an encode/decode round trip", () => {
 test("malformed share links decode to null instead of throwing", () => {
   equal(share.decode(catalog, "not-base64!!"), null, "garbage rejected");
   equal(share.decode(catalog, btoa(JSON.stringify({ v: 99 }))), null, "wrong version rejected");
-  equal(share.decode(catalog, btoa(JSON.stringify({ v: 1 }))), null, "v1 links rejected");
+  equal(share.decode(catalog, btoa(JSON.stringify({ v: 2 }))), null, "v2 links rejected");
 });

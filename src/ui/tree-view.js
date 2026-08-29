@@ -48,15 +48,22 @@ export class TreeView {
 
   attributePlaque(build, attribute) {
     const value = build.attribute(attribute.id);
+    const floor = build.attributeFloor(attribute.id);
     const canRaise = value < build.rules.maxAttribute;
-    const canLower = value > 1;
-    return el("div", { class: "attribute-plaque" },
+    const canLower = value > floor;
+    return el("div", {
+      class: "attribute-plaque",
+      title: value === floor && floor > 2
+        ? `${attribute.id} ${floor} is fixed by your background`
+        : null,
+    },
       el("span", { class: "abbr" }, attribute.short),
       el("span", { class: "value" }, value),
       el("div", { class: "steppers" },
         el("button", {
           type: "button", disabled: !canLower,
           "aria-label": `Lower ${attribute.id}`,
+          title: canLower ? null : "Points from character creation cannot be reclaimed",
           onclick: () => this.store.update((b) => b.setAttribute(attribute.id, value - 1)),
         }, "−"),
         el("button", {
@@ -117,7 +124,11 @@ export class TreeView {
           el("label", {}, "Focus"),
           el("div", { class: "focus-control" },
             el("button", {
-              type: "button", disabled: focus === 0, "aria-label": "Remove a focus point",
+              type: "button",
+              disabled: focus <= build.focusFloor(skill.id),
+              title: focus > build.focusFloor(skill.id)
+                ? null : "Focus placed during character creation cannot be reclaimed",
+              "aria-label": "Remove a focus point",
               onclick: () => this.store.update((b) => b.setFocus(skill.id, focus - 1)),
             }, "−"),
             pips(focus, build.rules.maxFocusPerSkill),

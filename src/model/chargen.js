@@ -8,9 +8,9 @@
  */
 import { BASE_ATTRIBUTE, baseAttributes } from "./build.js";
 
-/** Stages the player actually answers, in order. */
-export function stages(catalog) {
-  return catalog.menus;
+/** Stages the player actually answers, in order, for a game mode. */
+export function stages(catalog, mode = "campaign") {
+  return catalog.menusFor(mode);
 }
 
 /**
@@ -31,14 +31,28 @@ export function availableOptions(catalog, menuId, culture, choices) {
   return catalog.optionsFor(menuId, culture, parentOccupation(catalog, culture, choices));
 }
 
-/** The stage the wizard should show next, or null when it is complete. */
-export function nextStage(catalog, culture, choices) {
-  if (!culture) return null;
-  return catalog.menus.find((m) => !choices[m.id]) ?? null;
+/** "+1 Vigor" / "+2 focus points" style lines for the Starting Age stage. */
+export function describeUnspent(option) {
+  const out = [];
+  if (option.grants.unspentAttributes) {
+    out.push(`+${option.grants.unspentAttributes} attribute point`
+      + (option.grants.unspentAttributes > 1 ? "s" : ""));
+  }
+  if (option.grants.unspentFocus) {
+    out.push(`+${option.grants.unspentFocus} focus point`
+      + (option.grants.unspentFocus > 1 ? "s" : ""));
+  }
+  return out;
 }
 
-export function isComplete(catalog, culture, choices) {
-  return Boolean(culture) && catalog.menus.every((m) => choices[m.id]);
+/** The stage the wizard should show next, or null when it is complete. */
+export function nextStage(catalog, culture, choices, mode = "campaign") {
+  if (!culture) return null;
+  return catalog.menusFor(mode).find((m) => !choices[m.id]) ?? null;
+}
+
+export function isComplete(catalog, culture, choices, mode = "campaign") {
+  return Boolean(culture) && catalog.menusFor(mode).every((m) => choices[m.id]);
 }
 
 /**
@@ -50,14 +64,14 @@ export function isComplete(catalog, culture, choices) {
  *
  * Returns { attributes, focus, skills, options, granted }.
  */
-export function apply(catalog, culture, choices) {
+export function apply(catalog, culture, choices, mode = "campaign") {
   const attributes = baseAttributes();
   const focus = {};
   const skills = {};
   const chosen = [];
-  const granted = { attributes: {}, focus: {} };
+  const granted = { attributes: {}, focus: {}, unspentAttributes: 0, unspentFocus: 0 };
 
-  for (const menu of catalog.menus) {
+  for (const menu of catalog.menusFor(mode)) {
     const optionId = choices[menu.id];
     if (!optionId) continue;
     const option = availableOptions(catalog, menu.id, culture, choices)
@@ -75,13 +89,16 @@ export function apply(catalog, culture, choices) {
       skills[grant.skill] = (skills[grant.skill] ?? 0) + grant.level;
       granted.focus[grant.skill] = (granted.focus[grant.skill] ?? 0) + grant.focus;
     }
+    // The Starting Age stage hands over loose points rather than placements.
+    granted.unspentAttributes += option.grants.unspentAttributes ?? 0;
+    granted.unspentFocus += option.grants.unspentFocus ?? 0;
   }
   return { attributes, focus, skills, options: chosen, granted };
 }
 
 /** A short "+1 Vigor, +1 focus & +10 Riding, Polearm" style summary. */
 export function describeGrants(catalog, option) {
-  const parts = [];
+  const parts = describeUnspent(option);
   for (const g of option.grants.attributes) parts.push(`+${g.value} ${g.attribute}`);
   const skills = option.grants.skills;
   if (skills.length) {
@@ -93,8 +110,9 @@ export function describeGrants(catalog, option) {
 }
 
 /** Apply a completed character creation onto a build, in place. */
-export function seedBuild(build, culture, choices) {
-  const start = apply(build.catalog, culture, choices);
+export function seedBuild(build, culture, choices, mode = "campaign") {
+  const start = apply(build.catalog, culture, choices, mode);
+  build.mode = mode;
   build.culture = culture;
   build.choices = { ...choices };
   build.attributes = start.attributes;
@@ -102,6 +120,8 @@ export function seedBuild(build, culture, choices) {
   build.granted = {
     attributes: { ...start.granted.attributes },
     focus: { ...start.granted.focus },
+    unspentAttributes: start.granted.unspentAttributes,
+    unspentFocus: start.granted.unspentFocus,
   };
   build.perks = new Set();
   return build;

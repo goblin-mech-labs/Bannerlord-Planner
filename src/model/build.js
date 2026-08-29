@@ -5,7 +5,9 @@
 import { ATTRIBUTES } from "./catalog.js";
 import { Rules } from "./rules.js";
 
-const BASE_ATTRIBUTE = 1;   // HeroDeveloper floors every attribute at 1
+// CharacterCreationContent.SetMainHeroInitialStats gives every attribute 2,
+// free of the point pool (checkUnspentPoints: false).
+const BASE_ATTRIBUTE = 2;
 
 export class Build {
   constructor(catalog, state = {}) {
@@ -25,7 +27,21 @@ export class Build {
     this.granted = {
       attributes: { ...(state.granted?.attributes ?? {}) },
       focus: { ...(state.granted?.focus ?? {}) },
+      // Loose points from the Starting Age stage, which land in the pools.
+      unspentAttributes: state.granted?.unspentAttributes ?? 0,
+      unspentFocus: state.granted?.unspentFocus ?? 0,
     };
+    this.mode = state.mode ?? "campaign";
+  }
+
+  /** The floor an attribute cannot be taken below: base plus what creation gave. */
+  attributeFloor(id) {
+    return BASE_ATTRIBUTE + (this.granted.attributes[id] ?? 0);
+  }
+
+  /** Focus placed by character creation cannot be reclaimed either. */
+  focusFloor(skillId) {
+    return this.granted.focus[skillId] ?? 0;
   }
 
   get grantedAttributePoints() {
@@ -38,8 +54,13 @@ export class Build {
 
   // ------------------------------------------------------------ budgets
 
-  get attributePointsAvailable() { return this.rules.attributePointsForLevel(this.level); }
-  get focusPointsAvailable() { return this.rules.focusPointsForLevel(this.level); }
+  get attributePointsAvailable() {
+    return this.rules.attributePointsForLevel(this.level) + this.granted.unspentAttributes;
+  }
+
+  get focusPointsAvailable() {
+    return this.rules.focusPointsForLevel(this.level) + this.granted.unspentFocus;
+  }
 
   /**
    * Points drawn from the level budget: everything except what character
@@ -93,13 +114,13 @@ export class Build {
   }
 
   setAttribute(id, value) {
-    this.attributes[id] = clamp(value, BASE_ATTRIBUTE, this.rules.maxAttribute);
+    this.attributes[id] = clamp(value, this.attributeFloor(id), this.rules.maxAttribute);
     this.dropUnreachablePerks();
     return this;
   }
 
   setFocus(skillId, value) {
-    const focus = clamp(value, 0, this.rules.maxFocusPerSkill);
+    const focus = clamp(value, this.focusFloor(skillId), this.rules.maxFocusPerSkill);
     if (focus === 0) delete this.focus[skillId];
     else this.focus[skillId] = focus;
     this.dropUnreachablePerks();
@@ -177,9 +198,12 @@ export class Build {
       attributes: { ...this.attributes },
       focus: { ...this.focus },
       perks: [...this.perks],
+      mode: this.mode,
       granted: {
         attributes: { ...this.granted.attributes },
         focus: { ...this.granted.focus },
+        unspentAttributes: this.granted.unspentAttributes,
+        unspentFocus: this.granted.unspentFocus,
       },
     };
   }
