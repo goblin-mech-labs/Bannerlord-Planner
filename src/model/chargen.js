@@ -25,13 +25,19 @@ export function isComplete(catalog, culture, choices) {
 
 /**
  * Fold the chosen options into a starting state.
- * Returns { attributes, focus, skills, options }.
+ *
+ * `granted` records only what character creation handed over, which the game
+ * applies with checkUnspentPoints: false - those points are free and must not
+ * be charged against the level budget.
+ *
+ * Returns { attributes, focus, skills, options, granted }.
  */
 export function apply(catalog, culture, choices) {
   const attributes = baseAttributes();
   const focus = {};
   const skills = {};
   const chosen = [];
+  const granted = { attributes: {}, focus: {} };
 
   for (const menu of catalog.menus) {
     const optionId = choices[menu.id];
@@ -42,13 +48,16 @@ export function apply(catalog, culture, choices) {
 
     for (const grant of option.grants.attributes) {
       attributes[grant.attribute] = (attributes[grant.attribute] ?? BASE_ATTRIBUTE) + grant.value;
+      granted.attributes[grant.attribute] =
+        (granted.attributes[grant.attribute] ?? 0) + grant.value;
     }
     for (const grant of option.grants.skills) {
       focus[grant.skill] = (focus[grant.skill] ?? 0) + grant.focus;
       skills[grant.skill] = (skills[grant.skill] ?? 0) + grant.level;
+      granted.focus[grant.skill] = (granted.focus[grant.skill] ?? 0) + grant.focus;
     }
   }
-  return { attributes, focus, skills, options: chosen };
+  return { attributes, focus, skills, options: chosen, granted };
 }
 
 /** A short "+1 Vigor, +1 focus & +10 Riding, Polearm" style summary. */
@@ -72,6 +81,10 @@ export function seedBuild(build, culture, choices) {
   build.attributes = start.attributes;
   build.focus = { ...start.focus };
   build.skills = { ...start.skills };
+  build.granted = {
+    attributes: { ...start.granted.attributes },
+    focus: { ...start.granted.focus },
+  };
   build.perks = new Set();
   return build;
 }

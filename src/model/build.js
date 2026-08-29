@@ -18,6 +18,23 @@ export class Build {
     this.focus = { ...(state.focus ?? {}) };            // skillId -> points
     this.skills = { ...(state.skills ?? {}) };          // skillId -> value
     this.perks = new Set(state.perks ?? []);            // chosen perk ids
+
+    // Character creation applies its grants with checkUnspentPoints: false
+    // (CharacterCreationContent.ApplySkillAndAttributeEffects), so those points
+    // are free - they never come out of the level budget. Track them separately
+    // so the budgets below only count what the player allocates by hand.
+    this.granted = {
+      attributes: { ...(state.granted?.attributes ?? {}) },
+      focus: { ...(state.granted?.focus ?? {}) },
+    };
+  }
+
+  get grantedAttributePoints() {
+    return sum(Object.values(this.granted.attributes));
+  }
+
+  get grantedFocusPoints() {
+    return sum(Object.values(this.granted.focus));
   }
 
   // ------------------------------------------------------------ budgets
@@ -25,12 +42,18 @@ export class Build {
   get attributePointsAvailable() { return this.rules.attributePointsForLevel(this.level); }
   get focusPointsAvailable() { return this.rules.focusPointsForLevel(this.level); }
 
+  /**
+   * Points drawn from the level budget: everything except what character
+   * creation handed over for free. The base 1 in every attribute does count,
+   * matching HeroDeveloper.SetInitialFocusAndAttributePoints.
+   */
   get attributePointsSpent() {
-    return ATTRIBUTES.reduce((sum, a) => sum + (this.attributes[a.id] ?? BASE_ATTRIBUTE), 0);
+    const total = ATTRIBUTES.reduce((n, a) => n + (this.attributes[a.id] ?? BASE_ATTRIBUTE), 0);
+    return total - this.grantedAttributePoints;
   }
 
   get focusPointsSpent() {
-    return Object.values(this.focus).reduce((sum, n) => sum + n, 0);
+    return sum(Object.values(this.focus)) - this.grantedFocusPoints;
   }
 
   get attributePointsLeft() { return this.attributePointsAvailable - this.attributePointsSpent; }
@@ -90,10 +113,16 @@ export class Build {
 
   // ------------------------------------------------------------ perks
 
-  /** A perk needs its skill at the tier threshold; alternatives are exclusive. */
+  /**
+   * A perk is available once its skill reaches the tier threshold. Picking one
+   * of a pair replaces the other, so a chosen alternative is not a blocker -
+   * clicking it simply switches the choice, which is what a planner needs.
+   */
   perkState(perkId) {
     const perk = this.catalog.perk(perkId);
-    if (!perk) return { selected: false, available: false, reason: "unknown perk" };
+    if (!perk) {
+      return { selected: false, available: false, reason: "unknown perk", replaces: null };
+    }
     const selected = this.perks.has(perkId);
     const value = this.skillValue(perk.skill);
     if (value < perk.requiredSkill) {
@@ -101,16 +130,18 @@ export class Build {
         selected,
         available: false,
         reason: `Requires ${this.catalog.skill(perk.skill).name} ${perk.requiredSkill}`,
+        replaces: null,
       };
     }
-    if (perk.alternative && this.perks.has(perk.alternative)) {
-      return {
-        selected,
-        available: false,
-        reason: `Conflicts with ${this.catalog.perk(perk.alternative).name}`,
-      };
-    }
-    return { selected, available: true, reason: null };
+    const replaces = perk.alternative && this.perks.has(perk.alternative)
+      ? this.catalog.perk(perk.alternative)
+      : null;
+    return {
+      selected,
+      available: true,
+      reason: null,
+      replaces: replaces ? replaces.name : null,
+    };
   }
 
   /** True when the skill level this perk needs is beyond the learning limit. */
@@ -157,6 +188,10 @@ export class Build {
       focus: { ...this.focus },
       skills: { ...this.skills },
       perks: [...this.perks],
+      granted: {
+        attributes: { ...this.granted.attributes },
+        focus: { ...this.granted.focus },
+      },
     };
   }
 
@@ -169,6 +204,10 @@ export function baseAttributes() {
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, Math.round(Number(value) || 0)));
+}
+
+function sum(values) {
+  return values.reduce((a, b) => a + b, 0);
 }
 
 export { BASE_ATTRIBUTE };

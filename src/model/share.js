@@ -24,6 +24,9 @@ export function encode(build) {
     f: Object.entries(build.focus).map(([id, n]) => [skillIndex.get(id) ?? -1, n]),
     s: Object.entries(build.skills).map(([id, n]) => [skillIndex.get(id) ?? -1, n]),
     p: [...build.perks].map((id) => perkIndex.get(id) ?? -1).filter((i) => i >= 0),
+    // free points from character creation, so budgets restore correctly
+    ga: build.granted.attributes,
+    gf: Object.entries(build.granted.focus).map(([id, n]) => [skillIndex.get(id) ?? -1, n]),
   };
   return toBase64Url(JSON.stringify(payload));
 }
@@ -45,7 +48,12 @@ export function decode(catalog, text) {
     focus: {},
     skills: {},
     perks: [],
+    granted: { attributes: payload.ga ?? {}, focus: {} },
   };
+  for (const [index, value] of payload.gf ?? []) {
+    const skill = catalog.skills[index];
+    if (skill) state.granted.focus[skill.id] = value;
+  }
   ATTRIBUTES.forEach((a, i) => {
     if (Array.isArray(payload.a) && payload.a[i] != null) state.attributes[a.id] = payload.a[i];
   });

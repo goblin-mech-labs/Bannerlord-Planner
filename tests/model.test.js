@@ -108,6 +108,19 @@ test("choosing a perk clears its alternative", () => {
   assert(!build.perks.has(a.id), "first choice cleared");
 });
 
+test("an already-taken alternative can be switched to, not just blocked", () => {
+  const build = new Build(catalog).setSkill("Roguery", 50);
+  const [a, b] = catalog.tiers("Roguery")[1];
+  build.selectPerk(a.id);
+
+  const state = build.perkState(b.id);
+  assert(state.available, "the alternative stays selectable");
+  equal(state.replaces, a.name, "and says what it would replace");
+
+  build.togglePerk(b.id);
+  assert(build.perks.has(b.id) && !build.perks.has(a.id), "the choice switched");
+});
+
 test("lowering a skill drops perks it no longer supports", () => {
   const build = new Build(catalog).setSkill("Roguery", 100);
   const perk = catalog.tiers("Roguery")[3][0]; // needs 100
@@ -167,6 +180,34 @@ test("seeding a build from character creation replaces its state", () => {
   equal(build.culture, "nord", "culture recorded");
   assert(Object.keys(build.skills).length > 0, "skills seeded");
   assert(build.perks.size === 0, "no perks yet");
+});
+
+test("character creation points are free and skip the level budget", () => {
+  // CharacterCreationContent.ApplySkillAndAttributeEffects calls AddFocus and
+  // AddAttribute with checkUnspentPoints: false, so a fresh character can hold
+  // more focus than level 1's five points without being over budget.
+  const build = chargen.seedBuild(new Build(catalog), "nord", fullPath("nord"));
+  assert(build.grantedFocusPoints > build.focusPointsAvailable,
+    "the path grants more focus than level 1 supplies");
+  equal(build.focusPointsSpent, 0, "none of it charged to the budget");
+  assert(!build.overspent, "so the build is not over budget");
+
+  const totalAttributes = Object.values(build.attributes).reduce((a, b) => a + b, 0);
+  equal(build.attributePointsSpent, totalAttributes - build.grantedAttributePoints,
+    "only the base attributes are charged");
+
+  // Points the player adds afterwards do come out of the budget.
+  const before = build.focusPointsSpent;
+  build.setFocus("Roguery", 3);
+  equal(build.focusPointsSpent, before + 3, "hand-placed focus is charged");
+});
+
+test("granted points survive a share round trip", () => {
+  const build = chargen.seedBuild(new Build(catalog), "nord", fullPath("nord"));
+  const restored = share.decode(catalog, share.encode(build));
+  equal(restored.grantedFocusPoints, build.grantedFocusPoints, "granted focus");
+  equal(restored.grantedAttributePoints, build.grantedAttributePoints, "granted attributes");
+  equal(restored.focusPointsSpent, build.focusPointsSpent, "budget matches");
 });
 
 test("the wizard reports the next unanswered stage", () => {
