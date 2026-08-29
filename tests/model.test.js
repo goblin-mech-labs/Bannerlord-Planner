@@ -5,6 +5,7 @@ import { Rules } from "../src/model/rules.js";
 import * as chargen from "../src/model/chargen.js";
 import * as effects from "../src/model/effects.js";
 import * as share from "../src/model/share.js";
+import * as buildfile from "../src/model/buildfile.js";
 
 const catalog = await Catalog.load("../");
 const rules = new Rules(catalog.rules);
@@ -467,4 +468,99 @@ test("malformed share links decode to null instead of throwing", () => {
   equal(share.decode(catalog, "not-base64!!"), null, "garbage rejected");
   equal(share.decode(catalog, btoa(JSON.stringify({ v: 99 }))), null, "wrong version rejected");
   equal(share.decode(catalog, btoa(JSON.stringify({ v: 2 }))), null, "v2 links rejected");
+});
+
+// ---------------------------------------------------------------- build files
+
+function sampleBuild() {
+  const build = chargen.seedBuild(new Build(catalog), "nord",
+    fullPath("nord", "sandbox"), "sandbox");
+  build.setLevel(24).setAttribute("Cunning", 6).setFocus("Roguery", 3);
+  const perk = catalog.tiers("Roguery").flat().find((p) => build.perkState(p.id).available);
+  build.selectPerk(perk.id);
+  return build;
+}
+
+test("a build survives an export/import round trip", () => {
+  const build = sampleBuild();
+  const file = buildfile.toFile(build);
+  const result = buildfile.fromFile(catalog, JSON.stringify(file));
+
+  assert(!result.error, `imported cleanly (${result.error ?? ""})`);
+  deepEqual(result.warnings, [], "with no warnings");
+
+  const restored = result.build;
+  equal(restored.level, build.level, "level");
+  equal(restored.mode, build.mode, "mode");
+  equal(restored.culture, build.culture, "culture");
+  equal(restored.focusIn("Roguery"), build.focusIn("Roguery"), "focus");
+  equal(restored.attribute("Cunning"), build.attribute("Cunning"), "attribute");
+  equal(restored.perks.size, build.perks.size, "perk count");
+  equal(restored.skillValue("Roguery"), build.skillValue("Roguery"), "derived cap");
+  equal(restored.focusPointsAvailable, build.focusPointsAvailable, "age grant carried");
+  deepEqual(restored.toState(), build.toState(), "the whole state matches");
+});
+
+test("the exported file is readable on its own", () => {
+  const file = buildfile.toFile(sampleBuild(), "My Nord");
+  equal(file.format, "bannerlord-planner-build", "tagged with a format");
+  equal(file.name, "My Nord", "keeps the given name");
+  equal(file.game.version, catalog.rules.gameVersion, "records the game version");
+  assert(file.game.expansions.includes("Warsails"), "and the expansion");
+  equal(file.summary.culture, "Nord", "culture by name, not id");
+  assert(Object.keys(file.summary.background).length > 0, "background choices by title");
+  assert(Object.keys(file.summary.skills).length > 0, "skills the build actually touches");
+  const roguery = file.summary.skills.Roguery;
+  equal(roguery.focus, 3, "focus recorded");
+  assert(roguery.perks.every((n) => typeof n === "string"), "perks listed by name");
+});
+
+test("a filename is suggested from the build", () => {
+  const name = buildfile.suggestFilename(sampleBuild());
+  assert(name.endsWith(".json"), "is a .json file");
+  assert(/^[a-z0-9-]+\.json$/.test(name), `is filename safe: ${name}`);
+  assert(name.includes("nord"), "mentions the culture");
+});
+
+test("bad files are reported, not thrown", () => {
+  for (const [input, why] of [
+    ["not json at all", "malformed json"],
+    ['{"hello":true}', "some other json"],
+    ['{"format":"bannerlord-planner-build","version":999,"build":{}}', "a newer format"],
+    ['{"format":"bannerlord-planner-build","version":1}', "no build data"],
+  ]) {
+    const result = buildfile.fromFile(catalog, input);
+    assert(result.error, `${why} is rejected`);
+    assert(!result.build, `${why} yields no build`);
+  }
+});
+
+test("unknown perks and skills are dropped with a warning", () => {
+  const file = buildfile.toFile(sampleBuild());
+  file.build.perks = [...file.build.perks, "NotARealPerk"];
+  file.build.focus = { ...file.build.focus, NotARealSkill: 3 };
+  file.game.version = "v0.0.1";
+
+  const result = buildfile.fromFile(catalog, JSON.stringify(file));
+  assert(!result.error, "still imports");
+  assert(result.build.perks.size > 0, "keeps the perks it recognises");
+  assert(!result.build.perks.has("NotARealPerk"), "drops the unknown perk");
+  assert(!("NotARealSkill" in result.build.focus), "drops the unknown skill");
+  assert(result.warnings.some((w) => w.includes("perk")), "warns about the perk");
+  assert(result.warnings.some((w) => w.includes("skill")), "warns about the skill");
+  assert(result.warnings.some((w) => w.includes("v0.0.1")), "warns about the game version");
+});
+
+test("perks that no longer fit the build are dropped on import", () => {
+  const build = sampleBuild();
+  const file = buildfile.toFile(build);
+  // strip the focus that was holding the ceiling up
+  file.build.focus = {};
+  file.build.granted.focus = {};
+  file.build.attributes = { ...file.build.attributes, Cunning: 2 };
+
+  const result = buildfile.fromFile(catalog, JSON.stringify(file));
+  assert(!result.error, "imports");
+  equal(result.build.perks.size, 0, "the out-of-reach perk is gone");
+  assert(result.warnings.some((w) => w.includes("out of reach")), "and says so");
 });

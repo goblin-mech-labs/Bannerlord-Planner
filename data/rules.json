@@ -1,4 +1,8 @@
 {
+ "gameVersion": "v1.4.8",
+ "expansions": [
+  "Warsails"
+ ],
  "maxFocusPerSkill": 5,
  "maxAttribute": 10,
  "attributePointsAtStart": 15,

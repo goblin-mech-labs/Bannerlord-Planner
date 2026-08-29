@@ -37,8 +37,74 @@ Then open <http://localhost:8123/>.
   Durable and the three Smithing ones raise an attribute outright, which lifts
   the cap of every skill that attribute governs. Taking Durable adds 14 to
   Athletics *and* Riding.
-- **Share and save** — the whole build encodes into the URL fragment; named
-  builds are kept in `localStorage`.
+- **Share, save, import, export** — the whole build encodes into the URL
+  fragment; named builds are kept in `localStorage`; and **Export** writes a
+  readable JSON file (`nord-sandbox-level-30.json`) that **Import** reads back.
+
+## Publishing to GitHub Pages
+
+There is no build step, so Pages can serve the repository as-is.
+
+**1. Decide about the icons.** `assets/icons/` is gitignored, because it is
+TaleWorlds' artwork extracted from a local install. The planner detects this and
+falls back to empty engraved frames, so a deployment without icons looks
+deliberate rather than broken. To publish with them, drop that line from
+`.gitignore` and commit the folder — that republishes game art, which is your
+call to make. (`data/*.json` already carries the game's perk and narrative text,
+so the same consideration applies to the repository as a whole.)
+
+**2. Push and enable Pages.**
+
+```bash
+git remote add origin https://github.com/<you>/<repo>.git
+git push -u origin main
+```
+
+Then **Settings → Pages → Build and deployment → Deploy from a branch**, choose
+`main` and `/ (root)`, and save. The site appears at
+`https://<you>.github.io/<repo>/` within a minute or two.
+
+Every path in the app is relative, so it works under the `/<repo>/` subpath with
+no configuration. A `.nojekyll` file is included so Pages serves the files
+untouched instead of running them through Jekyll.
+
+**3. Collaborators.** Anyone cloning the repo gets a working planner. To
+regenerate the data or icons they need their own Bannerlord install and the
+steps below; without that, the committed `data/*.json` is enough to run it.
+
+## Sharing a build
+
+Three ways, in increasing permanence:
+
+| | Where it lives | Good for |
+| --- | --- | --- |
+| **Copy link** | the URL fragment | pasting into chat; nothing leaves the browser |
+| **Save / Load** | `localStorage` | your own builds on your own machine |
+| **Export / Import** | a `.json` file | posting, versioning, sending to someone else |
+
+An exported file carries both halves: `build` is the exact state the planner
+reloads, and `summary` is a readable snapshot — culture and background by name,
+the perks you picked, each skill's cap — so the file is worth reading on its own
+in a gist or a forum post.
+
+```json
+{
+  "format": "bannerlord-planner-build",
+  "version": 1,
+  "game": { "version": "v1.4.8", "expansions": ["Warsails"] },
+  "name": "Nord sandbox level 30",
+  "summary": {
+    "culture": "Nord",
+    "background": { "Family": "Hersir", "Adolescence": "herded the sheep." },
+    "skills": { "Roguery": { "cap": 158, "focus": 3, "perks": ["Sweet Talker"] } }
+  },
+  "build": { "…": "the state the planner reloads" }
+}
+```
+
+Import is forgiving: a file written against a different game version still
+loads, and anything it can no longer resolve — a renamed perk, a skill that
+moved — is dropped with a warning rather than failing the whole file.
 
 ## Where the data comes from
 
@@ -134,7 +200,8 @@ values × 6 focus values — and requires all sixty to match.
 ```
 index.html            app shell
 data/                 generated: skills, perks, rules, chargen
-src/model/            pure logic, no DOM - rules, build state, chargen, effects, share, storage
+src/model/            pure logic, no DOM - rules, build state, chargen, effects,
+                      share, storage, buildfile (JSON import/export)
 src/ui/               tab shell and the three views
 src/style/            theme.css and the skill icon helpers
 assets/icons/         generated: the game's skill icons (gitignored)

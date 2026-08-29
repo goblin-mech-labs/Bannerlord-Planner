@@ -2,11 +2,13 @@
 import { Build } from "../model/build.js";
 import { Catalog } from "../model/catalog.js";
 import * as chargenModel from "../model/chargen.js";
+import * as buildfile from "../model/buildfile.js";
 import * as share from "../model/share.js";
 import * as storage from "../model/storage.js";
 import { ChargenView } from "./chargen-view.js";
 import { SummaryView } from "./summary-view.js";
 import { TreeView } from "./tree-view.js";
+import { detectIcons } from "../style/icons.js";
 import { append, clear, el, hideTooltip, toast } from "./components.js";
 
 const TABS = [
@@ -41,6 +43,9 @@ export async function start(root) {
 (python -m http.server) rather than opening the file directly.`));
     return;
   }
+
+  // Settle whether the extracted icons are present before the first render.
+  await detectIcons();
 
   const fromLink = share.fromLocation(catalog);
   const store = new Store(catalog, fromLink ?? new Build(catalog));
@@ -108,6 +113,14 @@ export async function start(root) {
       el("span", { class: "spacer" }),
 
       el("button", { type: "button", class: "ghost-button", onclick: copyLink }, "Copy link"),
+      el("button", {
+        type: "button", class: "ghost-button", onclick: exportFile,
+        title: "Download this build as a JSON file",
+      }, "Export"),
+      el("button", {
+        type: "button", class: "ghost-button", onclick: importFile,
+        title: "Load a build from a JSON file",
+      }, "Import"),
       el("button", { type: "button", class: "ghost-button", onclick: saveBuild }, "Save"),
       el("button", { type: "button", class: "ghost-button", onclick: loadBuild }, "Load"),
       el("button", { type: "button", class: "ghost-button", onclick: reset }, "Reset"));
@@ -128,6 +141,45 @@ export async function start(root) {
     } catch {
       toast("Link is in the address bar");
     }
+  }
+
+  function exportFile() {
+    const payload = buildfile.toFile(store.build);
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = el("a", { href: url, download: buildfile.suggestFilename(store.build) });
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    toast(`Exported ${buildfile.suggestFilename(store.build)}`);
+  }
+
+  function importFile() {
+    const input = el("input", { type: "file", accept: "application/json,.json" });
+    input.addEventListener("change", async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+      let text;
+      try {
+        text = await file.text();
+      } catch (error) {
+        return toast(`Could not read that file — ${error.message}`);
+      }
+      const result = buildfile.fromFile(catalog, text);
+      if (result.error) return toast(result.error);
+
+      store.build = result.build;
+      chargenView.syncFromBuild();
+      app.tab = "tree";
+      history.replaceState(null, "", location.pathname);
+      render();
+      toast(result.warnings.length
+        ? `Imported with ${result.warnings.length} warning(s): ${result.warnings[0]}`
+        : `Imported ${result.name || file.name}`);
+      for (const warning of result.warnings) console.warn("Import:", warning);
+    });
+    input.click();
   }
 
   function saveBuild() {

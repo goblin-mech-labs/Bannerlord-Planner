@@ -167,6 +167,30 @@ def extract_perks(skills):
 
 # --------------------------------------------------------------------------- rules
 
+GAME_DIR = os.environ.get(
+    "BANNERLORD_DIR",
+    r"C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord")
+
+
+def game_version():
+    """Native's module version, so exported builds record what they match."""
+    import xml.etree.ElementTree as ET
+    path = os.path.join(GAME_DIR, "Modules", "Native", "SubModule.xml")
+    try:
+        node = ET.parse(path).getroot().find("Version")
+        return (node.get("value") or "").strip() or None
+    except Exception:
+        return None
+
+
+def expansions():
+    names = []
+    for module, label in (("NavalDLC", "Warsails"),):
+        if os.path.isdir(os.path.join(GAME_DIR, "Modules", module)):
+            names.append(label)
+    return names
+
+
 def extract_rules():
     text = read("DefaultCharacterDevelopmentModel.cs")
     # NavalCharacterDevelopmentModel delegates every formula to the base model
@@ -185,6 +209,8 @@ def extract_rules():
         return int(m.group(1)) if m else None
 
     return {
+        "gameVersion": game_version(),
+        "expansions": expansions(),
         "maxFocusPerSkill": const("MaxFocusPerSkill"),
         "maxAttribute": const("MaxAttribute"),
         "attributePointsAtStart": const("AttributePointsAtStart"),

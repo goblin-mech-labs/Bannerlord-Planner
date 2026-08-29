@@ -273,6 +273,20 @@ main { flex: 1; padding: 18px 20px 40px; }
 }
 
 .skill-cell .icon { grid-row: 1 / span 2; width: 34px; height: 34px; }
+
+/* icons are generated from a local game install; a deployed copy without them
+   falls back to an empty engraved frame rather than a broken image */
+/* Needs to outrank `.skill-cell .icon img` below, hence the long selectors. */
+.skill-cell .icon img.skill-glyph.missing,
+.detail-head .crest img.skill-glyph.missing,
+.no-icons .skill-cell .icon img,
+.no-icons .detail-head .crest img { display: none; }
+.icon.iconless, .crest.iconless,
+.no-icons .skill-cell .icon, .no-icons .detail-head .crest {
+  background: linear-gradient(#2c2115, #171009);
+  border: 1px solid var(--line-soft);
+  border-radius: 2px;
+}
 .skill-cell .icon img {
   width: 100%; height: 100%; display: block;
   border: 1px solid var(--line-soft); border-radius: 2px;
