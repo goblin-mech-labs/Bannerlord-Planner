@@ -16,7 +16,7 @@ Then open <http://localhost:8123/>.
 
 - **Character Creation** — game mode and culture, then one choice per narrative
   stage, using the game's own text, with a running tally of what each path
-  grants. Apply it to seed the skill tree. **Campaign** and **Sandbox** diverge
+  grants. Every choice updates the skill tree live. **Campaign** and **Sandbox** diverge
   at the last stage: StoryMode deletes the Starting Age question and asks its
   Story Background one instead, so only sandbox characters get the spare
   attribute and focus points the age choice hands out.
@@ -122,8 +122,12 @@ straight off a real character sheet:
 | --- | --- |
 | Learning rate at Roguery 261, Cunning 7, 5 focus | ×3.375 → displayed ×3.38 |
 | Learning limit for the same | 210 |
+| Hard cap for the same | 288 |
 | XP from Roguery 261 → 262 | 36,831 |
 | Total character XP required for level 37 | 21,049,008 |
+
+The cap test walks the entire published attribute/focus table — 10 attribute
+values × 6 focus values — and requires all sixty to match.
 
 ## Layout
 
