@@ -1,0 +1,278 @@
+[
+ {
+  "id": "OneHanded",
+  "field": "_skillOneHanded",
+  "name": "One Handed",
+  "nameId": "PiHpR4QL",
+  "description": "Mastery of fighting with one-handed weapons either with a shield or without.",
+  "descriptionId": "yEkSSqIm",
+  "attributes": [
+   "Vigor"
+  ],
+  "naval": false,
+  "order": 1
+ },
+ {
+  "id": "TwoHanded",
+  "field": "_skillTwoHanded",
+  "name": "Two Handed",
+  "nameId": "t78atYqH",
+  "description": "Mastery of fighting with two-handed weapons of average length such as bigger axes and swords.",
+  "descriptionId": "eoLbkhsY",
+  "attributes": [
+   "Vigor"
+  ],
+  "naval": false,
+  "order": 2
+ },
+ {
+  "id": "Polearm",
+  "field": "_skillPolearm",
+  "name": "Polearm",
+  "nameId": "haax8kMa",
+  "description": "Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed.",
+  "descriptionId": "iKmXX7i3",
+  "attributes": [
+   "Vigor"
+  ],
+  "naval": false,
+  "order": 3
+ },
+ {
+  "id": "Bow",
+  "field": "_skillBow",
+  "name": "Bow",
+  "nameId": "5rj7xQE4",
+  "description": "Familarity with bows and physical conditioning to shoot with them effectively.",
+  "descriptionId": "FLf5J3su",
+  "attributes": [
+   "Control"
+  ],
+  "naval": false,
+  "order": 4
+ },
+ {
+  "id": "Crossbow",
+  "field": "_skillCrossbow",
+  "name": "Crossbow",
+  "nameId": "TTWL7RLe",
+  "description": "Knowledge of operating and maintaining crossbows.",
+  "descriptionId": "haV3nLYA",
+  "attributes": [
+   "Control"
+  ],
+  "naval": false,
+  "order": 5
+ },
+ {
+  "id": "Throwing",
+  "field": "_skillThrowing",
+  "name": "Throwing",
+  "nameId": "2wclahIJ",
+  "description": "Mastery of throwing projectiles accurately and with power.",
+  "descriptionId": "NwTpATW5",
+  "attributes": [
+   "Control"
+  ],
+  "naval": false,
+  "order": 6
+ },
+ {
+  "id": "Riding",
+  "field": "_skillRiding",
+  "name": "Riding",
+  "nameId": "p9i3zRm9",
+  "description": "The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly, as well as general knowledge of horses, including their care and breeding.",
+  "descriptionId": "H9Zamrao",
+  "attributes": [
+   "Endurance"
+  ],
+  "naval": false,
+  "order": 7
+ },
+ {
+  "id": "Athletics",
+  "field": "_skillAthletics",
+  "name": "Athletics",
+  "nameId": "skZS2UlW",
+  "description": "Physical fitness, speed and balance.",
+  "descriptionId": "bVD9j0wI",
+  "attributes": [
+   "Endurance"
+  ],
+  "naval": false,
+  "order": 8
+ },
+ {
+  "id": "Crafting",
+  "field": "_skillCrafting",
+  "name": "Smithing",
+  "nameId": "smithingskill",
+  "description": "The knowledge of how to forge metal, match handle to blade, turn poles, sew scales, and other skills useful in the assembly of weapons and armor",
+  "descriptionId": "xWbkjccP",
+  "attributes": [
+   "Endurance"
+  ],
+  "naval": false,
+  "order": 9
+ },
+ {
+  "id": "Scouting",
+  "field": "_skillScouting",
+  "name": "Scouting",
+  "nameId": "LJ6Krlbr",
+  "description": "Knowledge of how to scan the wilderness for life. You can follow tracks, spot movement in the undergrowth, and spot an enemy across the valley from a flash of light on spearpoints or a dustcloud.",
+  "descriptionId": "kmBxaJZd",
+  "attributes": [
+   "Cunning"
+  ],
+  "naval": false,
+  "order": 10
+ },
+ {
+  "id": "Tactics",
+  "field": "_skillTactics",
+  "name": "Tactics",
+  "nameId": "m8o51fc7",
+  "description": "Your judgment of how troops will perform in contact. This allows you to make a good prediction of when an unorthodox tactic will work, and when it won't.",
+  "descriptionId": "FQOFDrAu",
+  "attributes": [
+   "Cunning"
+  ],
+  "naval": false,
+  "order": 11
+ },
+ {
+  "id": "Roguery",
+  "field": "_skillRoguery",
+  "name": "Roguery",
+  "nameId": "V0ZMJ0PX",
+  "description": "Experience with the darker side of human life. You can tell when a guard wants a bribe, you know how to intimidate someone, and have a good sense of what you can and can't get away with.",
+  "descriptionId": "81YLbLok",
+  "attributes": [
+   "Cunning"
+  ],
+  "naval": false,
+  "order": 12
+ },
+ {
+  "id": "Charm",
+  "field": "_skillCharm",
+  "name": "Charm",
+  "nameId": "EGeY1gfs",
+  "description": "The ability to make a person like and trust you. You can make a good guess at people's motivations and the kinds of arguments to which they'll respond.",
+  "descriptionId": "VajIVjkc",
+  "attributes": [
+   "Social"
+  ],
+  "naval": false,
+  "order": 13
+ },
+ {
+  "id": "Leadership",
+  "field": "_skillLeadership",
+  "name": "Leadership",
+  "nameId": "HsLfmEmb",
+  "description": "The ability to inspire. You can fill individuals with confidence and stir up enthusiasm and courage in larger groups.",
+  "descriptionId": "97EmbcHQ",
+  "attributes": [
+   "Social"
+  ],
+  "naval": false,
+  "order": 14
+ },
+ {
+  "id": "Trade",
+  "field": "_skillTrade",
+  "name": "Trade",
+  "nameId": "GmcgoiGy",
+  "description": "Familiarity with the most common goods in the marketplace and their prices, as well as the ability to spot defective goods or tell if you've been shortchanged in quantity",
+  "descriptionId": "lsJMCkZy",
+  "attributes": [
+   "Social"
+  ],
+  "naval": false,
+  "order": 15
+ },
+ {
+  "id": "Steward",
+  "field": "_skillSteward",
+  "name": "Steward",
+  "nameId": "stewardskill",
+  "description": "Ability to organize a group and manage logistics. This helps you to run an estate or administer a town, and can increase the size of a party that you lead or in which you serve as quartermaster.",
+  "descriptionId": "2K0iVRkW",
+  "attributes": [
+   "Intelligence"
+  ],
+  "naval": false,
+  "order": 16
+ },
+ {
+  "id": "Medicine",
+  "field": "_skillMedicine",
+  "name": "Medicine",
+  "nameId": "JKH59XNp",
+  "description": "Knowledge of how to staunch bleeding, to set broken bones, to remove embedded weapons and clean wounds to prevent infection, and to apply poultices to relieve pain and soothe inflammation.",
+  "descriptionId": "igg5sEh3",
+  "attributes": [
+   "Intelligence"
+  ],
+  "naval": false,
+  "order": 17
+ },
+ {
+  "id": "Engineering",
+  "field": "_skillEngineering",
+  "name": "Engineering",
+  "nameId": "engineeringskill",
+  "description": "Knowledge of how to make things that can withstand powerful forces without collapsing. Useful for building both structures and the devices that knock them down.",
+  "descriptionId": "hbaMnpVR",
+  "attributes": [
+   "Intelligence"
+  ],
+  "naval": false,
+  "order": 18
+ },
+ {
+  "id": "Mariner",
+  "field": "_skillMariner",
+  "name": "Mariner",
+  "nameId": "bOhiqquf",
+  "description": "Enhances your personal combat prowess during naval engagements and bolsters your effectiveness in leading troops and employing tactics in sea battles.",
+  "descriptionId": "JSvE81Iw",
+  "attributes": [
+   "Endurance",
+   "Cunning"
+  ],
+  "naval": true,
+  "order": 19
+ },
+ {
+  "id": "Boatswain",
+  "field": "_skillBoatswain",
+  "name": "Boatswain",
+  "nameId": "olTmdP9j",
+  "description": "Governs the well-being and discipline of your ship's crew, as well as the vessel's overall combat readiness, including rigging and supplies.",
+  "descriptionId": "SZ0BH8b1",
+  "attributes": [
+   "Control",
+   "Social"
+  ],
+  "naval": true,
+  "order": 20
+ },
+ {
+  "id": "Shipmaster",
+  "field": "_skillShipmaster",
+  "name": "Shipmaster",
+  "nameId": "SSLTboWZ",
+  "description": "Improves your navigational abilities, the effectiveness of naval siege engines under your command, and the speed and quality of ship repairs and upgrades.",
+  "descriptionId": "CmXMqtcU",
+  "attributes": [
+   "Vigor",
+   "Intelligence"
+  ],
+  "naval": true,
+  "order": 21
+ }
+]

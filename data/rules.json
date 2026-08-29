@@ -1,0 +1,46 @@
+{
+ "maxFocusPerSkill": 5,
+ "maxAttribute": 10,
+ "attributePointsAtStart": 15,
+ "levelsPerAttributePoint": 4,
+ "focusPointsPerLevel": 1,
+ "focusPointsAtStart": 5,
+ "minSkillRequiredForEpicPerkBonus": 200,
+ "maxSkillRequiredForEpicPerkBonus": 250,
+ "tierSkillRequirements": [
+  25,
+  50,
+  75,
+  100,
+  125,
+  150,
+  175,
+  200,
+  225,
+  250,
+  275,
+  300
+ ],
+ "maxLevel": 62,
+ "learningLimit": {
+  "attributeOffset": 1,
+  "attributeFactor": 10,
+  "focusFactor": 30
+ },
+ "learningRate": {
+  "base": 1.25,
+  "attributeFactor": 0.4,
+  "focusFactor": 1.0,
+  "overLimitBase": -1.0,
+  "overLimitPerPoint": -0.1
+ },
+ "skillXp": {
+  "start": 30,
+  "stepBase": 10
+ },
+ "levelXp": {
+  "start": 1000,
+  "growthNumerator": 1,
+  "growthDenominator": 5
+ }
+}
