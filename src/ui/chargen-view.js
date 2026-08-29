@@ -159,10 +159,12 @@ export class ChargenView {
     const attributes = ATTRIBUTES
       .map((a) => ({ id: a.id, value: start.attributes[a.id] ?? 1 }))
       .filter((a) => a.value > 1);
-    const skills = Object.entries(start.skills)
-      .sort((a, b) => b[1] - a[1])
-      .map(([id, value]) => `${catalog.skill(id)?.name ?? id} ${value}`);
-    const focus = Object.values(start.focus).reduce((a, b) => a + b, 0);
+    // Skill levels are derived from attributes and focus, so what carries over
+    // from character creation is the attribute and focus placement.
+    const focus = Object.entries(start.focus)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([id, n]) => `${catalog.skill(id)?.name ?? id} ${"•".repeat(n)}`);
+    const total = Object.values(start.focus).reduce((a, b) => a + b, 0);
 
     return el("div", {},
       el("h3", { class: "panel-title" }, "Starting character"),
@@ -173,8 +175,7 @@ export class ChargenView {
             ? attributes.map((a) => `${a.id} ${a.value}`).join("  ·  ")
             : "—")),
         el("div", { class: "tally-row" },
-          el("span", {}, "Focus points placed"), el("span", {}, focus || "—")),
-        el("div", { class: "tally-row" },
-          el("span", {}, "Skills"), el("span", {}, skills.length ? skills.join("  ·  ") : "—"))));
+          el("span", {}, `Focus placed (${total})`),
+          el("span", {}, focus.length ? focus.join("  ·  ") : "—"))));
   }
 }

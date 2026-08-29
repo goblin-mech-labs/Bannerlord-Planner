@@ -87,19 +87,37 @@ test("attributes and focus are clamped to the game's maxima", () => {
   equal(build.attribute("Vigor"), 1, "attributes floor at one");
 });
 
+test("skill level is the ceiling the build can actually reach", () => {
+  // CalculateLearningLimit: max(0, (avgAttr - 1) * 10) + focus * 30
+  const build = new Build(catalog);
+  equal(build.skillValue("Roguery"), 0, "one attribute, no focus");
+  build.setAttribute("Cunning", 7);
+  equal(build.skillValue("Roguery"), 60, "(7 - 1) * 10");
+  build.setFocus("Roguery", 5);
+  equal(build.skillValue("Roguery"), 210, "plus 5 focus * 30");
+  equal(build.skillValue("Roguery"), Math.floor(build.learningLimit("Roguery")),
+    "the level is the limit");
+});
+
+test("naval skill ceilings use the mean of both attributes", () => {
+  const build = new Build(catalog);            // Mariner: Endurance + Cunning
+  build.setAttribute("Endurance", 3).setAttribute("Cunning", 7).setFocus("Mariner", 2);
+  equal(build.skillValue("Mariner"), 100, "((3+7)/2 - 1) * 10 + 2 * 30");
+});
+
 test("perks unlock at their skill threshold", () => {
   const build = new Build(catalog);
   const perk = catalog.tiers("Roguery")[0][0]; // tier 1, needs 25
   equal(perk.requiredSkill, 25, "tier 1 threshold");
   assert(!build.perkState(perk.id).available, "locked below threshold");
-  build.setSkill("Roguery", 25);
-  assert(build.perkState(perk.id).available, "unlocked at threshold");
+  build.setAttribute("Cunning", 4);            // ceiling 30, clears the tier
+  assert(build.perkState(perk.id).available, "unlocked once the ceiling reaches it");
   build.togglePerk(perk.id);
   assert(build.perkState(perk.id).selected, "selected");
 });
 
 test("choosing a perk clears its alternative", () => {
-  const build = new Build(catalog).setSkill("Roguery", 50);
+  const build = new Build(catalog).setAttribute("Cunning", 6);
   const [a, b] = catalog.tiers("Roguery")[1];
   assert(a && b, "tier 2 has two alternatives");
   build.selectPerk(a.id);
@@ -109,7 +127,7 @@ test("choosing a perk clears its alternative", () => {
 });
 
 test("an already-taken alternative can be switched to, not just blocked", () => {
-  const build = new Build(catalog).setSkill("Roguery", 50);
+  const build = new Build(catalog).setAttribute("Cunning", 6);
   const [a, b] = catalog.tiers("Roguery")[1];
   build.selectPerk(a.id);
 
@@ -121,20 +139,15 @@ test("an already-taken alternative can be switched to, not just blocked", () => 
   assert(build.perks.has(b.id) && !build.perks.has(a.id), "the choice switched");
 });
 
-test("lowering a skill drops perks it no longer supports", () => {
-  const build = new Build(catalog).setSkill("Roguery", 100);
+test("spending focus away drops perks it no longer supports", () => {
+  const build = new Build(catalog).setAttribute("Cunning", 8).setFocus("Roguery", 2);
+  equal(build.skillValue("Roguery"), 130, "ceiling covers tier 5");
   const perk = catalog.tiers("Roguery")[3][0]; // needs 100
   build.selectPerk(perk.id);
   assert(build.perks.has(perk.id), "selected");
-  build.setSkill("Roguery", 50);
-  assert(!build.perks.has(perk.id), "dropped when unreachable");
-});
-
-test("perks past the learning limit are flagged but still selectable", () => {
-  const build = new Build(catalog).setSkill("Roguery", 275).setAttribute("Cunning", 2);
-  const perk = catalog.tiers("Roguery").at(-1)[0];
-  assert(build.beyondLearningLimit(perk.id), "flagged as beyond the limit");
-  assert(build.perkState(perk.id).available, "still selectable - the cap is soft");
+  build.setFocus("Roguery", 0);
+  equal(build.skillValue("Roguery"), 70, "ceiling drops");
+  assert(!build.perks.has(perk.id), "and the perk is dropped");
 });
 
 // ---------------------------------------------------------------- chargen
@@ -161,7 +174,6 @@ test("character creation grants stack across stages", () => {
 
   for (const option of start.options) {
     for (const grant of option.grants.skills) {
-      assert(start.skills[grant.skill] >= grant.level, `${grant.skill} raised`);
       assert(start.focus[grant.skill] >= grant.focus, `${grant.skill} focused`);
     }
   }
@@ -221,7 +233,7 @@ test("shipmaster_urban counts as rural, as the game's switch has it", () => {
 test("seeding a build from character creation replaces its state", () => {
   const build = chargen.seedBuild(new Build(catalog), "nord", fullPath("nord"));
   equal(build.culture, "nord", "culture recorded");
-  assert(Object.keys(build.skills).length > 0, "skills seeded");
+  assert(build.grantedFocusPoints > 0, "focus seeded");
   assert(build.perks.size === 0, "no perks yet");
 });
 
@@ -264,7 +276,7 @@ test("the wizard reports the next unanswered stage", () => {
 // ---------------------------------------------------------------- effects
 
 test("effect summary groups by party role", () => {
-  const build = new Build(catalog).setSkill("Roguery", 50);
+  const build = new Build(catalog).setAttribute("Cunning", 6);
   const perk = catalog.tiers("Roguery")[0].find((p) => p.effects.length > 1);
   build.selectPerk(perk.id);
   const groups = effects.summarise(build);
@@ -289,7 +301,7 @@ test("a build survives an encode/decode round trip", () => {
   const build = new Build(catalog).setLevel(24).setAttribute("Cunning", 7);
   build.culture = "nord";
   build.choices = { narrative_parent_menu: "some_option" };
-  build.setFocus("Roguery", 4).setSkill("Roguery", 150).setSkill("Mariner", 80);
+  build.setFocus("Roguery", 4);
   build.selectPerk(catalog.tiers("Roguery")[0][0].id);
 
   const restored = share.decode(catalog, share.encode(build));
@@ -298,7 +310,7 @@ test("a build survives an encode/decode round trip", () => {
   equal(restored.culture, "nord", "culture");
   equal(restored.attribute("Cunning"), 7, "attribute");
   equal(restored.focusIn("Roguery"), 4, "focus");
-  equal(restored.skillValue("Mariner"), 80, "skill");
+  equal(restored.skillValue("Roguery"), build.skillValue("Roguery"), "derived skill level");
   equal(restored.perks.size, build.perks.size, "perk count");
   equal(restored.choices.narrative_parent_menu, "some_option", "choices");
 });
@@ -306,4 +318,5 @@ test("a build survives an encode/decode round trip", () => {
 test("malformed share links decode to null instead of throwing", () => {
   equal(share.decode(catalog, "not-base64!!"), null, "garbage rejected");
   equal(share.decode(catalog, btoa(JSON.stringify({ v: 99 }))), null, "wrong version rejected");
+  equal(share.decode(catalog, btoa(JSON.stringify({ v: 1 }))), null, "v1 links rejected");
 });

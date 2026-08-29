@@ -16,7 +16,6 @@ export class Build {
     this.choices = { ...(state.choices ?? {}) };        // menuId -> optionId
     this.attributes = { ...baseAttributes(), ...(state.attributes ?? {}) };
     this.focus = { ...(state.focus ?? {}) };            // skillId -> points
-    this.skills = { ...(state.skills ?? {}) };          // skillId -> value
     this.perks = new Set(state.perks ?? []);            // chosen perk ids
 
     // Character creation applies its grants with checkUnspentPoints: false
@@ -65,7 +64,15 @@ export class Build {
 
   attribute(id) { return this.attributes[id] ?? BASE_ATTRIBUTE; }
   focusIn(skillId) { return this.focus[skillId] ?? 0; }
-  skillValue(skillId) { return this.skills[skillId] ?? 0; }
+
+  /**
+   * The highest level this build can actually reach in a skill.
+   *
+   * That is the learning limit: past it the learning rate collapses, so it is
+   * the practical ceiling for a plan. Skill levels are therefore derived from
+   * attributes and focus rather than set by hand.
+   */
+  skillValue(skillId) { return Math.floor(this.learningLimit(skillId)); }
 
   learningLimit(skillId) {
     return this.rules.learningLimit(
@@ -78,12 +85,6 @@ export class Build {
       this.skillValue(skillId));
   }
 
-  /** Skill XP progress within the current level, as the game's bar shows it. */
-  skillProgress(skillId) {
-    const value = this.skillValue(skillId);
-    return { into: 0, needed: this.rules.xpToNextSkillLevel(value) };
-  }
-
   // ------------------------------------------------------------ mutation
 
   setLevel(level) {
@@ -93,6 +94,7 @@ export class Build {
 
   setAttribute(id, value) {
     this.attributes[id] = clamp(value, BASE_ATTRIBUTE, this.rules.maxAttribute);
+    this.dropUnreachablePerks();
     return this;
   }
 
@@ -100,14 +102,7 @@ export class Build {
     const focus = clamp(value, 0, this.rules.maxFocusPerSkill);
     if (focus === 0) delete this.focus[skillId];
     else this.focus[skillId] = focus;
-    return this;
-  }
-
-  setSkill(skillId, value) {
-    const skill = clamp(value, 0, 1023);
-    if (skill === 0) delete this.skills[skillId];
-    else this.skills[skillId] = skill;
-    this.dropUnreachablePerks(skillId);
+    this.dropUnreachablePerks();
     return this;
   }
 
@@ -144,12 +139,6 @@ export class Build {
     };
   }
 
-  /** True when the skill level this perk needs is beyond the learning limit. */
-  beyondLearningLimit(perkId) {
-    const perk = this.catalog.perk(perkId);
-    return perk ? perk.requiredSkill > this.learningLimit(perk.skill) : false;
-  }
-
   selectPerk(perkId) {
     const perk = this.catalog.perk(perkId);
     if (!perk || this.skillValue(perk.skill) < perk.requiredSkill) return this;
@@ -164,10 +153,11 @@ export class Build {
     return this;
   }
 
-  dropUnreachablePerks(skillId) {
+  /** Lowering an attribute or focus can put a chosen perk out of reach. */
+  dropUnreachablePerks() {
     for (const id of [...this.perks]) {
       const perk = this.catalog.perk(id);
-      if (perk && perk.skill === skillId && this.skillValue(skillId) < perk.requiredSkill) {
+      if (perk && this.skillValue(perk.skill) < perk.requiredSkill) {
         this.perks.delete(id);
       }
     }
@@ -186,7 +176,6 @@ export class Build {
       choices: { ...this.choices },
       attributes: { ...this.attributes },
       focus: { ...this.focus },
-      skills: { ...this.skills },
       perks: [...this.perks],
       granted: {
         attributes: { ...this.granted.attributes },

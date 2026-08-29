@@ -8,7 +8,7 @@
 import { Build } from "./build.js";
 import { ATTRIBUTES } from "./catalog.js";
 
-const VERSION = 1;
+const VERSION = 2;   // v2: skill levels became derived
 
 export function encode(build) {
   const { catalog } = build;
@@ -22,7 +22,6 @@ export function encode(build) {
     h: build.choices,
     a: ATTRIBUTES.map((a) => build.attribute(a.id)),
     f: Object.entries(build.focus).map(([id, n]) => [skillIndex.get(id) ?? -1, n]),
-    s: Object.entries(build.skills).map(([id, n]) => [skillIndex.get(id) ?? -1, n]),
     p: [...build.perks].map((id) => perkIndex.get(id) ?? -1).filter((i) => i >= 0),
     // free points from character creation, so budgets restore correctly
     ga: build.granted.attributes,
@@ -46,7 +45,6 @@ export function decode(catalog, text) {
     choices: payload.h ?? {},
     attributes: {},
     focus: {},
-    skills: {},
     perks: [],
     granted: { attributes: payload.ga ?? {}, focus: {} },
   };
@@ -60,10 +58,6 @@ export function decode(catalog, text) {
   for (const [index, value] of payload.f ?? []) {
     const skill = catalog.skills[index];
     if (skill) state.focus[skill.id] = value;
-  }
-  for (const [index, value] of payload.s ?? []) {
-    const skill = catalog.skills[index];
-    if (skill) state.skills[skill.id] = value;
   }
   for (const index of payload.p ?? []) {
     const perk = catalog.perks[index];

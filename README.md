@@ -19,9 +19,10 @@ Then open <http://localhost:8123/>.
   Starting Age), using the game's own text, with a running tally of what each
   path grants. Apply it to seed the skill tree.
 - **Skill Tree** — all 21 skills including the three Warsails skills, laid out
-  as the game does: attribute plaques, the skill grid, and a horizontal tier
-  track of paired perk shields. Shows learning limit, learning rate and XP to
-  the next level per skill.
+  as the game does: attribute plaques, the skill grid (with the game's own
+  icons), and a horizontal tier track of paired perk shields. Each skill sits
+  at the **highest level the build can actually reach** — its learning limit —
+  so perks light up exactly when your attributes and focus put them in range.
 - **Summary** — every chosen perk's effects aggregated and grouped by party
   role (Personal / Party Leader / Governor / Captain / …).
 - **Share and save** — the whole build encodes into the URL fragment; named
@@ -40,6 +41,7 @@ Bannerlord install, so it matches the installed version exactly:
 | `DefaultCharacterDevelopmentModel` | every progression constant and formula |
 | `CharacterCreationCampaignBehavior` (+ the naval one) | the narrative stage tree and its grants |
 | `spcultures.xml` + `NavalDLC_SandBoxCore_SPCultures.xslt` | playable cultures |
+| `core_game.tpac` + `NativeSpriteData.xml` | the 21 skill icons (DXT5 atlas) |
 
 Two details worth knowing, because both are easy to get wrong:
 
@@ -49,6 +51,11 @@ Two details worth knowing, because both are easy to get wrong:
 - Character creation applies its grants with `checkUnspentPoints: false`, so
   those attribute and focus points are **free** — they never come out of the
   level budget. The planner tracks them separately and labels them.
+- Options can serve several cultures (`sturgia || battania` decompiles to two
+  returns), and the Adolescence stage is gated on an urban/rural upbringing via
+  `IsUrbanOccupation`. That switch omits Warsails' `shipmaster_urban`, so the
+  game itself treats it as rural — the extractor copies the switch rather than
+  guessing from the `_urban` suffix.
 
 ### Regenerating after a game patch
 
@@ -66,9 +73,21 @@ no unresolved string ids, contiguous tier ladders, one or two perks per tier,
 all 21 skills attributed, every narrative option carrying grants — and it
 re-checks the learning-rate formula against a known in-game value.
 
-`tools/_decompiled/` is gitignored: it is derived TaleWorlds source, and the
-UI is a CSS/SVG reskin rather than extracted game art (the real sprites live in
-packed `.tpac` archives).
+### Icons
+
+```bash
+python tools/extract_icons.py
+```
+
+The skill icons are the game's own art. `NativeSpriteData.xml` gives every
+sprite's exact rectangle, and the atlas holding them (`ui_group1` sheet 2, a
+4096x4096 DXT5 texture in `core_game.tpac`) is located inside the archive and
+decoded block by block — only the ~1000 blocks each 128x128 icon covers, so it
+runs in a second on stdlib alone.
+
+`tools/_decompiled/` and `assets/icons/` are both gitignored: they are derived
+TaleWorlds content. Run the two extractors after cloning. Panels, frames and
+type are CSS.
 
 ## Verifying
 

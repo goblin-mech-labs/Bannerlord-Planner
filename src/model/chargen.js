@@ -99,7 +99,6 @@ export function seedBuild(build, culture, choices) {
   build.choices = { ...choices };
   build.attributes = start.attributes;
   build.focus = { ...start.focus };
-  build.skills = { ...start.skills };
   build.granted = {
     attributes: { ...start.granted.attributes },
     focus: { ...start.granted.focus },
