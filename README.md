@@ -14,10 +14,12 @@ Then open <http://localhost:8123/>.
 
 ## What it does
 
-- **Character Creation** — culture, then one choice per narrative stage
-  (Family → Early Childhood → Adolescence → Youth → Young Adulthood →
-  Starting Age), using the game's own text, with a running tally of what each
-  path grants. Apply it to seed the skill tree.
+- **Character Creation** — game mode and culture, then one choice per narrative
+  stage, using the game's own text, with a running tally of what each path
+  grants. Apply it to seed the skill tree. **Campaign** and **Sandbox** diverge
+  at the last stage: StoryMode deletes the Starting Age question and asks its
+  Story Background one instead, so only sandbox characters get the spare
+  attribute and focus points the age choice hands out.
 - **Skill Tree** — all 21 skills including the three Warsails skills, laid out
   as the game does: attribute plaques, the skill grid (with the game's own
   icons), and a horizontal tier track of paired perk shields. Each skill sits
@@ -39,7 +41,7 @@ Bannerlord install, so it matches the installed version exactly:
 | `NavalDLC.dll` → `NavalPerks` / `NavalSkills` | the 3 Warsails skills and their 62 perks |
 | `TaleWorlds.Core.dll` → `DefaultSkills` | skill names, descriptions, governing attributes |
 | `DefaultCharacterDevelopmentModel` | every progression constant and formula |
-| `CharacterCreationCampaignBehavior` (+ the naval one) | the narrative stage tree and its grants |
+| `CharacterCreationCampaignBehavior` (+ naval and StoryMode) | the narrative stage tree and its grants, per game mode |
 | `spcultures.xml` + `NavalDLC_SandBoxCore_SPCultures.xslt` | playable cultures |
 | `core_game.tpac` + `NativeSpriteData.xml` | the 21 skill icons (DXT5 atlas) |
 
@@ -51,6 +53,14 @@ Two details worth knowing, because both are easy to get wrong:
 - Character creation applies its grants with `checkUnspentPoints: false`, so
   those attribute and focus points are **free** — they never come out of the
   level budget. The planner tracks them separately and labels them.
+- Every attribute starts at **2**, not 1 (`SetMainHeroInitialStats` calls
+  `AddAttribute(attribute, 2, checkUnspentPoints: false)`), and those 12 points
+  *are* charged to the 15-point starting pool — so a fresh character has 3 left
+  to place.
+- The Starting Age stage grants **unspent** points rather than placements
+  (`SetUnspentFocusToAdd` / `SetUnspentAttributeToAdd`): 20 → +2 focus/+1
+  attribute, rising to 50 → +8/+4. Those add to the pools, and the campaign
+  never sees them because StoryMode removes that stage.
 - Options can serve several cultures (`sturgia || battania` decompiles to two
   returns), and the Adolescence stage is gated on an urban/rural upbringing via
   `IsUrbanOccupation`. That switch omits Warsails' `shipmaster_urban`, so the

@@ -18,8 +18,9 @@ New-Item -ItemType Directory -Force -Path $out | Out-Null
 $core   = Join-Path $GameDir "bin\Win64_Shipping_Client\TaleWorlds.Core.dll"
 $campaign = Join-Path $GameDir "bin\Win64_Shipping_Client\TaleWorlds.CampaignSystem.dll"
 $naval  = Join-Path $GameDir "Modules\NavalDLC\bin\Win64_Shipping_Client\NavalDLC.dll"
+$story  = Join-Path $GameDir "Modules\StoryMode\bin\Win64_Shipping_Client\StoryMode.dll"
 
-foreach ($dll in @($core, $campaign, $naval)) {
+foreach ($dll in @($core, $campaign, $naval, $story)) {
     if (-not (Test-Path $dll)) { throw "Assembly not found: $dll" }
 }
 
@@ -31,7 +32,10 @@ $targets = @(
     @{ Dll = $core;     Type = "TaleWorlds.Core.DefaultSkills";                                                   File = "DefaultSkills.cs" },
     @{ Dll = $naval;    Type = "NavalDLC.CharacterDevelopment.NavalPerks";                                        File = "NavalPerks.cs" },
     @{ Dll = $naval;    Type = "NavalDLC.CharacterDevelopment.NavalSkills";                                       File = "NavalSkills.cs" },
-    @{ Dll = $naval;    Type = "NavalDLC.CampaignBehaviors.NavalCharacterCreationCampaignBehavior";               File = "NavalCharacterCreationCampaignBehavior.cs" }
+    @{ Dll = $naval;    Type = "NavalDLC.CampaignBehaviors.NavalCharacterCreationCampaignBehavior";               File = "NavalCharacterCreationCampaignBehavior.cs" },
+    @{ Dll = $campaign; Type = "TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreationContent";     File = "CharacterCreationContent.cs" },
+    @{ Dll = $campaign; Type = "TaleWorlds.CampaignSystem.CampaignBehaviors.CharacterCreationCampaignBehavior+CharacterOccupationTypes"; File = "CharacterOccupationTypes.cs" },
+    @{ Dll = $story;    Type = "StoryMode.GameComponents.CampaignBehaviors.StoryModeCharacterCreationCampaignBehavior";                  File = "StoryModeCharacterCreationCampaignBehavior.cs" }
 )
 
 foreach ($t in $targets) {
