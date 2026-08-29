@@ -45,15 +45,7 @@ Then open <http://localhost:8123/>.
 
 There is no build step, so Pages can serve the repository as-is.
 
-**1. Decide about the icons.** `assets/icons/` is gitignored, because it is
-TaleWorlds' artwork extracted from a local install. The planner detects this and
-falls back to empty engraved frames, so a deployment without icons looks
-deliberate rather than broken. To publish with them, drop that line from
-`.gitignore` and commit the folder — that republishes game art, which is your
-call to make. (`data/*.json` already carries the game's perk and narrative text,
-so the same consideration applies to the repository as a whole.)
-
-**2. Push and enable Pages.**
+**1. Push and enable Pages.**
 
 ```bash
 git remote add origin https://github.com/<you>/<repo>.git
@@ -68,9 +60,15 @@ Every path in the app is relative, so it works under the `/<repo>/` subpath with
 no configuration. A `.nojekyll` file is included so Pages serves the files
 untouched instead of running them through Jekyll.
 
-**3. Collaborators.** Anyone cloning the repo gets a working planner. To
-regenerate the data or icons they need their own Bannerlord install and the
-steps below; without that, the committed `data/*.json` is enough to run it.
+**2. Collaborators.** Anyone cloning the repo gets a working planner straight
+away — `data/*.json` and `assets/icons/` are both committed. Regenerating either
+needs your own Bannerlord install and the steps below.
+
+The repository contains TaleWorlds' content: the skill icons under
+`assets/icons/`, and the game's perk and narrative text in `data/*.json`. If you
+would rather not republish the artwork, add `assets/icons/` back to
+`.gitignore` — the planner probes for the icon set at startup and falls back to
+empty engraved frames when it is absent, so the site still looks deliberate.
 
 ## Sharing a build
 
@@ -174,9 +172,14 @@ sprite's exact rectangle, and the atlas holding them (`ui_group1` sheet 2, a
 decoded block by block — only the ~1000 blocks each 128x128 icon covers, so it
 runs in a second on stdlib alone.
 
-`tools/_decompiled/` and `assets/icons/` are both gitignored: they are derived
-TaleWorlds content. Run the two extractors after cloning. Panels, frames and
-type are CSS.
+The 21 icons are committed (about 500 KB), so a clone runs with artwork and no
+extra steps. `tools/_decompiled/` stays gitignored — it is decompiled source,
+not something to redistribute. Panels, frames and type are CSS.
+
+Perk icons are not extracted: they live in a separate atlas
+(`ui_characterdeveloper`) encoded as **BC7** rather than DXT5, which this
+decoder does not handle. 435 of the 436 perk ids do match a `SPPerks\<PerkId>`
+sprite, so adding a BC7 path would light up the whole tier track.
 
 ## Verifying
 

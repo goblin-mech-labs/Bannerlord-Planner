@@ -2,4 +2,6 @@ tools/_decompiled/
 __pycache__/
 *.pyc
 .DS_Store
-assets/icons/
+
+# assets/icons/ is committed on purpose so the deployed site has the game's
+# skill icons. Regenerate with `python tools/extract_icons.py` after a patch.
