@@ -27,6 +27,18 @@ export function clear(node) {
   return node;
 }
 
+/**
+ * Node.append() stringifies null and arrays, which turns a skipped conditional
+ * into the literal text "null". This drops the blanks and flattens arrays.
+ */
+export function append(parent, ...children) {
+  for (const child of children.flat(Infinity)) {
+    if (child === null || child === undefined || child === false) continue;
+    parent.append(child instanceof Node ? child : document.createTextNode(String(child)));
+  }
+  return parent;
+}
+
 /** Five focus pips, as the game draws under each skill. */
 export function pips(filled, total = 5) {
   return el("div", { class: "pips", "aria-hidden": "true" },

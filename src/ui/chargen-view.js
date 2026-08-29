@@ -4,7 +4,7 @@
  */
 import * as chargen from "../model/chargen.js";
 import { ATTRIBUTES } from "../model/catalog.js";
-import { clear, el, toast } from "./components.js";
+import { append, clear, el, toast } from "./components.js";
 
 const CULTURE_STAGE = "__culture__";
 
@@ -82,7 +82,7 @@ export class ChargenView {
   }
 
   renderCultures(catalog) {
-    this.body.append(
+    append(this.body,
       el("h3", { class: "panel-title" }, "Choose your culture"),
       el("p", { class: "prompt" },
         "Your culture decides which upbringings are open to you, and colours the whole path."),
@@ -105,7 +105,7 @@ export class ChargenView {
   renderStage(catalog, menu) {
     if (!menu) return;
     const options = catalog.optionsFor(menu.id, this.culture);
-    this.body.append(
+    append(this.body,
       el("h3", { class: "panel-title" }, menu.title),
       menu.description ? el("p", { class: "prompt" }, menu.description) : null,
       el("div", { class: "option-list" },

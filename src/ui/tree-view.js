@@ -5,7 +5,7 @@
 import { ATTRIBUTES } from "../model/catalog.js";
 import { roleLabel } from "../model/effects.js";
 import { perkIcon, skillIcon } from "../style/icons.js";
-import { clear, el, hideTooltip, number, pips, withTooltip } from "./components.js";
+import { append, clear, el, hideTooltip, number, pips, withTooltip } from "./components.js";
 
 export class TreeView {
   constructor(store) {
@@ -101,7 +101,7 @@ export class TreeView {
     const limit = Math.round(build.learningLimit(skill.id));
     const rate = build.learningRate(skill.id);
 
-    this.right.append(
+    append(this.right,
       el("div", { class: "detail-head" },
         el("div", { class: "crest", html: skillIcon(skill.id) }),
         el("div", {},

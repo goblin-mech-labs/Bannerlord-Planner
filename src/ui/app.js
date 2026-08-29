@@ -7,7 +7,7 @@ import * as storage from "../model/storage.js";
 import { ChargenView } from "./chargen-view.js";
 import { SummaryView } from "./summary-view.js";
 import { TreeView } from "./tree-view.js";
-import { clear, el, hideTooltip, toast } from "./components.js";
+import { append, clear, el, hideTooltip, toast } from "./components.js";
 
 const TABS = [
   { id: "chargen", label: "Character Creation" },
@@ -69,7 +69,7 @@ export async function start(root) {
     const attrOver = build.attributePointsLeft < 0;
     const focusOver = build.focusPointsLeft < 0;
 
-    clear(topbar).append(
+    append(clear(topbar),
       el("span", { class: "brand" }, "Bannerlord Planner"),
       el("nav", { class: "tabs", role: "tablist" },
         TABS.map((tab) => el("button", {
