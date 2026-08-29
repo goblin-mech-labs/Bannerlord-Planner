@@ -237,6 +237,10 @@ main { flex: 1; padding: 18px 20px 40px; }
 .attribute-plaque .value {
   font-family: var(--font-display); font-size: 20px; color: var(--gold-bright); line-height: 1;
 }
+.attribute-plaque .value .bonus {
+  font-family: var(--font-body); font-style: normal;
+  font-size: 11px; color: var(--good); margin-left: 2px; vertical-align: super;
+}
 .attribute-plaque .steppers { display: flex; gap: 3px; margin-top: 2px; }
 .attribute-plaque .steppers button {
   width: 18px; height: 16px; line-height: 1;
@@ -411,6 +415,10 @@ main { flex: 1; padding: 18px 20px 40px; }
 }
 
 .perk.empty { visibility: hidden; }
+
+/* perks that grant an attribute outright get a quiet mark */
+.perk.grants-attribute { border-color: var(--good); }
+.perk.grants-attribute.selected { border-color: var(--selected); }
 
 /* ---------------------------------------------------------------- tooltip */
 

@@ -4,7 +4,9 @@
  "attributePointsAtStart": 15,
  "levelsPerAttributePoint": 4,
  "focusPointsPerLevel": 1,
- "focusPointsAtStart": 5,
+ "focusPointsAtStart": 11,
+ "focusPointsAtStartBase": 5,
+ "focusPointsAtStartExpansion": 6,
  "minSkillRequiredForEpicPerkBonus": 200,
  "maxSkillRequiredForEpicPerkBonus": 250,
  "tierSkillRequirements": [

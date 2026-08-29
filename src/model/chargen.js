@@ -109,20 +109,58 @@ export function describeGrants(catalog, option) {
   return parts;
 }
 
-/** Apply a completed character creation onto a build, in place. */
+/** Reset the background to a blank slate, keeping the level and game mode. */
+export function clearBackground(build, mode = "campaign") {
+  build.mode = mode;
+  build.culture = null;
+  build.choices = {};
+  build.attributes = baseAttributes();
+  build.focus = {};
+  build.granted = { attributes: {}, focus: {}, unspentAttributes: 0, unspentFocus: 0 };
+  build.perks = new Set();
+  return build;
+}
+
+/**
+ * Apply character creation onto a build, in place.
+ *
+ * The wizard writes through live, so this has to be re-runnable: points the
+ * player placed by hand on top of the previous background are carried over as
+ * offsets, and perks are kept unless the new background puts them out of reach.
+ */
 export function seedBuild(build, culture, choices, mode = "campaign") {
   const start = apply(build.catalog, culture, choices, mode);
+
+  // What the player added beyond the previous background.
+  const extraAttributes = {};
+  for (const id of Object.keys(build.attributes)) {
+    extraAttributes[id] = Math.max(0, build.allocatedAttribute(id) - build.attributeFloor(id));
+  }
+  const extraFocus = {};
+  for (const [id, value] of Object.entries(build.focus)) {
+    extraFocus[id] = Math.max(0, value - build.focusFloor(id));
+  }
+
   build.mode = mode;
   build.culture = culture;
   build.choices = { ...choices };
-  build.attributes = start.attributes;
-  build.focus = { ...start.focus };
   build.granted = {
     attributes: { ...start.granted.attributes },
     focus: { ...start.granted.focus },
     unspentAttributes: start.granted.unspentAttributes,
     unspentFocus: start.granted.unspentFocus,
   };
-  build.perks = new Set();
+
+  build.attributes = { ...start.attributes };
+  for (const [id, extra] of Object.entries(extraAttributes)) {
+    if (extra) build.setAttribute(id, build.allocatedAttribute(id) + extra);
+  }
+
+  build.focus = { ...start.focus };
+  for (const [id, extra] of Object.entries(extraFocus)) {
+    if (extra) build.setFocus(id, build.focusIn(id) + extra);
+  }
+
+  build.dropUnreachablePerks();
   return build;
 }

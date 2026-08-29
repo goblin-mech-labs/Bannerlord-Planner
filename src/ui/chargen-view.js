@@ -5,14 +5,14 @@
 import * as chargen from "../model/chargen.js";
 import { ATTRIBUTES } from "../model/catalog.js";
 import { BASE_ATTRIBUTE } from "../model/build.js";
-import { append, clear, el, toast } from "./components.js";
+import { append, clear, el } from "./components.js";
 
 const CULTURE_STAGE = "__culture__";
 
 export class ChargenView {
-  constructor(store, onApply) {
+  constructor(store, onChange) {
     this.store = store;
-    this.onApply = onApply;
+    this.onChange = onChange;
     this.stage = CULTURE_STAGE;
     this.mode = "campaign";
     this.culture = null;
@@ -31,6 +31,11 @@ export class ChargenView {
       this.culture = build.culture;
       this.choices = { ...build.choices };
     }
+  }
+
+  /** Write the current answers straight onto the build, then re-render. */
+  commit() {
+    this.onChange(this.culture, this.choices, this.mode);
   }
 
   render() {
@@ -102,7 +107,7 @@ export class ChargenView {
             for (const menu of catalog.menus) {
               if (!menu.modes.includes(mode.id)) delete this.choices[menu.id];
             }
-            this.store.notify();
+            this.commit();
           },
         }, mode.name))),
       el("h3", { class: "panel-title" }, "Choose your culture"),
@@ -117,7 +122,7 @@ export class ChargenView {
             if (this.culture !== culture.id) this.choices = {};   // options are culture-gated
             this.culture = culture.id;
             this.stage = catalog.menusFor(this.mode)[0].id;
-            this.store.notify();
+            this.commit();
           },
         },
           culture.name,
@@ -140,7 +145,7 @@ export class ChargenView {
             const stages = catalog.menusFor(this.mode);
             const next = stages[stages.indexOf(menu) + 1];
             this.stage = next ? next.id : menu.id;
-            this.store.notify();
+            this.commit();
           },
         },
           el("div", {},
@@ -161,22 +166,17 @@ export class ChargenView {
       start ? this.tally(catalog, start) : null,
       el("div", { class: "wizard-foot" },
         el("span", { class: "note" }, complete
-          ? "Character creation complete."
-          : "Answer every stage to carry these choices into the skill tree."),
-        el("div", { style: "display:flex;gap:8px" },
-          el("button", {
-            type: "button", class: "ghost-button",
-            onclick: () => { this.culture = null; this.choices = {}; this.stage = CULTURE_STAGE; this.store.notify(); },
-          }, "Start over"),
-          el("button", {
-            type: "button", class: "ghost-button", disabled: !this.culture,
-            onclick: () => {
-              this.onApply(this.culture, this.choices, this.mode);
-              toast(complete
-                ? "Starting stats applied to the skill tree"
-                : "Applied so far — unanswered stages grant nothing");
-            },
-          }, "Apply to skill tree"))));
+          ? "Character creation complete — the skill tree is following along."
+          : "Every choice updates the skill tree as you make it."),
+        el("button", {
+          type: "button", class: "ghost-button",
+          onclick: () => {
+            this.culture = null;
+            this.choices = {};
+            this.stage = CULTURE_STAGE;
+            this.commit();
+          },
+        }, "Start over")));
   }
 
   tally(catalog, start) {

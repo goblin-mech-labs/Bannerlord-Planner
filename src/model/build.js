@@ -68,7 +68,8 @@ export class Build {
    * matching HeroDeveloper.SetInitialFocusAndAttributePoints.
    */
   get attributePointsSpent() {
-    const total = ATTRIBUTES.reduce((n, a) => n + (this.attributes[a.id] ?? BASE_ATTRIBUTE), 0);
+    // Perk bonuses are free; only allocated points are charged.
+    const total = ATTRIBUTES.reduce((n, a) => n + this.allocatedAttribute(a.id), 0);
     return total - this.grantedAttributePoints;
   }
 
@@ -83,27 +84,51 @@ export class Build {
 
   // ------------------------------------------------------------ per-skill
 
-  attribute(id) { return this.attributes[id] ?? BASE_ATTRIBUTE; }
+  /** Points allocated by hand and by character creation, before perk bonuses. */
+  allocatedAttribute(id) { return this.attributes[id] ?? BASE_ATTRIBUTE; }
+
+  /**
+   * Attributes granted outright by chosen perks - Athletics Strong/Steady/
+   * Durable and the three Smithing ones. They feed straight back into skill
+   * caps, so taking Durable raises what Athletics itself can reach.
+   */
+  attributeBonus(id) {
+    let bonus = 0;
+    for (const perk of this.selectedPerks()) {
+      if (perk.attributeBonus?.attribute === id) bonus += perk.attributeBonus.value;
+    }
+    return bonus;
+  }
+
+  /** The effective attribute: what every cap and learning formula reads. */
+  attribute(id) { return this.allocatedAttribute(id) + this.attributeBonus(id); }
+
+  /** Effective attributes as a plain object, for the rules functions. */
+  get effectiveAttributes() {
+    return Object.fromEntries(ATTRIBUTES.map((a) => [a.id, this.attribute(a.id)]));
+  }
+
   focusIn(skillId) { return this.focus[skillId] ?? 0; }
 
   /**
-   * The highest level this build can actually reach in a skill.
-   *
-   * That is the learning limit: past it the learning rate collapses, so it is
-   * the practical ceiling for a plan. Skill levels are therefore derived from
-   * attributes and focus rather than set by hand.
+   * The highest level this build can reach: the point where the learning rate
+   * reaches zero. Skill levels are derived from attributes and focus rather
+   * than set by hand.
    */
-  skillValue(skillId) { return Math.floor(this.learningLimit(skillId)); }
-
-  learningLimit(skillId) {
-    return this.rules.learningLimit(
-      this.catalog.skill(skillId), this.attributes, this.focusIn(skillId));
+  skillValue(skillId) {
+    return this.rules.maxSkillLevel(
+      this.catalog.skill(skillId), this.effectiveAttributes, this.focusIn(skillId));
   }
 
-  learningRate(skillId) {
+  /** The soft limit, past which experience slows sharply. */
+  learningLimit(skillId) {
+    return this.rules.learningLimit(
+      this.catalog.skill(skillId), this.effectiveAttributes, this.focusIn(skillId));
+  }
+
+  learningRate(skillId, atValue = this.skillValue(skillId)) {
     return this.rules.learningRate(
-      this.catalog.skill(skillId), this.attributes, this.focusIn(skillId),
-      this.skillValue(skillId));
+      this.catalog.skill(skillId), this.effectiveAttributes, this.focusIn(skillId), atValue);
   }
 
   // ------------------------------------------------------------ mutation
@@ -174,13 +199,22 @@ export class Build {
     return this;
   }
 
-  /** Lowering an attribute or focus can put a chosen perk out of reach. */
+  /**
+   * Lowering an attribute or focus can put a chosen perk out of reach - and
+   * dropping a perk that granted an attribute can cascade into others, so this
+   * repeats until nothing more falls out.
+   */
   dropUnreachablePerks() {
-    for (const id of [...this.perks]) {
-      const perk = this.catalog.perk(id);
-      if (perk && this.skillValue(perk.skill) < perk.requiredSkill) {
-        this.perks.delete(id);
+    for (let pass = 0; pass < 8; pass++) {
+      let dropped = false;
+      for (const id of [...this.perks]) {
+        const perk = this.catalog.perk(id);
+        if (perk && this.skillValue(perk.skill) < perk.requiredSkill) {
+          this.perks.delete(id);
+          dropped = true;
+        }
       }
+      if (!dropped) return;
     }
   }
 

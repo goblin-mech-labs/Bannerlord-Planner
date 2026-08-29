@@ -88,6 +88,23 @@ def format_value(value, increment):
     return str(int(value)) if value == int(value) else ("%g" % round(value, 4))
 
 
+ATTRIBUTE_EFFECT = re.compile(
+    r"^\{VALUE\} (Vigor|Control|Endurance|Cunning|Social|Intelligence) attribute\.?$")
+
+
+def attribute_bonus(effects):
+    """Perks such as Athletics 'Strong' raise an attribute outright.
+
+    They read `{VALUE} Vigor attribute.` as a flat Personal effect, so the
+    planner can fold them back into the attribute that drives skill caps.
+    """
+    for e in effects:
+        m = ATTRIBUTE_EFFECT.match(e["description"])
+        if m and e["role"] == "Personal" and e["increment"] == "Add":
+            return {"attribute": m.group(1), "value": int(e["value"])}
+    return None
+
+
 def effect(desc_literal, role_token, value_token, increment_token):
     desc_id, desc = parse_text_literal(desc_literal)
     if desc is None:
@@ -127,6 +144,8 @@ def extract_perks(skills):
             tier_match = re.search(r"GetTierCost\((\d+)\)", parts[2])
             tier = int(tier_match.group(1))
             alt = re.sub(r"^\(\s*PerkObject\s*\)\s*", "", parts[3].strip())
+            effects = [e for e in (effect(*parts[4:8]),
+                                   effect(*parts[8:12]) if len(parts) >= 12 else None) if e]
             perks.append({
                 "id": field_to_id.get(receiver, receiver.lstrip("_")),
                 "field": receiver,
@@ -136,9 +155,8 @@ def extract_perks(skills):
                 "tier": tier,
                 "requiredSkill": TIER_SKILL_REQUIREMENTS[tier - 1],
                 "alternativeField": None if alt == "null" else alt,
-                "effects": [e for e in (effect(*parts[4:8]),
-                                        effect(*parts[8:12]) if len(parts) >= 12 else None)
-                            if e],
+                "effects": effects,
+                "attributeBonus": attribute_bonus(effects),
             })
 
     for perk in perks:                                   # resolve pairing by id
@@ -151,6 +169,16 @@ def extract_perks(skills):
 
 def extract_rules():
     text = read("DefaultCharacterDevelopmentModel.cs")
+    # NavalCharacterDevelopmentModel delegates every formula to the base model
+    # but overrides FocusPointsAtStart => BaseModel.FocusPointsAtStart + 6.
+    naval_focus = 0
+    try:
+        naval = read("NavalCharacterDevelopmentModel.cs")
+        m = re.search(r"AdditionalFocusPointsAtStart\s*=\s*(\d+)", naval)
+        if m and "FocusPointsAtStart + " in naval:
+            naval_focus = int(m.group(1))
+    except OSError:
+        pass
 
     def const(name, pattern=r"=>\s*(\d+);"):
         m = re.search(r"\b" + name + r"\s*" + pattern, text)
@@ -162,7 +190,9 @@ def extract_rules():
         "attributePointsAtStart": const("AttributePointsAtStart"),
         "levelsPerAttributePoint": const("LevelsPerAttributePoint"),
         "focusPointsPerLevel": const("FocusPointsPerLevel"),
-        "focusPointsAtStart": const("FocusPointsAtStart"),
+        "focusPointsAtStart": const("FocusPointsAtStart") + naval_focus,
+        "focusPointsAtStartBase": const("FocusPointsAtStart"),
+        "focusPointsAtStartExpansion": naval_focus,
         "minSkillRequiredForEpicPerkBonus": const("MinSkillRequiredForEpicPerkBonus"),
         "maxSkillRequiredForEpicPerkBonus": const("MaxSkillRequiredForEpicPerkBonus"),
         "tierSkillRequirements": TIER_SKILL_REQUIREMENTS,

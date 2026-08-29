@@ -25,6 +25,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedBasher"
  },
  {
@@ -53,6 +54,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedWrappedHandles"
  },
  {
@@ -81,6 +83,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedSwiftStrike"
  },
  {
@@ -109,6 +112,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedToBeBlunt"
  },
  {
@@ -137,6 +141,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedShieldBearer"
  },
  {
@@ -165,6 +170,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedCavalry"
  },
  {
@@ -193,6 +199,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedDuelist"
  },
  {
@@ -221,6 +228,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedTrainer"
  },
  {
@@ -249,6 +257,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedArrowCatcher"
  },
  {
@@ -277,6 +286,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedShieldWall"
  },
  {
@@ -305,6 +315,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedCorpsACorps"
  },
  {
@@ -333,6 +344,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedMilitaryTradition"
  },
  {
@@ -361,6 +373,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedLeadByExample"
  },
  {
@@ -389,6 +402,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedStandUnited"
  },
  {
@@ -417,6 +431,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedFleetOfFoot"
  },
  {
@@ -445,6 +460,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedSteelCoreShields"
  },
  {
@@ -473,6 +489,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedUnwaveringDefense"
  },
  {
@@ -501,6 +518,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedDeadlyPurpose"
  },
  {
@@ -529,6 +547,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedChinkInTheArmor"
  },
  {
@@ -557,6 +576,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OneHandedPrestige"
  },
  {
@@ -585,6 +605,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -613,6 +634,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedWoodChopper"
  },
  {
@@ -641,6 +663,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedStrongGrip"
  },
  {
@@ -669,6 +692,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedHeadBasher"
  },
  {
@@ -697,6 +721,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedOnTheEdge"
  },
  {
@@ -725,6 +750,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedBaptisedInBlood"
  },
  {
@@ -753,6 +779,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedShowOfStrength"
  },
  {
@@ -781,6 +808,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedShieldBreaker"
  },
  {
@@ -809,6 +837,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedBeastSlayer"
  },
  {
@@ -837,6 +866,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedConfidence"
  },
  {
@@ -865,6 +895,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedBerserker"
  },
  {
@@ -893,6 +924,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -921,6 +953,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedHope"
  },
  {
@@ -949,6 +982,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedTerror"
  },
  {
@@ -977,6 +1011,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedThickHides"
  },
  {
@@ -1005,6 +1040,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedRecklessCharge"
  },
  {
@@ -1033,6 +1069,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedVandal"
  },
  {
@@ -1061,6 +1098,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TwoHandedBladeMaster"
  },
  {
@@ -1089,6 +1127,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -1117,6 +1156,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmCavalry"
  },
  {
@@ -1145,6 +1185,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmPikeman"
  },
  {
@@ -1173,6 +1214,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmKeepAtBay"
  },
  {
@@ -1201,6 +1243,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmBraced"
  },
  {
@@ -1229,6 +1272,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmCleanThrust"
  },
  {
@@ -1257,6 +1301,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmSwiftSwing"
  },
  {
@@ -1285,6 +1330,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmHardKnock"
  },
  {
@@ -1313,6 +1359,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmFootwork"
  },
  {
@@ -1341,6 +1388,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmLancer"
  },
  {
@@ -1369,6 +1417,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmSteadKiller"
  },
  {
@@ -1397,6 +1446,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmGuards"
  },
  {
@@ -1425,6 +1475,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmSkewer"
  },
  {
@@ -1453,6 +1504,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmPhalanx"
  },
  {
@@ -1481,6 +1533,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmStandardBearer"
  },
  {
@@ -1509,6 +1562,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmDrills"
  },
  {
@@ -1537,6 +1591,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmHardyFrontline"
  },
  {
@@ -1565,6 +1620,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmUnstoppableForce"
  },
  {
@@ -1593,6 +1649,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmSureFooted"
  },
  {
@@ -1621,6 +1678,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmSharpenTheTip"
  },
  {
@@ -1649,6 +1707,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PolearmCounterweight"
  },
  {
@@ -1677,6 +1736,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -1705,6 +1765,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowDeadAim"
  },
  {
@@ -1733,6 +1794,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowBowControl"
  },
  {
@@ -1761,6 +1823,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowNockingPoint"
  },
  {
@@ -1789,6 +1852,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowBodkin"
  },
  {
@@ -1817,6 +1881,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowQuickAdjustments"
  },
  {
@@ -1845,6 +1910,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowRapidFire"
  },
  {
@@ -1873,6 +1939,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowMountedArchery"
  },
  {
@@ -1901,6 +1968,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowMerryMen"
  },
  {
@@ -1929,6 +1997,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowStrongBows"
  },
  {
@@ -1957,6 +2026,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowTrainer"
  },
  {
@@ -1985,6 +2055,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowHunterClan"
  },
  {
@@ -2013,6 +2084,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowDiscipline"
  },
  {
@@ -2041,6 +2113,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowEagleEye"
  },
  {
@@ -2069,6 +2142,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowSkirmishPhaseMaster"
  },
  {
@@ -2097,6 +2171,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowRenownedArcher"
  },
  {
@@ -2125,6 +2200,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowBullsEye"
  },
  {
@@ -2153,6 +2229,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowDeepQuivers"
  },
  {
@@ -2181,6 +2258,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowHorseMaster"
  },
  {
@@ -2209,6 +2287,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowRangersSwiftness"
  },
  {
@@ -2237,6 +2316,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BowQuickDraw"
  },
  {
@@ -2265,6 +2345,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -2293,6 +2374,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowMarksmen"
  },
  {
@@ -2321,6 +2403,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowPiercer"
  },
  {
@@ -2349,6 +2432,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowWindWinder"
  },
  {
@@ -2377,6 +2461,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowUnhorser"
  },
  {
@@ -2405,6 +2490,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowSheriff"
  },
  {
@@ -2433,6 +2519,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowDonkeysSwiftness"
  },
  {
@@ -2461,6 +2548,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowRenownMarksmen"
  },
  {
@@ -2489,6 +2577,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowPeasantLeader"
  },
  {
@@ -2517,6 +2606,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowPuncture"
  },
  {
@@ -2545,6 +2635,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowFletcher"
  },
  {
@@ -2573,6 +2664,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowDeftHands"
  },
  {
@@ -2601,6 +2693,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowLooseAndMove"
  },
  {
@@ -2629,6 +2722,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowMountedCrossbowman"
  },
  {
@@ -2657,6 +2751,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowCounterFire"
  },
  {
@@ -2685,6 +2780,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowLongShots"
  },
  {
@@ -2713,6 +2809,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowSteady"
  },
  {
@@ -2741,6 +2838,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowPavise"
  },
  {
@@ -2769,6 +2867,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowHammerBolts"
  },
  {
@@ -2797,6 +2896,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowBoltenGuard"
  },
  {
@@ -2825,6 +2925,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrossbowTerror"
  },
  {
@@ -2853,6 +2954,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -2881,6 +2983,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingShieldBreaker"
  },
  {
@@ -2909,6 +3012,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingQuickDraw"
  },
  {
@@ -2937,6 +3041,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingFlexibleFighter"
  },
  {
@@ -2965,6 +3070,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingHunter"
  },
  {
@@ -2993,6 +3099,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingWellPrepared"
  },
  {
@@ -3021,6 +3128,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingMountedSkirmisher"
  },
  {
@@ -3049,6 +3157,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingKnockOff"
  },
  {
@@ -3077,6 +3186,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingRunningThrow"
  },
  {
@@ -3105,6 +3215,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingSaddlebags"
  },
  {
@@ -3133,6 +3244,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingSkirmisher"
  },
  {
@@ -3161,6 +3273,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingLastHit"
  },
  {
@@ -3189,6 +3302,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingFocus"
  },
  {
@@ -3217,6 +3331,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingSlingingCompetitions"
  },
  {
@@ -3245,6 +3360,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingHeadHunter"
  },
  {
@@ -3273,6 +3389,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingSplinters"
  },
  {
@@ -3301,6 +3418,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingResourceful"
  },
  {
@@ -3329,6 +3447,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingLongReach"
  },
  {
@@ -3357,6 +3476,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingPerfectTechnique"
  },
  {
@@ -3385,6 +3505,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingImpale"
  },
  {
@@ -3413,6 +3534,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ThrowingWeakSpot"
  },
  {
@@ -3441,6 +3563,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -3469,6 +3592,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingNimbleStead"
  },
  {
@@ -3497,6 +3621,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingFullSpeed"
  },
  {
@@ -3525,6 +3650,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingVeterinary"
  },
  {
@@ -3553,6 +3679,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingWellStraped"
  },
  {
@@ -3581,6 +3708,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingDeeperSacks"
  },
  {
@@ -3609,6 +3737,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingNomadicTraditions"
  },
  {
@@ -3637,6 +3766,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingSweepingWind"
  },
  {
@@ -3665,6 +3795,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingSagittarius"
  },
  {
@@ -3693,6 +3824,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -3721,6 +3853,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingHorseArcher"
  },
  {
@@ -3749,6 +3882,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingMountedWarrior"
  },
  {
@@ -3777,6 +3911,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingBreeder"
  },
  {
@@ -3805,6 +3940,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingShepherd"
  },
  {
@@ -3833,6 +3969,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingAnnoyingBuzz"
  },
  {
@@ -3861,6 +3998,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingThunderousCharge"
  },
  {
@@ -3889,6 +4027,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingCavalryTactics"
  },
  {
@@ -3917,6 +4056,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingMountedPatrols"
  },
  {
@@ -3945,6 +4085,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingToughSteed"
  },
  {
@@ -3973,6 +4114,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RidingDauntlessSteed"
  },
  {
@@ -3993,6 +4135,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -4021,6 +4164,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsWellBuilt"
  },
  {
@@ -4049,6 +4193,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsMorningExercise"
  },
  {
@@ -4077,6 +4222,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsFormFittingArmor"
  },
  {
@@ -4105,6 +4251,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsFury"
  },
  {
@@ -4133,6 +4280,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsStamina"
  },
  {
@@ -4161,6 +4309,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsImposingStature"
  },
  {
@@ -4189,6 +4338,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsPowerful"
  },
  {
@@ -4217,6 +4367,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsSprint"
  },
  {
@@ -4245,6 +4396,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsBraced"
  },
  {
@@ -4273,6 +4425,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsSurgingBlow"
  },
  {
@@ -4301,6 +4454,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsAGoodDaysRest"
  },
  {
@@ -4329,6 +4483,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsWalkItOff"
  },
  {
@@ -4357,6 +4512,10 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": {
+   "attribute": "Endurance",
+   "value": 1
+  },
   "alternative": "AthleticsEnergetic"
  },
  {
@@ -4385,6 +4544,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsDurable"
  },
  {
@@ -4413,6 +4573,10 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": {
+   "attribute": "Control",
+   "value": 1
+  },
   "alternative": "AthleticsStrong"
  },
  {
@@ -4441,6 +4605,10 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": {
+   "attribute": "Vigor",
+   "value": 1
+  },
   "alternative": "AthleticsSteady"
  },
  {
@@ -4469,6 +4637,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsStrongArms"
  },
  {
@@ -4497,6 +4666,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsStrongLegs"
  },
  {
@@ -4525,6 +4695,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsIgnorePain"
  },
  {
@@ -4553,6 +4724,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AthleticsSpartan"
  },
  {
@@ -4581,6 +4753,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -4601,6 +4774,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharcoalYield"
  },
  {
@@ -4621,6 +4795,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "IronYield"
  },
  {
@@ -4641,6 +4816,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CuriousSmelter"
  },
  {
@@ -4661,6 +4837,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "SteelMaker"
  },
  {
@@ -4681,6 +4858,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CuriousSmith"
  },
  {
@@ -4701,6 +4879,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "SteelMaker2"
  },
  {
@@ -4729,6 +4908,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "SteelMaker3"
  },
  {
@@ -4757,6 +4937,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ExperiencedSmith"
  },
  {
@@ -4777,6 +4958,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PracticalSmelter"
  },
  {
@@ -4797,6 +4979,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PracticalRefiner"
  },
  {
@@ -4817,6 +5000,10 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": {
+   "attribute": "Vigor",
+   "value": 1
+  },
   "alternative": "StrongSmith"
  },
  {
@@ -4837,6 +5024,10 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": {
+   "attribute": "Control",
+   "value": 1
+  },
   "alternative": "VigorousSmith"
  },
  {
@@ -4857,6 +5048,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ArtisanSmith"
  },
  {
@@ -4877,6 +5069,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PracticalSmith"
  },
  {
@@ -4897,6 +5090,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -4917,6 +5111,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EnduringSmith"
  },
  {
@@ -4937,6 +5132,10 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": {
+   "attribute": "Endurance",
+   "value": 1
+  },
   "alternative": "WeaponMasterSmith"
  },
  {
@@ -4957,6 +5156,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CraftingSharpenedTip"
  },
  {
@@ -4977,6 +5177,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CraftingSharpenedEdge"
  },
  {
@@ -4997,6 +5198,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -5025,6 +5227,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingNightRunner"
  },
  {
@@ -5053,6 +5256,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingDayTraveler"
  },
  {
@@ -5081,6 +5285,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingWaterDiviner"
  },
  {
@@ -5109,6 +5314,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingPathfinder"
  },
  {
@@ -5137,6 +5343,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingDesertBorn"
  },
  {
@@ -5165,6 +5372,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingForestKin"
  },
  {
@@ -5193,6 +5401,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingUnburdened"
  },
  {
@@ -5221,6 +5430,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingForcedMarch"
  },
  {
@@ -5249,6 +5459,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingRanger"
  },
  {
@@ -5277,6 +5488,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingTracker"
  },
  {
@@ -5305,6 +5517,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingPatrols"
  },
  {
@@ -5333,6 +5546,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingMountedScouts"
  },
  {
@@ -5361,6 +5575,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingBeastWhisperer"
  },
  {
@@ -5389,6 +5604,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingForagers"
  },
  {
@@ -5417,6 +5633,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingRumourNetwork"
  },
  {
@@ -5445,6 +5662,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingVillageNetwork"
  },
  {
@@ -5473,6 +5691,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingKeenSight"
  },
  {
@@ -5501,6 +5720,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingVantagePoint"
  },
  {
@@ -5529,6 +5749,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingRearguard"
  },
  {
@@ -5557,6 +5778,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ScoutingVanguard"
  },
  {
@@ -5577,6 +5799,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -5605,6 +5828,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsLooseFormations"
  },
  {
@@ -5633,6 +5857,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsTightFormations"
  },
  {
@@ -5661,6 +5886,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsDecisiveBattle"
  },
  {
@@ -5689,6 +5915,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsExtendedSkirmish"
  },
  {
@@ -5717,6 +5944,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsHordeLeader"
  },
  {
@@ -5745,6 +5973,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsSmallUnitTactics"
  },
  {
@@ -5773,6 +6002,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsCoaching"
  },
  {
@@ -5801,6 +6031,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsLawkeeper"
  },
  {
@@ -5829,6 +6060,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsImproviser"
  },
  {
@@ -5857,6 +6089,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsSwiftRegroup"
  },
  {
@@ -5885,6 +6118,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsCallToArms"
  },
  {
@@ -5913,6 +6147,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsOnTheMarch"
  },
  {
@@ -5941,6 +6176,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsMakeThemPay"
  },
  {
@@ -5969,6 +6205,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsPickThemOfTheWalls"
  },
  {
@@ -5997,6 +6234,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsEncirclement"
  },
  {
@@ -6025,6 +6263,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsEliteReserves"
  },
  {
@@ -6053,6 +6292,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsBesieged"
  },
  {
@@ -6081,6 +6321,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsPreBattleManeuvers"
  },
  {
@@ -6109,6 +6350,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsGensdarmes"
  },
  {
@@ -6137,6 +6379,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TacticsCounteroffensive"
  },
  {
@@ -6157,6 +6400,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -6185,6 +6429,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RoguerySweetTalker"
  },
  {
@@ -6213,6 +6458,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryNoRestForTheWicked"
  },
  {
@@ -6241,6 +6487,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryDeepPockets"
  },
  {
@@ -6269,6 +6516,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryTwoFaced"
  },
  {
@@ -6297,6 +6545,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryKnowHow"
  },
  {
@@ -6325,6 +6574,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryInBestLight"
  },
  {
@@ -6353,6 +6603,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryManhunter"
  },
  {
@@ -6381,6 +6632,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryPromises"
  },
  {
@@ -6409,6 +6661,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryWhiteLies"
  },
  {
@@ -6437,6 +6690,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryScarface"
  },
  {
@@ -6465,6 +6719,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryPartnersInCrime"
  },
  {
@@ -6493,6 +6748,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RoguerySmugglerConnections"
  },
  {
@@ -6521,6 +6777,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RoguerySaltTheEarth"
  },
  {
@@ -6549,6 +6806,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryOneOfTheFamily"
  },
  {
@@ -6577,6 +6835,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryRansomBroker"
  },
  {
@@ -6605,6 +6864,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryCarver"
  },
  {
@@ -6633,6 +6893,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryDirtyFighting"
  },
  {
@@ -6661,6 +6922,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryArmsDealer"
  },
  {
@@ -6689,6 +6951,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryFleetFooted"
  },
  {
@@ -6717,6 +6980,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RogueryDashAndSlash"
  },
  {
@@ -6737,6 +7001,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -6765,6 +7030,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmSelfPromoter"
  },
  {
@@ -6793,6 +7059,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmVirile"
  },
  {
@@ -6821,6 +7088,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmWarlord"
  },
  {
@@ -6849,6 +7117,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmOratory"
  },
  {
@@ -6877,6 +7146,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmMeaningfulFavors"
  },
  {
@@ -6905,6 +7175,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmForgivableGrievances"
  },
  {
@@ -6933,6 +7204,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmYoungAndRespectful"
  },
  {
@@ -6961,6 +7233,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmInBloom"
  },
  {
@@ -6989,6 +7262,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmFlexibleEthics"
  },
  {
@@ -7017,6 +7291,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmFirebrand"
  },
  {
@@ -7045,6 +7320,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmSlickNegotiator"
  },
  {
@@ -7073,6 +7349,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmEffortForThePeople"
  },
  {
@@ -7101,6 +7378,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmTribute"
  },
  {
@@ -7129,6 +7407,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmGoodNatured"
  },
  {
@@ -7157,6 +7436,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmNaturalLeader"
  },
  {
@@ -7185,6 +7465,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmMoralLeader"
  },
  {
@@ -7213,6 +7494,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmParade"
  },
  {
@@ -7241,6 +7523,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CharmPublicSpeaker"
  },
  {
@@ -7269,6 +7552,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -7289,6 +7573,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -7317,6 +7602,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipRaiseTheMeek"
  },
  {
@@ -7345,6 +7631,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipCombatTips"
  },
  {
@@ -7373,6 +7660,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipStoutDefender"
  },
  {
@@ -7401,6 +7689,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipFerventAttacker"
  },
  {
@@ -7429,6 +7718,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipHeroicLeader"
  },
  {
@@ -7457,6 +7747,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipAuthority"
  },
  {
@@ -7485,6 +7776,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipFamousCommander"
  },
  {
@@ -7513,6 +7805,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipLoyaltyAndHonor"
  },
  {
@@ -7541,6 +7834,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipLeaderOfMasses"
  },
  {
@@ -7569,6 +7863,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipPresence"
  },
  {
@@ -7597,6 +7892,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipCitizenMilitia"
  },
  {
@@ -7625,6 +7921,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipVeteransRespect"
  },
  {
@@ -7653,6 +7950,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipUpliftingSpirit"
  },
  {
@@ -7681,6 +7979,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipInspiringLeader"
  },
  {
@@ -7709,6 +8008,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipLeadByExample"
  },
  {
@@ -7737,6 +8037,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipTrustedCommander"
  },
  {
@@ -7765,6 +8066,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipGreatLeader"
  },
  {
@@ -7793,6 +8095,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipMakeADifference"
  },
  {
@@ -7821,6 +8124,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipTalentMagnet"
  },
  {
@@ -7849,6 +8153,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "LeadershipWePledgeOurSwords"
  },
  {
@@ -7869,6 +8174,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -7897,6 +8203,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeWholeSeller"
  },
  {
@@ -7925,6 +8232,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeAppraiser"
  },
  {
@@ -7953,6 +8261,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeMarketDealer"
  },
  {
@@ -7981,6 +8290,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeCaravanMaster"
  },
  {
@@ -8009,6 +8319,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeLocalConnection"
  },
  {
@@ -8037,6 +8348,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeDistributedGoods"
  },
  {
@@ -8065,6 +8377,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeTollgates"
  },
  {
@@ -8093,6 +8406,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeTravelingRumors"
  },
  {
@@ -8121,6 +8435,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeGreatInvestor"
  },
  {
@@ -8149,6 +8464,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeArtisanCommunity"
  },
  {
@@ -8177,6 +8493,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeContentTrades"
  },
  {
@@ -8205,6 +8522,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeMercenaryConnections"
  },
  {
@@ -8233,6 +8551,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeRapidDevelopment"
  },
  {
@@ -8261,6 +8580,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeInsurancePlans"
  },
  {
@@ -8289,6 +8609,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeTradeyardForeman"
  },
  {
@@ -8317,6 +8638,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeGranaryAccountant"
  },
  {
@@ -8345,6 +8667,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeSelfMadeMan"
  },
  {
@@ -8373,6 +8696,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeSwordForBarter"
  },
  {
@@ -8401,6 +8725,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeSpringOfGold"
  },
  {
@@ -8429,6 +8754,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeSilverTongue"
  },
  {
@@ -8457,6 +8783,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeTrickleDown"
  },
  {
@@ -8485,6 +8812,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TradeManOfMeans"
  },
  {
@@ -8505,6 +8833,7 @@
     "increment": "Invalid"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -8533,6 +8862,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardFrugal"
  },
  {
@@ -8561,6 +8891,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardWarriorsDiet"
  },
  {
@@ -8589,6 +8920,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardDrillSergant"
  },
  {
@@ -8617,6 +8949,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardSevenVeterans"
  },
  {
@@ -8645,6 +8978,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardStiffUpperLip"
  },
  {
@@ -8673,6 +9007,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardSweatshops"
  },
  {
@@ -8701,6 +9036,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardEfficientCampaigner"
  },
  {
@@ -8729,6 +9065,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardPaidInPromise"
  },
  {
@@ -8757,6 +9094,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardLogistician"
  },
  {
@@ -8785,6 +9123,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardForeseeableFuture"
  },
  {
@@ -8813,6 +9152,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardAidCorps"
  },
  {
@@ -8841,6 +9181,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardRelocation"
  },
  {
@@ -8869,6 +9210,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardSoundReserves"
  },
  {
@@ -8897,6 +9239,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardGourmet"
  },
  {
@@ -8925,6 +9268,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardContractors"
  },
  {
@@ -8953,6 +9297,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardForcedLabor"
  },
  {
@@ -8981,6 +9326,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardArenicosHorses"
  },
  {
@@ -9009,6 +9355,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardArenicosMules"
  },
  {
@@ -9037,6 +9384,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardMasterOfWarcraft"
  },
  {
@@ -9065,6 +9413,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StewardMasterOfPlanning"
  },
  {
@@ -9093,6 +9442,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -9121,6 +9471,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicinePreventiveMedicine"
  },
  {
@@ -9149,6 +9500,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineSelfMedication"
  },
  {
@@ -9177,6 +9529,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineWalkItOff"
  },
  {
@@ -9205,6 +9558,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineTriageTent"
  },
  {
@@ -9233,6 +9587,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineDoctorsOath"
  },
  {
@@ -9261,6 +9616,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineSledges"
  },
  {
@@ -9289,6 +9645,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineGoodLodging"
  },
  {
@@ -9317,6 +9674,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineBestMedicine"
  },
  {
@@ -9345,6 +9703,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineVeterinarian"
  },
  {
@@ -9373,6 +9732,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineSiegeMedic"
  },
  {
@@ -9401,6 +9761,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineBushDoctor"
  },
  {
@@ -9429,6 +9790,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicinePristineStreets"
  },
  {
@@ -9457,6 +9819,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineHealthAdvise"
  },
  {
@@ -9485,6 +9848,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicinePerfectHealth"
  },
  {
@@ -9513,6 +9877,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineCleanInfrastructure"
  },
  {
@@ -9541,6 +9906,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicinePhysicianOfPeople"
  },
  {
@@ -9569,6 +9935,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineFortitudeTonic"
  },
  {
@@ -9597,6 +9964,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineCheatDeath"
  },
  {
@@ -9625,6 +9993,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineBattleHardened"
  },
  {
@@ -9653,6 +10022,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MedicineHelpingHands"
  },
  {
@@ -9673,6 +10043,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -9701,6 +10072,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringTorsionEngines"
  },
  {
@@ -9729,6 +10101,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringScaffolds"
  },
  {
@@ -9757,6 +10130,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringDungeonArchitect"
  },
  {
@@ -9785,6 +10159,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringSiegeWorks"
  },
  {
@@ -9813,6 +10188,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringMilitaryPlanner"
  },
  {
@@ -9841,6 +10217,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringCarpenters"
  },
  {
@@ -9869,6 +10246,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringDreadfulSieger"
  },
  {
@@ -9897,6 +10275,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringWallBreaker"
  },
  {
@@ -9925,6 +10304,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringForeman"
  },
  {
@@ -9953,6 +10333,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringSalvager"
  },
  {
@@ -9981,6 +10362,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringSiegeEngineer"
  },
  {
@@ -10009,6 +10391,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringStonecutters"
  },
  {
@@ -10037,6 +10420,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringBattlements"
  },
  {
@@ -10065,6 +10449,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringCampBuilding"
  },
  {
@@ -10093,6 +10478,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringApprenticeship"
  },
  {
@@ -10121,6 +10507,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringEngineeringGuilds"
  },
  {
@@ -10149,6 +10536,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringImprovedTools"
  },
  {
@@ -10177,6 +10565,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringMetallurgy"
  },
  {
@@ -10205,6 +10594,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringArchitecturalCommissions"
  },
  {
@@ -10233,6 +10623,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EngineeringClockwork"
  },
  {
@@ -10253,6 +10644,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -10281,6 +10673,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PiratesProwess"
  },
  {
@@ -10309,6 +10702,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RollingThunder"
  },
  {
@@ -10337,6 +10731,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BruteForce"
  },
  {
@@ -10365,6 +10760,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Forceful"
  },
  {
@@ -10393,6 +10789,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "SunnyDisposition"
  },
  {
@@ -10421,6 +10818,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "AxeOfTheNorthwind"
  },
  {
@@ -10449,6 +10847,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "NavalFightingTraining"
  },
  {
@@ -10477,6 +10876,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EnemyOfTheWood"
  },
  {
@@ -10505,6 +10905,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RallyingCry"
  },
  {
@@ -10533,6 +10934,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TerrorOfTheSeas"
  },
  {
@@ -10561,6 +10963,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ShatteringVolley"
  },
  {
@@ -10589,6 +10992,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ShatteringBlow"
  },
  {
@@ -10617,6 +11021,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PirateHunter"
  },
  {
@@ -10645,6 +11050,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Arr"
  },
  {
@@ -10673,6 +11079,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "HomeTurfAdvantage"
  },
  {
@@ -10701,6 +11108,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BoardingMaster"
  },
  {
@@ -10729,6 +11137,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "CrewOfSpears"
  },
  {
@@ -10757,6 +11166,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MightyBlows"
  },
  {
@@ -10785,6 +11195,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "WarriorsMight"
  },
  {
@@ -10813,6 +11224,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TheSkysFury"
  },
  {
@@ -10841,6 +11253,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MasterShipwright"
  },
  {
@@ -10869,6 +11282,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MerchantPrince"
  },
  {
@@ -10897,6 +11311,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "WellStocked"
  },
  {
@@ -10925,6 +11340,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "StreamlinedOperations"
  },
  {
@@ -10953,6 +11369,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Optimization"
  },
  {
@@ -10981,6 +11398,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "NavalHorde"
  },
  {
@@ -11009,6 +11427,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "VeteransWisdom"
  },
  {
@@ -11037,6 +11456,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "GildedPurse"
  },
  {
@@ -11065,6 +11485,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "SpecialArrows"
  },
  {
@@ -11093,6 +11514,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ShipwrightsInsight"
  },
  {
@@ -11121,6 +11543,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Accuracytraining"
  },
  {
@@ -11149,6 +11572,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "SmoothOperator"
  },
  {
@@ -11177,6 +11601,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PopularCaptain"
  },
  {
@@ -11205,6 +11630,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "EfficientCaptain"
  },
  {
@@ -11233,6 +11659,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "BlessingsOfTheSea"
  },
  {
@@ -11261,6 +11688,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "PortAuthority"
  },
  {
@@ -11289,6 +11717,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Salvage"
  },
  {
@@ -11317,6 +11746,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ShipwrightsHand"
  },
  {
@@ -11345,6 +11775,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Resilience"
  },
  {
@@ -11373,6 +11804,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MerchantFleet"
  },
  {
@@ -11401,6 +11833,7 @@
     "increment": "(EffectIncrementType)(-1)"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  },
  {
@@ -11429,6 +11862,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "OldSaltsTouch"
  },
  {
@@ -11457,6 +11891,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MasterAngler"
  },
  {
@@ -11485,6 +11920,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "WindRider"
  },
  {
@@ -11513,6 +11949,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "GhostShip"
  },
  {
@@ -11541,6 +11978,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "NightRaider"
  },
  {
@@ -11569,6 +12007,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RiverRaider"
  },
  {
@@ -11597,6 +12036,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ShockAndAwe"
  },
  {
@@ -11625,6 +12065,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Windborne"
  },
  {
@@ -11653,6 +12094,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "RavenEye"
  },
  {
@@ -11681,6 +12123,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TheHelmsmansShield"
  },
  {
@@ -11709,6 +12152,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "FavorableTide"
  },
  {
@@ -11737,6 +12181,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "FairWinds"
  },
  {
@@ -11765,6 +12210,7 @@
     "increment": "(EffectIncrementType)(-1)"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ShoreMaster"
  },
  {
@@ -11793,6 +12239,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Unflinching"
  },
  {
@@ -11821,6 +12268,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "ChainToOars"
  },
  {
@@ -11849,6 +12297,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "FleetCommander"
  },
  {
@@ -11877,6 +12326,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "MasterAndCommander"
  },
  {
@@ -11905,6 +12355,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "Stormrider"
  },
  {
@@ -11933,6 +12384,7 @@
     "increment": "Add"
    }
   ],
+  "attributeBonus": null,
   "alternative": "SeaborneFortress"
  },
  {
@@ -11961,6 +12413,7 @@
     "increment": "AddFactor"
    }
   ],
+  "attributeBonus": null,
   "alternative": "TheCorsairsEdge"
  },
  {
@@ -11989,6 +12442,7 @@
     "increment": "(EffectIncrementType)(-1)"
    }
   ],
+  "attributeBonus": null,
   "alternative": null
  }
 ]

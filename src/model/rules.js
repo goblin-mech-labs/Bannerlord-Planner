@@ -49,6 +49,31 @@ export class Rules {
   }
 
   /**
+   * The hard ceiling: the level at which the learning rate reaches zero and the
+   * skill can gain no further experience.
+   *
+   * Not a separate game constant - it falls out of the two formulas above.
+   * Learning rate is base * (1 + attrF*avg + focusF*focus + overBase +
+   * overPerPoint*(skill - limit)), so it hits zero at
+   *
+   *     limit + (1 + attrF*avg + focusF*focus + overBase) / -overPerPoint
+   *
+   * With the shipped constants that reduces to 14*attr - 10 + 40*focus, which
+   * is the community attribute/focus cap table exactly, all sixty cells.
+   */
+  maxSkillLevel(skill, attributes, focus) {
+    const lr = this.data.learningRate;
+    const avg = this.averageAttribute(skill, attributes);
+    const limit = Math.round(this.learningLimit(skill, attributes, focus));
+    const headroom =
+      (1 + lr.attributeFactor * avg + lr.focusFactor * focus + lr.overLimitBase)
+      / -lr.overLimitPerPoint;
+    // The result is a whole number for whole attributes and focus, but the
+    // constants are binary fractions (0.4 / 0.1), so round rather than floor.
+    return Math.max(0, Math.round(limit + headroom));
+  }
+
+  /**
    * CalculateLearningRate. ExplainedNumber applies factors additively against
    * the base, i.e. base * (1 + sum(factors)), floored at zero.
    */

@@ -23,10 +23,20 @@ Then open <http://localhost:8123/>.
 - **Skill Tree** — all 21 skills including the three Warsails skills, laid out
   as the game does: attribute plaques, the skill grid (with the game's own
   icons), and a horizontal tier track of paired perk shields. Each skill sits
-  at the **highest level the build can actually reach** — its learning limit —
-  so perks light up exactly when your attributes and focus put them in range.
+  at the **highest level the build can actually reach**, so perks light up
+  exactly when your attributes and focus put them in range.
 - **Summary** — every chosen perk's effects aggregated and grouped by party
   role (Personal / Party Leader / Governor / Captain / …).
+- **Two ceilings, both shown** — a skill *learns freely* up to
+  `(attribute − 1) × 10 + focus × 30`, then slows sharply, and stops entirely
+  at `14 × attribute − 10 + focus × 40`. The second is the planner's skill
+  level. It is not a separate game constant: it is where the learning rate
+  formula reaches zero, and it reproduces the published attribute/focus cap
+  table in all sixty cells.
+- **Perks that grant attributes feed back in** — Athletics Strong / Steady /
+  Durable and the three Smithing ones raise an attribute outright, which lifts
+  the cap of every skill that attribute governs. Taking Durable adds 14 to
+  Athletics *and* Riding.
 - **Share and save** — the whole build encodes into the URL fragment; named
   builds are kept in `localStorage`.
 
@@ -53,6 +63,9 @@ Two details worth knowing, because both are easy to get wrong:
 - Character creation applies its grants with `checkUnspentPoints: false`, so
   those attribute and focus points are **free** — they never come out of the
   level budget. The planner tracks them separately and labels them.
+- Warsails raises the starting focus pool: `NavalCharacterDevelopmentModel`
+  delegates every formula to the base model but overrides `FocusPointsAtStart`
+  to `BaseModel.FocusPointsAtStart + 6`, so level 1 has 11 focus, not 5.
 - Every attribute starts at **2**, not 1 (`SetMainHeroInitialStats` calls
   `AddAttribute(attribute, 2, checkUnspentPoints: false)`), and those 12 points
   *are* charged to the 15-point starting pool — so a fresh character has 3 left

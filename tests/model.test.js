@@ -1,4 +1,4 @@
-import { assert, close, equal, test } from "./harness.js";
+import { assert, close, deepEqual, equal, test } from "./harness.js";
 import { Catalog } from "../src/model/catalog.js";
 import { Build } from "../src/model/build.js";
 import { Rules } from "../src/model/rules.js";
@@ -33,8 +33,12 @@ test("every perk tier holds one or two mutually exclusive perks", () => {
 // ---------------------------------------------------------------- rules
 
 test("point budgets match HeroDeveloper.SetupDefaultPoints", () => {
-  equal(rules.focusPointsForLevel(1), 5, "focus at level 1");
-  equal(rules.focusPointsForLevel(36), 40, "focus at level 36");
+  // Warsails' NavalCharacterDevelopmentModel overrides FocusPointsAtStart
+  // to BaseModel.FocusPointsAtStart + 6.
+  equal(catalog.rules.focusPointsAtStartBase, 5, "base game starts with 5");
+  equal(catalog.rules.focusPointsAtStartExpansion, 6, "Warsails adds 6");
+  equal(rules.focusPointsForLevel(1), 11, "focus at level 1");
+  equal(rules.focusPointsForLevel(36), 46, "focus at level 36");
   equal(rules.attributePointsForLevel(1), 15, "attributes at level 1");
   equal(rules.attributePointsForLevel(36), 23, "attributes at level 36");
   equal(rules.attributePointsForLevel(5), 16, "one extra point every four levels");
@@ -80,11 +84,11 @@ test("build tracks attribute and focus budgets", () => {
   equal(build.attributePointsLeft, 3, "left");
   build.setAttribute("Vigor", 5);
   equal(build.attributePointsSpent, 15, "after raising Vigor");
-  equal(build.focusPointsLeft, 5, "focus untouched");
+  equal(build.focusPointsLeft, 11, "focus untouched");
   build.setFocus("Roguery", 3);
-  equal(build.focusPointsLeft, 2, "focus spent");
+  equal(build.focusPointsLeft, 8, "focus spent");
   assert(!build.overspent, "still within budget");
-  build.setFocus("Bow", 5);
+  for (const skill of ["Bow", "Charm", "Trade", "Steward"]) build.setFocus(skill, 5);
   assert(build.overspent, "overspending is detected");
 });
 
@@ -131,40 +135,84 @@ test("the starting age stage adds to the point pools", () => {
   choices.narrative_age_selection_menu = elder.id;
   const build = chargen.seedBuild(new Build(catalog), "empire", choices, "sandbox");
   equal(build.attributePointsAvailable, 15 + 4, "pool includes the age grant");
-  equal(build.focusPointsAvailable, 5 + 8, "focus pool too");
+  equal(build.focusPointsAvailable, 11 + 8, "focus pool too");
+});
+
+test("the hard cap matches the attribute/focus table, all sixty cells", () => {
+  // The published cap table is 14*attribute - 10 + 40*focus. That is not a
+  // separate constant: it is where the learning rate reaches zero, given
+  // limit = (attr - 1)*10 + focus*30 and the rate's over-limit penalty.
+  const roguery = catalog.skill("Roguery");           // single attribute: Cunning
+  for (let attribute = 1; attribute <= 10; attribute++) {
+    for (let focus = 0; focus <= 5; focus++) {
+      const expected = 14 * attribute - 10 + 40 * focus;
+      equal(rules.maxSkillLevel(roguery, { Cunning: attribute }, focus), expected,
+        `attribute ${attribute}, focus ${focus}`);
+    }
+  }
+});
+
+test("the soft limit and the hard cap are different numbers", () => {
+  const roguery = catalog.skill("Roguery");
+  const attributes = { Cunning: 7 };
+  equal(rules.learningLimit(roguery, attributes, 5), 210, "learns freely to 210");
+  equal(rules.maxSkillLevel(roguery, attributes, 5), 288, "but can be pushed to 288");
+  // and the rate really does reach zero there
+  close(rules.learningRate(roguery, attributes, 5, 288), 0, 1e-9, "rate is zero at the cap");
+  assert(rules.learningRate(roguery, attributes, 5, 287) > 0, "and positive just below");
 });
 
 test("skill level is the ceiling the build can actually reach", () => {
-  // CalculateLearningLimit: max(0, (avgAttr - 1) * 10) + focus * 30
   const build = new Build(catalog);
-  equal(build.skillValue("Roguery"), 10, "base Cunning 2, no focus: (2 - 1) * 10");
+  equal(build.skillValue("Roguery"), 18, "base Cunning 2, no focus: 14*2 - 10");
   build.setAttribute("Cunning", 7);
-  equal(build.skillValue("Roguery"), 60, "(7 - 1) * 10");
+  equal(build.skillValue("Roguery"), 88, "14*7 - 10");
   build.setFocus("Roguery", 5);
-  equal(build.skillValue("Roguery"), 210, "plus 5 focus * 30");
-  equal(build.skillValue("Roguery"), Math.floor(build.learningLimit("Roguery")),
-    "the level is the limit");
+  equal(build.skillValue("Roguery"), 288, "plus 5 focus * 40");
 });
 
 test("naval skill ceilings use the mean of both attributes", () => {
   const build = new Build(catalog);            // Mariner: Endurance + Cunning
   build.setAttribute("Endurance", 3).setAttribute("Cunning", 7).setFocus("Mariner", 2);
-  equal(build.skillValue("Mariner"), 100, "((3+7)/2 - 1) * 10 + 2 * 30");
+  equal(build.skillValue("Mariner"), 14 * 5 - 10 + 80, "mean of 3 and 7 is 5");
+});
+
+test("perks that grant an attribute raise the caps they govern", () => {
+  // Athletics 'Durable' gives +1 Endurance, which Athletics itself is governed by.
+  const durable = catalog.perks.find((p) => p.name === "Durable");
+  assert(durable, "Durable is in the data");
+  deepEqual(durable.attributeBonus, { attribute: "Endurance", value: 1 }, "its bonus");
+
+  const build = new Build(catalog).setAttribute("Endurance", 10).setFocus("Athletics", 5);
+  const before = build.skillValue("Athletics");
+  assert(build.perkState(durable.id).available, "reachable at Endurance 10 with full focus");
+
+  build.selectPerk(durable.id);
+  equal(build.attributeBonus("Endurance"), 1, "bonus is counted");
+  equal(build.attribute("Endurance"), 11, "effective attribute rises above the allocation cap");
+  equal(build.allocatedAttribute("Endurance"), 10, "but the allocation is untouched");
+  equal(build.skillValue("Athletics"), before + 14, "and the cap rises by one attribute step");
+
+  // it lifts every other skill that attribute governs, too
+  assert(build.skillValue("Riding") > 0, "Riding is an Endurance skill");
+  equal(build.attributePointsSpent, new Build(catalog).setAttribute("Endurance", 10)
+    .attributePointsSpent, "the bonus costs no points");
 });
 
 test("perks unlock at their skill threshold", () => {
   const build = new Build(catalog);
   const perk = catalog.tiers("Roguery")[0][0]; // tier 1, needs 25
   equal(perk.requiredSkill, 25, "tier 1 threshold");
-  assert(!build.perkState(perk.id).available, "locked below threshold");
-  build.setAttribute("Cunning", 4);            // ceiling 30, clears the tier
+  equal(build.skillValue("Roguery"), 18, "base ceiling falls short");
+  assert(!build.perkState(perk.id).available, "so it is locked");
+  build.setAttribute("Cunning", 3);            // ceiling 32, clears the tier
   assert(build.perkState(perk.id).available, "unlocked once the ceiling reaches it");
   build.togglePerk(perk.id);
   assert(build.perkState(perk.id).selected, "selected");
 });
 
 test("choosing a perk clears its alternative", () => {
-  const build = new Build(catalog).setAttribute("Cunning", 6);
+  const build = new Build(catalog).setAttribute("Cunning", 6).setFocus("Roguery", 1);
   const [a, b] = catalog.tiers("Roguery")[1];
   assert(a && b, "tier 2 has two alternatives");
   build.selectPerk(a.id);
@@ -174,7 +222,7 @@ test("choosing a perk clears its alternative", () => {
 });
 
 test("an already-taken alternative can be switched to, not just blocked", () => {
-  const build = new Build(catalog).setAttribute("Cunning", 6);
+  const build = new Build(catalog).setAttribute("Cunning", 6).setFocus("Roguery", 1);
   const [a, b] = catalog.tiers("Roguery")[1];
   build.selectPerk(a.id);
 
@@ -188,12 +236,15 @@ test("an already-taken alternative can be switched to, not just blocked", () => 
 
 test("spending focus away drops perks it no longer supports", () => {
   const build = new Build(catalog).setAttribute("Cunning", 8).setFocus("Roguery", 2);
-  equal(build.skillValue("Roguery"), 130, "ceiling covers tier 5");
+  equal(build.skillValue("Roguery"), 182, "ceiling covers tier 4");
   const perk = catalog.tiers("Roguery")[3][0]; // needs 100
   build.selectPerk(perk.id);
   assert(build.perks.has(perk.id), "selected");
   build.setFocus("Roguery", 0);
-  equal(build.skillValue("Roguery"), 70, "ceiling drops");
+  equal(build.skillValue("Roguery"), 102, "ceiling drops but still covers it");
+  assert(build.perks.has(perk.id), "so the perk survives");
+  build.setAttribute("Cunning", 4);
+  equal(build.skillValue("Roguery"), 46, "now it does not");
   assert(!build.perks.has(perk.id), "and the perk is dropped");
 });
 
@@ -331,10 +382,35 @@ test("the campaign path grants no spare points, the sandbox one does", () => {
     fullPath("empire", "campaign"), "campaign");
   equal(campaign.granted.unspentAttributes, 0, "no loose attribute points");
   equal(campaign.attributePointsAvailable, 15, "so the pool is just the level budget");
+  equal(campaign.focusPointsAvailable, 11, "focus is the level budget too");
 
   const sandbox = chargen.seedBuild(new Build(catalog), "empire",
     fullPath("empire", "sandbox"), "sandbox");
   assert(sandbox.granted.unspentFocus > 0, "the age stage grants focus points");
+});
+
+test("re-seeding keeps perks and hand-placed points", () => {
+  const build = chargen.seedBuild(new Build(catalog), "empire", fullPath("empire"));
+  const attribute = Object.keys(build.granted.attributes)[0];
+  build.setAttribute(attribute, build.allocatedAttribute(attribute) + 2);
+  const raised = build.allocatedAttribute(attribute);
+
+  const perk = catalog.perks.find((p) => build.perkState(p.id).available);
+  build.selectPerk(perk.id);
+
+  // the wizard writes through again after another choice
+  chargen.seedBuild(build, "empire", fullPath("empire"));
+  equal(build.allocatedAttribute(attribute), raised, "hand-placed points carried over");
+  assert(build.perks.has(perk.id), "and the perk survived");
+});
+
+test("clearing the background resets to a blank character", () => {
+  const build = chargen.seedBuild(new Build(catalog), "nord", fullPath("nord"));
+  chargen.clearBackground(build);
+  equal(build.culture, null, "culture cleared");
+  equal(build.grantedFocusPoints, 0, "no granted focus");
+  equal(build.attribute("Vigor"), 2, "attributes back to base");
+  equal(build.perks.size, 0, "perks cleared");
 });
 
 test("the wizard reports the next unanswered stage", () => {

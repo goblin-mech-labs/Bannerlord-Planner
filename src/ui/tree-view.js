@@ -47,10 +47,12 @@ export class TreeView {
   }
 
   attributePlaque(build, attribute) {
-    const value = build.attribute(attribute.id);
+    const allocated = build.allocatedAttribute(attribute.id);
+    const bonus = build.attributeBonus(attribute.id);
+    const value = allocated + bonus;
     const floor = build.attributeFloor(attribute.id);
-    const canRaise = value < build.rules.maxAttribute;
-    const canLower = value > floor;
+    const canRaise = allocated < build.rules.maxAttribute;
+    const canLower = allocated > floor;
     return el("div", {
       class: "attribute-plaque",
       title: value === floor && floor > 2
@@ -58,18 +60,20 @@ export class TreeView {
         : null,
     },
       el("span", { class: "abbr" }, attribute.short),
-      el("span", { class: "value" }, value),
+      el("span", { class: "value" },
+        value,
+        bonus ? el("em", { class: "bonus", title: "granted by a chosen perk" }, `+${bonus}`) : null),
       el("div", { class: "steppers" },
         el("button", {
           type: "button", disabled: !canLower,
           "aria-label": `Lower ${attribute.id}`,
           title: canLower ? null : "Points from character creation cannot be reclaimed",
-          onclick: () => this.store.update((b) => b.setAttribute(attribute.id, value - 1)),
+          onclick: () => this.store.update((b) => b.setAttribute(attribute.id, allocated - 1)),
         }, "−"),
         el("button", {
           type: "button", disabled: !canRaise,
           "aria-label": `Raise ${attribute.id}`,
-          onclick: () => this.store.update((b) => b.setAttribute(attribute.id, value + 1)),
+          onclick: () => this.store.update((b) => b.setAttribute(attribute.id, allocated + 1)),
         }, "+")));
   }
 
@@ -106,7 +110,10 @@ export class TreeView {
     const value = build.skillValue(skill.id);
     const focus = build.focusIn(skill.id);
     const limit = Math.round(build.learningLimit(skill.id));
-    const rate = build.learningRate(skill.id);
+    // The rate at the cap is zero by definition, so show the rate while the
+    // skill is still learning freely - the number that actually differentiates
+    // one build from another.
+    const rate = build.learningRate(skill.id, 0);
 
     append(this.right,
       el("div", { class: "detail-head" },
@@ -141,10 +148,12 @@ export class TreeView {
           el("label", {}, skill.attributes.join(" + ")),
           el("b", {}, skill.attributes.map((a) => build.attribute(a)).join(" / "))),
         el("div", { class: "stat" },
+          el("label", {}, "Learns freely to"), el("b", {}, limit)),
+        el("div", { class: "stat" },
           el("label", {}, "Learning rate"), el("b", {}, `×${rate.toFixed(2)}`)),
         el("div", { class: "stat" },
-          el("label", {}, "XP to next"),
-          el("b", {}, number(build.rules.xpToNextSkillLevel(value))))),
+          el("label", {}, "XP to cap"),
+          el("b", {}, number(build.rules.xpForSkillLevel(value))))),
 
       el("p", { class: "prompt" }, this.ceilingNote(build, skill, value, focus)),
 
@@ -154,21 +163,26 @@ export class TreeView {
   /** Explain what the current ceiling is made of, and what would raise it. */
   ceilingNote(build, skill, value, focus) {
     const rules = build.rules;
-    const parts = [`${value} is the highest ${skill.name} this build can reach.`];
+    const limit = Math.round(build.learningLimit(skill.id));
+    const parts = [
+      `${value} is the highest ${skill.name} this build can reach — past ${limit} `
+      + `experience slows sharply, and at ${value} it stops entirely.`,
+    ];
 
     const spare = rules.maxFocusPerSkill - focus;
     if (spare > 0) {
-      const gain = rules.learningLimit(skill, build.attributes, rules.maxFocusPerSkill) - value;
-      parts.push(`${spare} more focus point${spare > 1 ? "s" : ""} would add ${Math.floor(gain)}.`);
+      const gain = rules.maxSkillLevel(
+        skill, build.effectiveAttributes, rules.maxFocusPerSkill) - value;
+      parts.push(`${spare} more focus point${spare > 1 ? "s" : ""} would add ${gain}.`);
     }
 
-    const raised = { ...build.attributes };
+    const raised = { ...build.effectiveAttributes };
     let lifted = false;
     for (const a of skill.attributes) {
       if (raised[a] < rules.maxAttribute) { raised[a] += 1; lifted = true; }
     }
     if (lifted) {
-      const gain = Math.floor(rules.learningLimit(skill, raised, focus)) - value;
+      const gain = rules.maxSkillLevel(skill, raised, focus) - value;
       if (gain > 0) {
         parts.push(`+1 ${skill.attributes.join(" and +1 ")} would add ${gain}.`);
       }
@@ -199,6 +213,7 @@ export class TreeView {
     const classes = ["perk"];
     if (state.selected) classes.push("selected");
     if (!state.available && !state.selected) classes.push("locked");
+    if (perk.attributeBonus) classes.push("grants-attribute");
 
     const node = el("button", {
       type: "button",
@@ -220,6 +235,11 @@ export class TreeView {
         el("li", {},
           el("span", { class: "role" }, `${roleLabel(effect.role)} — `),
           effect.text))),
+      perk.attributeBonus
+        ? el("div", { class: "req-note" },
+            `Raises ${perk.attributeBonus.attribute} by ${perk.attributeBonus.value}, `
+            + "which lifts every skill it governs")
+        : null,
       state.reason ? el("div", { class: "note" }, state.reason) : null,
       state.replaces
         ? el("div", { class: "req-note" }, `Choosing this replaces ${state.replaces}`)

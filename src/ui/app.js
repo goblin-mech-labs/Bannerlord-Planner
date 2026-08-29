@@ -45,10 +45,13 @@ export async function start(root) {
   const fromLink = share.fromLocation(catalog);
   const store = new Store(catalog, fromLink ?? new Build(catalog));
 
+  // The wizard writes through to the build on every choice, so the skill tree
+  // reflects character creation live rather than on an explicit apply.
   const chargenView = new ChargenView(store, (culture, choices, mode) => {
-    store.update((build) => chargenModel.seedBuild(build, culture, choices, mode));
-    app.tab = "tree";
-    store.notify();
+    store.update((build) => {
+      if (culture) chargenModel.seedBuild(build, culture, choices, mode);
+      else chargenModel.clearBackground(build, mode);
+    });
   });
   chargenView.syncFromBuild();
 
