@@ -41,34 +41,61 @@ Then open <http://localhost:8123/>.
   fragment; named builds are kept in `localStorage`; and **Export** writes a
   readable JSON file (`nord-sandbox-level-30.json`) that **Import** reads back.
 
-## Publishing to GitHub Pages
+## Publishing it free
 
-There is no build step, so Pages can serve the repository as-is.
+The planner is a plain static site — no build step, no dependencies, and every
+path in it is relative — so it runs unchanged on any static host. Nothing needs
+porting to move between them.
 
-**1. Push and enable Pages.**
+### Cloudflare Pages (recommended)
 
-```bash
-git remote add origin https://github.com/<you>/<repo>.git
-git push -u origin main
-```
+Free, and the only one of these without a bandwidth cap.
 
-Then **Settings → Pages → Build and deployment → Deploy from a branch**, choose
-`main` and `/ (root)`, and save. The site appears at
-`https://<you>.github.io/<repo>/` within a minute or two.
+1. Push the repository to GitHub (or GitLab).
+2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
+3. Pick the repo. **Framework preset: None. Build command: leave empty.
+   Build output directory: `/`.**
+4. Save and deploy. You get `https://<project>.pages.dev`.
 
-Every path in the app is relative, so it works under the `/<repo>/` subpath with
-no configuration. A `.nojekyll` file is included so Pages serves the files
-untouched instead of running them through Jekyll.
+### GitHub Pages
 
-**2. Collaborators.** Anyone cloning the repo gets a working planner straight
-away — `data/*.json` and `assets/icons/` are both committed. Regenerating either
-needs your own Bannerlord install and the steps below.
+Free for **public** repositories on the Free plan. Publishing Pages from a
+*private* repository is what requires a paid plan — if you hit a paywall, that
+is why, and making the repository public removes it.
 
-The repository contains TaleWorlds' content: the skill icons under
-`assets/icons/`, and the game's perk and narrative text in `data/*.json`. If you
-would rather not republish the artwork, add `assets/icons/` back to
-`.gitignore` — the planner probes for the icon set at startup and falls back to
-empty engraved frames when it is absent, so the site still looks deliberate.
+Push, then **Settings → Pages → Deploy from a branch**, choose `main` and
+`/ (root)`. The site appears at `https://<you>.github.io/<repo>/`. A `.nojekyll`
+file is included so Pages serves the files untouched rather than running them
+through Jekyll.
+
+### Netlify
+
+`netlify.toml` is included (publish `.`, no build command). Connect the repo at
+**Add new site → Import an existing project** and accept the detected settings.
+Free tier caps bandwidth at 100 GB/month.
+
+### Vercel
+
+`vercel.json` is included (no framework, no build, output `.`). Import the repo
+and deploy. Free tier caps bandwidth at 100 GB/month, and its free plan is for
+non-commercial use.
+
+### Anywhere else
+
+Any host that serves a folder works — Codeberg Pages, GitLab Pages, Surge,
+Render, an S3 bucket, or a LAN machine running `python -m http.server`. The only
+requirements are that `.json` and `.png` are served with normal MIME types and
+that the files keep their capitalisation (`OneHanded.png`, not `onehanded.png`),
+which every host above does.
+
+### What ships
+
+`data/*.json` and `assets/icons/` are both committed, so a clone deploys with
+data and artwork and no extra steps. That content is TaleWorlds' — the skill
+icons and the game's perk and narrative text. To publish without the artwork,
+add `assets/icons/` to `.gitignore`: the planner probes for the icon set at
+startup and falls back to empty engraved frames, so the site still looks
+deliberate rather than broken.
 
 ## Sharing a build
 

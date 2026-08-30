@@ -1,0 +1,7 @@
+# The planner is a plain static site: no build step, no dependencies.
+# Netlify just needs to publish the repository root as-is.
+[build]
+  publish = "."
+  command = ""
+
+# JSON and PNG are served with sensible defaults; nothing else to configure.
