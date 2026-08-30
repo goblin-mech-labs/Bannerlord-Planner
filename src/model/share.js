@@ -75,16 +75,15 @@ export function decode(catalog, text) {
   return new Build(catalog, state);
 }
 
-/** Read a build from `#b=...`, if present. */
+/**
+ * Read a build from `#b=...`, if present.
+ *
+ * The planner no longer produces these links - Export/Import is the sharing
+ * route - but links copied before that still open correctly.
+ */
 export function fromLocation(catalog, hash = globalThis.location?.hash ?? "") {
   const match = /[#&]b=([^&]+)/.exec(hash);
   return match ? decode(catalog, match[1]) : null;
-}
-
-export function toShareUrl(build, base = globalThis.location?.href ?? "") {
-  const url = new URL(base, "https://example.invalid");
-  url.hash = `b=${encode(build)}`;
-  return url.toString();
 }
 
 // Base64url over UTF-8, without depending on Node or a bundler.

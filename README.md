@@ -25,8 +25,6 @@ Then open <http://localhost:8123/>.
   icons), and a horizontal tier track of paired perk shields. Each skill sits
   at the **highest level the build can actually reach**, so perks light up
   exactly when your attributes and focus put them in range.
-- **Summary** — every chosen perk's effects aggregated and grouped by party
-  role (Personal / Party Leader / Governor / Captain / …).
 - **Two ceilings, both shown** — a skill *learns freely* up to
   `(attribute − 1) × 10 + focus × 30`, then slows sharply, and stops entirely
   at `14 × attribute − 10 + focus × 40`. The second is the planner's skill
@@ -37,9 +35,9 @@ Then open <http://localhost:8123/>.
   Durable and the three Smithing ones raise an attribute outright, which lifts
   the cap of every skill that attribute governs. Taking Durable adds 14 to
   Athletics *and* Riding.
-- **Share, save, import, export** — the whole build encodes into the URL
-  fragment; named builds are kept in `localStorage`; and **Export** writes a
-  readable JSON file (`nord-sandbox-level-30.json`) that **Import** reads back.
+- **Save, import, export** — named builds are kept in `localStorage`, and
+  **Export** writes a readable JSON file (`nord-sandbox-level-30.json`) that
+  **Import** reads back.
 
 ## Publishing it free
 
@@ -99,13 +97,15 @@ deliberate rather than broken.
 
 ## Sharing a build
 
-Three ways, in increasing permanence:
+Two ways:
 
 | | Where it lives | Good for |
 | --- | --- | --- |
-| **Copy link** | the URL fragment | pasting into chat; nothing leaves the browser |
 | **Save / Load** | `localStorage` | your own builds on your own machine |
 | **Export / Import** | a `.json` file | posting, versioning, sending to someone else |
+
+A build can still be opened from a `#b=…` URL — links shared before are not
+broken — but the planner no longer produces them; Export is the sharing route.
 
 An exported file carries both halves: `build` is the exact state the planner
 reloads, and `summary` is a readable snapshot — culture and background by name,
@@ -232,7 +232,7 @@ index.html            app shell
 data/                 generated: skills, perks, rules, chargen
 src/model/            pure logic, no DOM - rules, build state, chargen, effects,
                       share, storage, buildfile (JSON import/export)
-src/ui/               tab shell and the three views
+src/ui/               tab shell, the creation wizard and the skill tree
 src/style/            theme.css and the skill icon helpers
 assets/icons/         generated: the game's skill icons (gitignored)
 tests/                browser-run model tests

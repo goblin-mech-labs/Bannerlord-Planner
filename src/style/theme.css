@@ -455,12 +455,8 @@ main { flex: 1; padding: 18px 20px 40px; }
 .tooltip .note { margin-top: 7px; color: var(--warn); font-size: 12px; }
 .tooltip .req-note { margin-top: 7px; color: var(--ink-faint); font-size: 12px; }
 
-/* ---------------------------------------------------------------- summary */
+/* ---------------------------------------------------------------- notices */
 
-.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
-.summary-group ul { margin: 0; padding: 10px 14px 14px 28px; }
-.summary-group li { margin-bottom: 5px; font-size: 14px; }
-.summary-group li .src { color: var(--ink-faint); font-size: 12px; }
 .empty-note { padding: 22px 14px; color: var(--ink-faint); text-align: center; }
 
 /* ---------------------------------------------------------------- chargen */

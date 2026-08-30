@@ -424,15 +424,15 @@ test("the wizard reports the next unanswered stage", () => {
 
 // ---------------------------------------------------------------- effects
 
-test("effect summary groups by party role", () => {
-  const build = new Build(catalog).setAttribute("Cunning", 6);
-  const perk = catalog.tiers("Roguery")[0].find((p) => p.effects.length > 1);
-  build.selectPerk(perk.id);
-  const groups = effects.summarise(build);
-  assert(groups.length > 0, "produces groups");
-  const total = groups.reduce((n, g) => n + g.entries.length, 0);
-  equal(total, perk.effects.filter((e) => e.text).length, "every effect listed once");
-  for (const group of groups) assert(group.label, "each group is labelled");
+test("every party role a perk uses has a readable label", () => {
+  // Perk tooltips print these, so an unlabelled role would surface raw.
+  const roles = new Set(catalog.perks.flatMap((p) => p.effects.map((e) => e.role)));
+  assert(roles.size > 3, "the data uses a spread of roles");
+  for (const role of roles) {
+    const label = effects.roleLabel(role);
+    assert(label && typeof label === "string", `${role} has a label`);
+    assert(!/[a-z][A-Z]/.test(label), `${role} is not left in camelCase: ${label}`);
+  }
 });
 
 test("effect text has no unresolved placeholders", () => {

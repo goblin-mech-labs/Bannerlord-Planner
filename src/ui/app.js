@@ -6,7 +6,6 @@ import * as buildfile from "../model/buildfile.js";
 import * as share from "../model/share.js";
 import * as storage from "../model/storage.js";
 import { ChargenView } from "./chargen-view.js";
-import { SummaryView } from "./summary-view.js";
 import { TreeView } from "./tree-view.js";
 import { detectIcons } from "../style/icons.js";
 import { append, clear, el, hideTooltip, toast } from "./components.js";
@@ -14,7 +13,6 @@ import { append, clear, el, hideTooltip, toast } from "./components.js";
 const TABS = [
   { id: "chargen", label: "Character Creation" },
   { id: "tree", label: "Skill Tree" },
-  { id: "summary", label: "Summary" },
 ];
 
 class Store {
@@ -61,11 +59,10 @@ export async function start(root) {
   chargenView.syncFromBuild();
 
   const treeView = new TreeView(store);
-  const summaryView = new SummaryView(store);
 
   const app = {
     tab: fromLink ? "tree" : "chargen",
-    views: { chargen: chargenView, tree: treeView, summary: summaryView },
+    views: { chargen: chargenView, tree: treeView },
   };
 
   const topbar = el("header", { class: "topbar" });
@@ -112,7 +109,6 @@ export async function start(root) {
 
       el("span", { class: "spacer" }),
 
-      el("button", { type: "button", class: "ghost-button", onclick: copyLink }, "Copy link"),
       el("button", {
         type: "button", class: "ghost-button", onclick: exportFile,
         title: "Download this build as a JSON file",
@@ -130,17 +126,6 @@ export async function start(root) {
     hideTooltip();
     renderTopbar();
     clear(main).append(app.views[app.tab].render());
-  }
-
-  async function copyLink() {
-    const url = share.toShareUrl(store.build, location.href);
-    history.replaceState(null, "", `#b=${share.encode(store.build)}`);
-    try {
-      await navigator.clipboard.writeText(url);
-      toast("Shareable link copied");
-    } catch {
-      toast("Link is in the address bar");
-    }
   }
 
   function exportFile() {
