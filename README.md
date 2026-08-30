@@ -35,7 +35,8 @@ Then open <http://localhost:8123/>.
   Durable and the three Smithing ones raise an attribute outright, which lifts
   the cap of every skill that attribute governs. Taking Durable adds 14 to
   Athletics *and* Riding.
-- **Save, import, export** — named builds are kept in `localStorage`, and
+- **Share, save, import, export** — **Share Build URL** puts the whole build in
+  the address bar and copies it; named builds are kept in `localStorage`; and
   **Export** writes a readable JSON file (`nord-sandbox-level-30.json`) that
   **Import** reads back.
 
@@ -97,15 +98,16 @@ deliberate rather than broken.
 
 ## Sharing a build
 
-Two ways:
+Three ways, in increasing permanence:
 
 | | Where it lives | Good for |
 | --- | --- | --- |
+| **Share Build URL** | the URL fragment | pasting into chat; nothing leaves the browser |
 | **Save / Load** | `localStorage` | your own builds on your own machine |
 | **Export / Import** | a `.json` file | posting, versioning, sending to someone else |
 
-A build can still be opened from a `#b=…` URL — links shared before are not
-broken — but the planner no longer produces them; Export is the sharing route.
+**Share Build URL** encodes the whole build into the address bar and copies it.
+Opening that link loads the build straight onto the skill tree.
 
 An exported file carries both halves: `build` is the exact state the planner
 reloads, and `summary` is a readable snapshot — culture and background by name,

@@ -464,6 +464,17 @@ test("a build survives an encode/decode round trip", () => {
   equal(restored.choices.narrative_parent_menu, "some_option", "choices");
 });
 
+test("a share URL round trips through the fragment", () => {
+  const build = new Build(catalog).setLevel(31).setAttribute("Social", 7);
+  const url = share.toShareUrl(build, "https://example.test/planner/");
+  assert(url.startsWith("https://example.test/planner/#b="), `keeps the page: ${url}`);
+
+  const restored = share.fromLocation(catalog, new URL(url).hash);
+  assert(restored, "reads back out of the hash");
+  equal(restored.level, 31, "level");
+  equal(restored.attribute("Social"), 7, "attribute");
+});
+
 test("malformed share links decode to null instead of throwing", () => {
   equal(share.decode(catalog, "not-base64!!"), null, "garbage rejected");
   equal(share.decode(catalog, btoa(JSON.stringify({ v: 99 }))), null, "wrong version rejected");

@@ -110,6 +110,10 @@ export async function start(root) {
       el("span", { class: "spacer" }),
 
       el("button", {
+        type: "button", class: "ghost-button", onclick: shareBuildUrl,
+        title: "Copy a link with this build encoded in it",
+      }, "Share Build URL"),
+      el("button", {
         type: "button", class: "ghost-button", onclick: exportFile,
         title: "Download this build as a JSON file",
       }, "Export"),
@@ -126,6 +130,18 @@ export async function start(root) {
     hideTooltip();
     renderTopbar();
     clear(main).append(app.views[app.tab].render());
+  }
+
+  async function shareBuildUrl() {
+    const url = share.toShareUrl(store.build, location.href);
+    history.replaceState(null, "", `#b=${share.encode(store.build)}`);
+    try {
+      await navigator.clipboard.writeText(url);
+      toast("Build URL copied to the clipboard");
+    } catch {
+      // Clipboard access needs a secure context; the address bar has it either way.
+      toast("Build URL is in the address bar");
+    }
   }
 
   function exportFile() {
