@@ -87,6 +87,42 @@ requirements are that `.json` and `.png` are served with normal MIME types and
 that the files keep their capitalisation (`OneHanded.png`, not `onehanded.png`),
 which every host above does.
 
+### Updating a published site
+
+Every host above deploys from the repository, so publishing an update is a
+push:
+
+```bash
+git add -A
+git commit -m "..."
+git push
+```
+
+Cloudflare Pages, Netlify and Vercel rebuild within seconds of the push.
+GitHub Pages usually takes a minute; **Actions** tab shows the deployment.
+
+Nothing else is needed for changes to the app itself — there is no build step
+to run and nothing to upload by hand.
+
+**After a Bannerlord patch**, regenerate the data first, then push:
+
+```bash
+pwsh tools/decompile.ps1
+python tools/extract.py
+python tools/extract_chargen.py
+python tools/extract_icons.py
+python tools/validate.py          # must pass before committing
+git add -A && git commit -m "Update data for <version>" && git push
+```
+
+`data/*.json` and `assets/icons/` are committed, so those regenerated files are
+what actually reach the site.
+
+**If you don't see the change**, it is almost always the browser cache rather
+than a failed deploy — hard-refresh (Ctrl+F5). Check the host's deploy log to
+confirm; opening the site in a private window is the quickest way to tell the
+two apart.
+
 ### What ships
 
 `data/*.json` and `assets/icons/` are both committed, so a clone deploys with

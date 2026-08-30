@@ -243,10 +243,7 @@ export class TreeView {
       state.reason ? el("div", { class: "note" }, state.reason) : null,
       state.replaces
         ? el("div", { class: "req-note" }, `Choosing this replaces ${state.replaces}`)
-        : perk.alternative && !state.reason
-          ? el("div", { class: "req-note" },
-              `Alternative: ${catalog.perk(perk.alternative)?.name ?? perk.alternative}`)
-          : null,
+        : null,
     ]);
   }
 }
